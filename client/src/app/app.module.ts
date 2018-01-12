@@ -6,6 +6,7 @@ import { HttpClientModule } from "@angular/common/http"
 import { FormsModule } from "@angular/forms";
 import { GithubService } from "./gihubservice.service";
 import {RouterModule} from "@angular/router";
+import { SearchComponent } from './search/search.component';
 
 const appRoutes = [
   {
@@ -17,7 +18,8 @@ const appRoutes = [
 @NgModule({
   declarations: [
     AppComponent,
-    GithubComponent
+    GithubComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

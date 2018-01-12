@@ -10,7 +10,7 @@ import {User} from "../models/user";
 })
 export class GithubComponent implements OnInit {
 
-  @Output() dataPass: EventEmitter<User> = new EventEmitter<User>();
+  @Output() dataPass:EventEmitter<User> = new EventEmitter<User>();
   protected githubUser: User;
 
   constructor(protected gitHubService: GithubService) {
@@ -22,9 +22,4 @@ export class GithubComponent implements OnInit {
       this.githubUser = user;
     });
   }
-
-  public emitData(user: User): void {
-    this.dataPass.emit(user);
-  }
-
 }

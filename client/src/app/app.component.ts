@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import { User } from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,5 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AppComponent {
   title = 'app';
+  // @ViewChild('githubUser') user: User;
 }
