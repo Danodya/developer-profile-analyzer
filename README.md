@@ -1,6 +1,6 @@
 # Github Profile Analyzer with Angular + Spring
 
-A simple profile analyzer for developers.
+A simple profile analyzer for developers. **You can follow a thorough walkthrough through this application by visiting my series of blogposts starting from [this.](https://dasunpubudu.wordpress.com/2018/01/13/creating-a-github-profile-analyzer-with-spring-boot-angular-part-i-introduction/)**
 
 ![Application Screenshot](doc/screenshots/6.png)
 _Application when ran through my Github profile_.
