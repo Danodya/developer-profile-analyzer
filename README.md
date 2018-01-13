@@ -2,8 +2,8 @@
 
 A simple profile analyzer for developers.
 
-![Application Screenshot](doc/screenshots/3.png)
-_Application when ran through Sebestian Bergmann's Github profile_.
+![Application Screenshot](doc/screenshots/5.png)
+_Application when ran through my Github profile_.
 
 ## Prerequesits
 
