@@ -49,7 +49,7 @@
         <li class="collection-item avatar" *ngIf="githubUser.blog">
           <i class="material-icons circle red">web</i>
           <span class="title"><strong><p class="left-align">Blog</p></strong></span>
-          <p class="left-align" style="color: dimgrey">{{githubUser.blog}}</p>
+          <p class="left-align" style="color: dimgrey"><a href="{{githubUser.blog}}" target="_blank">{{githubUser.blog}}</a></p>
         </li>
         <li class="collection-item avatar" *ngIf="githubUser.public_repos || githubUser.public_gists">
           <i class="material-icons circle teal">trending_up</i>

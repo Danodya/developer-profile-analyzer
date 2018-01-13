@@ -3,6 +3,7 @@
 A simple profile analyzer for developers.
 
 ![Application Screenshot](doc/screenshots/3.png)
+_Application when ran through Sebestian Bergmann's Github profile_.
 
 ## Prerequesits
 
@@ -18,5 +19,6 @@ A simple profile analyzer for developers.
 4. Start the front end server by running `ng serve` . Make sure you're in `/client` folder.
 
 ![Java Toolkit for vscode](doc/screenshots/4.png)
+_Visual Studio Code Java integration_.
 
 
