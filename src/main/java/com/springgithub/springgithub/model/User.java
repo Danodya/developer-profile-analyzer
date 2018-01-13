@@ -3,7 +3,7 @@ package com.springgithub.springgithub.model;
 public class User {
 
     private String login, avatar_url, name, company, blog, location, email, bio, public_repos, public_gists
-            , followers, following, created_at;
+            , followers, following, created_at ,url, html_url;
 
     public User(){}
 
@@ -57,5 +57,13 @@ public class User {
 
     public String getCreated_at() {
         return created_at;
+    }
+
+    public String getHtml_url() {
+        return html_url;
+    }
+
+    public String getUrl() {
+        return url;
     }
 }

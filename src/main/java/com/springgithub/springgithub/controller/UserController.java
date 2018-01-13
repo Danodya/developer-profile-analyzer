@@ -18,6 +18,8 @@ import org.springframework.web.client.RestTemplate;
 public class UserController {
 
     private static final Gson gson = new GsonBuilder().create();
+    private static final String client_id = "a63bb0776b70be956f87";
+    private static final String client_secret = "7b0d745a5605aafae556744109afdb8b3aae7035";
 
     @GetMapping("/getuser/{username}")
     public User getUser(@PathVariable String username) {
@@ -25,7 +27,8 @@ public class UserController {
         HttpHeaders headers = new HttpHeaders();
         headers.set("User-Agent", "spring-github");
         HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
-        ResponseEntity<User> user = restTemplate.exchange("https://api.github.com/users/"+ username,
+        ResponseEntity<User> user = restTemplate.exchange("https://api.github.com/users/"+ username +
+                "?client_id=" + client_id + "&client_secret=" + client_secret,
                 HttpMethod.GET, entity, User.class);
         return user.getBody();
     }
