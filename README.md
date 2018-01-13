@@ -2,7 +2,7 @@
 
 A simple profile analyzer for developers.
 
-![Application Screenshot](doc/screenshots/5.png)
+![Application Screenshot](doc/screenshots/6.png)
 _Application when ran through my Github profile_.
 
 ## Prerequesits
