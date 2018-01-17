@@ -16,8 +16,7 @@ export class GithubService {
   }
 
   callRepo(username: string) {
-    return this.http.get('http://localhost:8080/getrepo/'.concat(username),
-      {headers: {'Access-Control-Allow-Origin' : '*'}}).map(res => res);
+    return this.http.get('http://localhost:8080/getrepo/'.concat(username)).map(res => res);
   }
 
 }

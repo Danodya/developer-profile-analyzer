@@ -36,8 +36,6 @@ public class UserController {
         return user.getBody();
     }
 
-    
-    @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/getrepo/{username}")
     public Object getRepository(@PathVariable String username) {
         restTemplate = new RestTemplate();
