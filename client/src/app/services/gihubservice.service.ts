@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {User} from './models/user';
+import {User} from '../models/user';
 import 'rxjs/add/operator/map';
-import {Repo} from './models/repo';
+import {Repo} from '../models/repo';
 
 @Injectable()
 export class GithubService {
