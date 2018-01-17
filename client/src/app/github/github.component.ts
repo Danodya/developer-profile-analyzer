@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import { GithubService } from '../gihubservice.service'
-import {User} from "../models/user";
+import { GithubService } from '../gihubservice.service';
+import {User} from '../models/user';
 
 @Component({
   selector: 'app-github',
@@ -18,14 +18,28 @@ export class GithubComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.gitHubService.call("dasunpubudumal").subscribe((user) => {
+
+    this.gitHubService.call('dasunpubudumal').subscribe((user) => {
       this.githubUser = user;
     });
+
+    // This doesn't work. CORS error. Check it out.
+    // this.gitHubService.callRepo("dasunpubudumal").subscribe((repo) => {
+    //   console.log(repo);
+    // });
+
   }
 
   get() {
     this.gitHubService.call(this.username).subscribe((user) => {
       this.githubUser = user;
+    });
+  }
+
+  test() {
+    // Test
+    this.gitHubService.callRepo('dasunpubudumal').subscribe((repo) => {
+      console.log(repo);
     });
   }
 
