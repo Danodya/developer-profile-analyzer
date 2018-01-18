@@ -4,8 +4,15 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 @Injectable()
 export class DataService {
 
-  private repoSource = new BehaviorSubject<any[]>([]);
+  array: any[];
 
   constructor() { }
+
+  public replace(data: any[]) : any[] {
+
+
+
+    return this.array;
+  }
 
 }

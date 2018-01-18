@@ -43,8 +43,8 @@ export class ChartComponent implements OnInit {
       this.chartDataArray = this.chartService.getRepoCounts(repos, this.chartLabels);
 
       //This push is wrong. You need to replace data in that array.
-      this.chartData.push({data: this.chartDataArray, labels: this.chartLabels});
-      console.log(this.chartData);
+      // this.chartData.push({data: this.chartDataArray, labels: this.chartLabels});
+      this.chartData[0] = {data: this.chartDataArray, labels: this.chartLabels};
     });
   }
 
