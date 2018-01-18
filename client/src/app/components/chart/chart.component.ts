@@ -25,9 +25,7 @@ export class ChartComponent implements OnInit {
               protected githubService: GithubService) {
     this.chartLabels = [];
     this.chartDataArray = [];
-    this.chartData = [
-      { data: [330, 600, 260, 700], label: 'Account A' }
-    ];
+    this.chartData = [];
   }
 
   ngOnInit() {
@@ -37,7 +35,7 @@ export class ChartComponent implements OnInit {
     });
   }
 
-  _get() {
+  public _get() {
     this.githubService.callRepo(this.username).subscribe((repos) => {
       console.log(this.chartService.getLabelsData(repos));
       this.chartLabels = this.chartService.getLabelsData(repos);
@@ -50,7 +48,7 @@ export class ChartComponent implements OnInit {
     });
   }
 
-  onChartClick(event) {
+  public onChartClick(event) {
     console.log(event);
   }
 
