@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { GithubComponent } from './github/github.component';
+import { GithubComponent } from './components/github/github.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 import { GithubService } from './services/gihubservice.service';
 import { RouterModule } from '@angular/router';
-import { SearchComponent } from './search/search.component';
+import { SearchComponent } from './components/search/search.component';
+import { ChartComponent } from './components/chart/chart.component';
 
 const appRoutes = [
   {
@@ -20,7 +21,8 @@ const appRoutes = [
   declarations: [
     AppComponent,
     GithubComponent,
-    SearchComponent
+    SearchComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,

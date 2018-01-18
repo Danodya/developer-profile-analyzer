@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {User} from '../models/user';
+import {User} from '../components/models/user';
 import 'rxjs/add/operator/map';
-import {Repo} from '../models/repo';
+
 
 @Injectable()
 export class GithubService {
 
-  constructor(protected http: HttpClient) {
-  }
+  constructor(protected http: HttpClient) {}
 
   call(username: string) {
     return this.http.get<User>('http://localhost:8080/getuser/'.concat(username),
-      {headers: {}}).map(res => res);
+      {headers: {}}). map(res => res);
   }
 
   callRepo(username: string) {
-    return this.http.get('http://localhost:8080/getrepo/'.concat(username)).map(res => res);
+    return this.http.get<any[]>('http://localhost:8080/getrepo/'.concat(username))
+      .map(res => res);
   }
 
 }

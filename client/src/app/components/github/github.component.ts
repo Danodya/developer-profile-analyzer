@@ -1,28 +1,33 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import { GithubService } from '../services/gihubservice.service';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { GithubService } from '../../services/gihubservice.service';
 import {User} from '../models/user';
+import {ChartService} from "../../services/chart.service";
+
 
 @Component({
   selector: 'app-github',
   templateUrl: './github.component.html',
   styleUrls: ['./github.component.css'],
-  providers: [GithubService]
+  providers: [GithubService, ChartService]
 })
 export class GithubComponent implements OnInit {
 
+  // This is the parent component.
+
   protected username: string;
   protected githubUser: User;
+  protected repos: any[];
+
+  // Need to send this repos array to the child component to chart component.
 
   constructor(protected gitHubService: GithubService) {
     this.githubUser = new User();
+    this.username = 'dasunpubudumal';
   }
 
   ngOnInit() {
-
-    this.gitHubService.call('dasunpubudumal').subscribe((user) => {
-      this.githubUser = user;
-    });
-
+    this.get();
+    this.test();
   }
 
   get() {
@@ -36,9 +41,9 @@ export class GithubComponent implements OnInit {
   test() {
     // Test
     this.gitHubService.callRepo(this.username).subscribe((repo) => {
-      console.log(repo);
+      this.repos = repo;
+      console.log(this.repos);
     });
-
   }
 
 

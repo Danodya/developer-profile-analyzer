@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.springgithub.springgithub.model.Repository;
 import com.springgithub.springgithub.model.User;
 import org.springframework.http.HttpEntity;
@@ -37,7 +38,7 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getrepo/{username}")
-    public Object getRepository(@PathVariable String username) {
+    public @ResponseBody Object getRepository(@PathVariable String username) {
         restTemplate = new RestTemplate();
         headers = new HttpHeaders();
         headers.set("User-Agent", "profile-analyzer");
