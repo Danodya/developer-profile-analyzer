@@ -15,28 +15,44 @@ export class ChartComponent implements OnInit {
   @Input() repos: any[];
   @Input() githubUser: User;
   @Input() username;
+  protected chartLabels: any[];
+  protected chartDataArray: any[];
+  protected chartData: any[];
 
-   protected chartOptions = {responsive: true};
+  protected chartOptions = {responsive: true};
 
   constructor(protected chartService: ChartService,
-              protected githubService: GithubService) { }
-
-  ngOnInit() {
-
-    // Sandbox area
-
-    // console.log(this.chartService.getLabelsData(this.repos));
-
-    this.githubService.callRepo(this.username).subscribe((repos) => {
-      // console.log(repos);
-      console.log(this.chartService.getLabelsData(repos));
-    });
-
-    // End of sandbox area.
-
+              protected githubService: GithubService) {
+    this.chartLabels = [];
+    this.chartDataArray = [];
+    this.chartData = [
+      { data: [330, 600, 260, 700], label: 'Account A' }
+    ];
   }
 
+  ngOnInit() {
+    this.githubService.callRepo(this.username).subscribe((repos) => {
+      this.chartLabels = this.chartService.getLabelsData(repos);
+      this.chartDataArray = this.chartService.getRepoCounts(repos, this.chartLabels);
+    });
+  }
 
+  _get() {
+    this.githubService.callRepo(this.username).subscribe((repos) => {
+      console.log(this.chartService.getLabelsData(repos));
+      this.chartLabels = this.chartService.getLabelsData(repos);
+      console.log(this.chartService.getRepoCounts(repos, this.chartLabels ));
+      this.chartDataArray = this.chartService.getRepoCounts(repos, this.chartLabels);
+
+      //This push is wrong. You need to replace data in that array.
+      this.chartData.push({data: this.chartDataArray, labels: this.chartLabels});
+      console.log(this.chartData);
+    });
+  }
+
+  onChartClick(event) {
+    console.log(event);
+  }
 
 
 

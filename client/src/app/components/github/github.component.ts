@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import { GithubService } from '../../services/gihubservice.service';
 import {User} from '../models/user';
 import {ChartService} from "../../services/chart.service";
+import {ChartComponent} from "../chart/chart.component";
 
 
 @Component({
@@ -17,6 +18,8 @@ export class GithubComponent implements OnInit {
   protected username: string;
   protected githubUser: User;
   protected repos: any[];
+
+  @ViewChild(ChartComponent) chartComponent: ChartComponent;
 
   // Need to send this repos array to the child component to chart component.
 
@@ -44,6 +47,8 @@ export class GithubComponent implements OnInit {
       this.repos = repo;
       // console.log(this.repos);
     });
+
+    this.chartComponent._get();
   }
 
 

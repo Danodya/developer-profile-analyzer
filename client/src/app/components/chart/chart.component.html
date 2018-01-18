@@ -1,3 +1,11 @@
-<p>
-  chart works!
-</p>
+<div style="width: 40%;">
+  <canvas
+    baseChart
+    [chartType]="'doughnut'"
+    [datasets]="chartData"
+    [labels]="chartLabels"
+    [options]="chartOptions"
+    [legend]="true"
+    (chartClick)="onChartClick($event)">
+  </canvas>
+</div>

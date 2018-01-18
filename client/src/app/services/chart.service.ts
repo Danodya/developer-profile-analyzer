@@ -27,12 +27,12 @@ export class ChartService {
 
   }
 
-  public getRepoCounts(array: any[]) : any[] {
+  public getRepoCounts(array: any[], labelArray: any[]) : any[] {
 
     let count = 0;
     this.chartData = [];
 
-    for(let lang of this.chartLabels){
+    for(let lang of labelArray){
       for(let repo of array) {
         if (repo.language == lang) {
           count++;
