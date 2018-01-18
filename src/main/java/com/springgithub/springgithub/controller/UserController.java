@@ -14,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
+
 
 @RestController
 public class UserController {
@@ -48,5 +50,6 @@ public class UserController {
                 HttpMethod.GET, entity, Object.class);
         return repository;
     }
+
 
 }

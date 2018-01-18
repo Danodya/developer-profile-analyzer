@@ -42,7 +42,7 @@ export class GithubComponent implements OnInit {
     // Test
     this.gitHubService.callRepo(this.username).subscribe((repo) => {
       this.repos = repo;
-      console.log(this.repos);
+      // console.log(this.repos);
     });
   }
 

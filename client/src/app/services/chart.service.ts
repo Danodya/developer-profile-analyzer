@@ -7,24 +7,30 @@ export class ChartService {
   private chartData: any[];
   private chartLabels: any[];
 
-  constructor() {}
+  constructor() {
+    this.chartData = [];
+    this.chartLabels = [];
+  }
 
   public getLabelsData(array: any[]) : any[] {
 
-    // Create an array of
+    this.chartLabels = [];
+
+    // Create an array of chart labels
     for(let repo of array) {
       this.chartLabels.push(repo.language);
     }
 
-    // Remove Duplicates and return a new array.
-    return this.chartData.filter((elem, index, self) => {
-      return index == self.indexOf(elem);
+    return this.chartLabels.filter((elem, index, self) => {
+      return index === self.indexOf(elem);
     });
+
   }
 
   public getRepoCounts(array: any[]) : any[] {
 
     let count = 0;
+    this.chartData = [];
 
     for(let lang of this.chartLabels){
       for(let repo of array) {
