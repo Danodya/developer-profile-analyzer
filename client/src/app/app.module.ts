@@ -4,16 +4,27 @@ import { AppComponent } from './app.component';
 import { GithubComponent } from './components/github/github.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AutofocusModule } from "angular-autofocus-fix";
 import { ChartsModule } from 'ng2-charts';
 import { GithubService } from './services/gihubservice.service';
 import { RouterModule } from '@angular/router';
 import { SearchComponent } from './components/search/search.component';
 import { ChartComponent } from './components/chart/chart.component';
+import { StackoverflowComponent } from './components/stackoverflow/stackoverflow.component';
+import { TwitterComponent } from './components/twitter/twitter.component';
 
 const appRoutes = [
   {
-    path: 'fetch',
+    path: '',
     component: GithubComponent
+  },
+  {
+    path: 'stackoverflow',
+    component: StackoverflowComponent
+  },
+  {
+    path: 'twitter',
+    component: TwitterComponent
   }
 ];
 
@@ -22,13 +33,16 @@ const appRoutes = [
     AppComponent,
     GithubComponent,
     SearchComponent,
-    ChartComponent
+    ChartComponent,
+    StackoverflowComponent,
+    TwitterComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ChartsModule,
+    AutofocusModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [GithubService],

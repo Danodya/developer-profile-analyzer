@@ -1,4 +1,4 @@
-<div style="width: 40%;">
+<div>
   <canvas
     baseChart
     [chartType]="'doughnut'"
@@ -6,6 +6,7 @@
     [labels]="chartLabels"
     [options]="chartOptions"
     [legend]="true"
+    [colors] = "chartColors"
     (chartClick)="onChartClick($event)">
   </canvas>
 </div>

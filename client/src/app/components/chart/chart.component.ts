@@ -10,41 +10,49 @@ import {GithubService} from "../../services/gihubservice.service";
 })
 export class ChartComponent implements OnInit {
 
-  // This is the child component.
-
   @Input() repos: any[];
   @Input() githubUser: User;
   @Input() username;
   protected chartLabels: any[];
   protected chartDataArray: any[];
   protected chartData: any[];
+  protected chartColors: any[] = [
+    {
+      backgroundColor:["#0277bd", "#689f38",
+      "#6a1b9a", "#ffeb3b", "#d84315", "#5d4037", "#263238"]
+    }];
 
-  protected chartOptions = {responsive: true};
+  protected chartOptions = {
+    responsive: true,
+    title: {
+      display: true,
+      text: 'Repositories per language'
+    },
+    legend: {
+      labels: {
+        fontColor: 'black'
+      }
+    }
+  };
 
   constructor(protected chartService: ChartService,
               protected githubService: GithubService) {
-    this.chartLabels = [];
+    this.chartLabels = ['','',''];
     this.chartDataArray = [];
-    this.chartData = [];
+    this.chartData = [{data: [0,0,0], labels: ''}];
   }
 
-  ngOnInit() {
-    this.githubService.callRepo(this.username).subscribe((repos) => {
-      this.chartLabels = this.chartService.getLabelsData(repos);
-      this.chartDataArray = this.chartService.getRepoCounts(repos, this.chartLabels);
-    });
-  }
+  ngOnInit() {}
 
   public _get() {
     this.githubService.callRepo(this.username).subscribe((repos) => {
-      console.log(this.chartService.getLabelsData(repos));
       this.chartLabels = this.chartService.getLabelsData(repos);
-      console.log(this.chartService.getRepoCounts(repos, this.chartLabels ));
       this.chartDataArray = this.chartService.getRepoCounts(repos, this.chartLabels);
-
-      //This push is wrong. You need to replace data in that array.
-      // this.chartData.push({data: this.chartDataArray, labels: this.chartLabels});
-      this.chartData[0] = {data: this.chartDataArray, labels: this.chartLabels};
+      this.chartData[0] = {
+        data: this.chartDataArray,
+        labels: this.chartLabels,
+        colors: ['red', 'green', 'blue', 'purple']
+      };
     });
   }
 

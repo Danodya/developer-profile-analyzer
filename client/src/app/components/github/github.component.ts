@@ -18,6 +18,7 @@ export class GithubComponent implements OnInit {
   protected username: string;
   protected githubUser: User;
   protected repos: any[];
+  protected prog: boolean;
 
   @ViewChild(ChartComponent) chartComponent: ChartComponent;
 
@@ -43,12 +44,20 @@ export class GithubComponent implements OnInit {
 
   test() {
     // Test
-    this.gitHubService.callRepo(this.username).subscribe((repo) => {
-      this.repos = repo;
-      // console.log(this.repos);
-    });
 
-    this.chartComponent._get();
+    this.prog = false;
+
+    setTimeout(() => {
+      this.gitHubService.callRepo(this.username).subscribe((repo) => {
+        this.repos = repo;
+        // console.log(this.repos);
+      });
+      this.chartComponent._get();
+
+    }, 0);
+
+    this.prog = true;
+
   }
 
 
