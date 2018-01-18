@@ -9,6 +9,5 @@ import { User } from './components/models/user';
   providers: [HttpClient]
 })
 export class AppComponent {
-  title = 'app';
-  // @ViewChild('githubUser') user: User;
+  title = 'DEVSTATS';
 }

@@ -12,6 +12,7 @@ import { SearchComponent } from './components/search/search.component';
 import { ChartComponent } from './components/chart/chart.component';
 import { StackoverflowComponent } from './components/stackoverflow/stackoverflow.component';
 import { TwitterComponent } from './components/twitter/twitter.component';
+import { AboutComponent } from './components/about/about.component';
 
 const appRoutes = [
   {
@@ -25,6 +26,10 @@ const appRoutes = [
   {
     path: 'twitter',
     component: TwitterComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
   }
 ];
 
@@ -35,7 +40,8 @@ const appRoutes = [
     SearchComponent,
     ChartComponent,
     StackoverflowComponent,
-    TwitterComponent
+    TwitterComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
