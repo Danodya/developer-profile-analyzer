@@ -54,11 +54,12 @@ export class GithubComponent implements OnInit {
       });
       this.chartComponent._get();
 
-    }, 0);
+    }, 1000);
 
     this.prog = true;
 
   }
+
 
 
 }
