@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import { GithubService } from '../../services/gihubservice.service';
+import { GithubService } from '../../services/github/gihubservice.service';
 import {User} from '../models/user';
-import {ChartService} from "../../services/chart.service";
+import {ChartService} from "../../services/github/chart.service";
 import {ChartComponent} from "./chart/chart.component";
 
 

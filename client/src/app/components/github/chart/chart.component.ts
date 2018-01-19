@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ChartService} from "../../../services/chart.service";
+import {ChartService} from "../../../services/github/chart.service";
 import {User} from "../../models/user";
-import {GithubService} from "../../../services/gihubservice.service";
+import {GithubService} from "../../../services/github/gihubservice.service";
 
 @Component({
   selector: 'app-chart',

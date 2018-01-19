@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {User} from "../components/models/user";
+import {User} from "../../components/models/user";
 
 @Injectable()
 export class ChartService {
