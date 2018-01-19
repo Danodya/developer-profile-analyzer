@@ -48,6 +48,7 @@ export class ChartComponent implements OnInit {
     this.githubService.callRepo(this.username).subscribe((repos) => {
       this.chartLabels = this.chartService.getLabelsData(repos);
       this.chartDataArray = this.chartService.getRepoCounts(repos, this.chartLabels);
+      this.chartLabels[this.chartLabels.indexOf(null)] = "Other";
       this.chartData[0] = {
         data: this.chartDataArray,
         labels: this.chartLabels,
