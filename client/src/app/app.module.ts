@@ -9,10 +9,12 @@ import { ChartsModule } from 'ng2-charts';
 import { GithubService } from './services/gihubservice.service';
 import { RouterModule } from '@angular/router';
 import { SearchComponent } from './components/search/search.component';
-import { ChartComponent } from './components/chart/chart.component';
+import { ChartComponent } from './components/github/chart/chart.component';
 import { StackoverflowComponent } from './components/stackoverflow/stackoverflow.component';
-import { TwitterComponent } from './components/twitter/twitter.component';
-import { AboutComponent } from './components/about/about.component';
+import { TwitterComponent } from './components/github/twitter/twitter.component';
+import { AboutComponent } from './components/github/about/about.component';
+import { HowtoComponent } from './components/github/howto/howto.component';
+import {MaterializeModule} from "angular2-materialize";
 
 const appRoutes = [
   {
@@ -41,7 +43,8 @@ const appRoutes = [
     ChartComponent,
     StackoverflowComponent,
     TwitterComponent,
-    AboutComponent
+    AboutComponent,
+    HowtoComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ const appRoutes = [
     FormsModule,
     ChartsModule,
     AutofocusModule,
+    MaterializeModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [GithubService],

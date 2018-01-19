@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angula
 import { GithubService } from '../../services/gihubservice.service';
 import {User} from '../models/user';
 import {ChartService} from "../../services/chart.service";
-import {ChartComponent} from "../chart/chart.component";
+import {ChartComponent} from "./chart/chart.component";
 
 
 @Component({

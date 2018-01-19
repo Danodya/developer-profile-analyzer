@@ -1,0 +1,14 @@
+<div class="fixed-action-btn horizontal click-to-toggle">
+  <a id="menu" class="btn-floating btn-large blue darken-2 pulse" (click)="toggle()">
+    <i class="material-icons">info_outline</i>
+  </a>
+</div>
+<!-- Tap Target Structure -->
+<div class="tap-target blue" data-activates="menu" materialize [materializeActions]="tapTargetActions">
+  <div class="tap-target-content">
+    <span style="color: white;">
+      <h5>How to do this?</h5>
+      <p>Enter the developer's Github username. Since the search is interactive, you might have to wait a little while to get the data depending on the internet connection.</p>
+    </span>
+  </div>
+</div>
