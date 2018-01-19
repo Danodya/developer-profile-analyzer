@@ -6,6 +6,7 @@ import com.springgithub.springgithub.model.User;
 import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.service.RepositoryService;
+import org.springframework.boot.autoconfigure.info.ProjectInfoProperties;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -15,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -69,12 +71,16 @@ public class GithubController {
         GitHubClient client = new GitHubClient();
         client.setOAuth2Token(token);
         RepositoryService service = new RepositoryService(client);
+
         try {
-            List<Repository> repositories = service.getRepositories();
-            return repositories;
-        }catch (IOException e){
+            return service.getContributors(service.getRepository(username, repo), true);
+        } catch (IOException e) {
+            e.printStackTrace();
             return null;
         }
+
+
+
     }
 
 
