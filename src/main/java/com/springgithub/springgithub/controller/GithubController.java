@@ -2,10 +2,18 @@ package com.springgithub.springgithub.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.springgithub.springgithub.model.User;
+import org.eclipse.egit.github.core.Commit;
+import org.eclipse.egit.github.core.IRepositoryIdProvider;
 import org.eclipse.egit.github.core.Repository;
+import org.eclipse.egit.github.core.RepositoryCommit;
 import org.eclipse.egit.github.core.client.GitHubClient;
+import org.eclipse.egit.github.core.service.CommitService;
 import org.eclipse.egit.github.core.service.RepositoryService;
+import org.eclipse.egit.github.core.service.UserService;
+import org.eclipse.egit.github.core.service.WatcherService;
 import org.springframework.boot.autoconfigure.info.ProjectInfoProperties;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -14,9 +22,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.json.Json;
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 @RestController
@@ -25,7 +33,7 @@ public class GithubController {
     private static final Gson gson = new GsonBuilder().create();
     private static final String client_id = "2c77c5a8d6e0519eb3a5";
     private static final String client_secret = "04ba9edca249e4adf378919a5a1d7e36fad00e96";
-    private static final String token = "4b5e22dceccd72b1a49a0b92b9631fe46a824813";
+    private static final String token = "d4ee34b184b0ebedba9bfea94a7bf03b8da37c4b";
     private RestTemplate restTemplate;
     private HttpHeaders headers;
 
@@ -61,27 +69,31 @@ public class GithubController {
         headers = new HttpHeaders();
         headers.set("User-Agent", "profile-analyzer");
         HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
-        ResponseEntity<Object> commits = restTemplate.exchange("https://api.github.com/repos/" + username + "/" + repo + "/stats/contributors?client_id=" +  client_id + "&client_secret=" + client_secret,HttpMethod.GET, entity, Object.class);
+
+        ResponseEntity<Object> commits = restTemplate.exchange("https://api.github.com/repos/" + username + "/" + repo + "/commits?client_id=" +  client_id + "&client_secret=" + client_secret,HttpMethod.GET, entity, Object.class);
+
         return commits;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/getcommitsadapter/{username}/{repo}")
-    public @ResponseBody Object getCommitsAdaptor(@PathVariable String username, @PathVariable String repo) {
+    // Commits using adapter
+    @RequestMapping(method = RequestMethod.GET, value = "/getcommitsadapter/{username}")
+    public @ResponseBody Map getCommitsAdaptor(@PathVariable String username) throws IOException {
 
         GitHubClient client = new GitHubClient();
         client.setOAuth2Token(token);
-        RepositoryService service = new RepositoryService(client);
+        RepositoryService repositoryService = new RepositoryService(client);
+        CommitService commitService = new CommitService(client);
+        Map<String, Integer> map = new HashMap<>();
 
-        try {
-            return service.getContributors(service.getRepository(username, repo), true);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+        List<Repository> repositories = repositoryService.getRepositories(username);
+
+
+        for (Repository repository: repositories) {
+            map.put(repository.getName(), commitService.getCommits(repository).size());
+
         }
 
-
-
+        return map;
     }
-
 
 }

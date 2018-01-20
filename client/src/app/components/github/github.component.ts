@@ -4,7 +4,6 @@ import {User} from '../models/user';
 import {ChartService} from "../../services/github/chart.service";
 import {ChartComponent} from "./chart/chart.component";
 
-
 @Component({
   selector: 'app-github',
   templateUrl: './github.component.html',

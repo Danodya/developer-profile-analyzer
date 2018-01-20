@@ -15,7 +15,7 @@ import { TwitterComponent } from './components/twitter/twitter.component';
 import { AboutComponent } from './components/github/about/about.component';
 import { HowtoComponent } from './components/github/howto/howto.component';
 import {MaterializeModule} from "angular2-materialize";
-import { CommitsrepoComponent } from './components/github/commitsrepo/commitsrepo.component';
+import { CommitsComponent } from './components/github/commits/commits.component';
 
 const appRoutes = [
   {
@@ -46,7 +46,7 @@ const appRoutes = [
     TwitterComponent,
     AboutComponent,
     HowtoComponent,
-    CommitsrepoComponent
+    CommitsComponent
   ],
   imports: [
     BrowserModule,
