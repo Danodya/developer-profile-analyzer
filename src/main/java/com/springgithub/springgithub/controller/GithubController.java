@@ -33,7 +33,7 @@ public class GithubController {
     private static final Gson gson = new GsonBuilder().create();
     private static final String client_id = "2c77c5a8d6e0519eb3a5";
     private static final String client_secret = "04ba9edca249e4adf378919a5a1d7e36fad00e96";
-    private static final String token = "d4ee34b184b0ebedba9bfea94a7bf03b8da37c4b";
+    private static final String token = "";
     private RestTemplate restTemplate;
     private HttpHeaders headers;
 
@@ -76,6 +76,7 @@ public class GithubController {
     }
 
     // Commits using adapter
+    @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/getcommitsadapter/{username}")
     public @ResponseBody Map getCommitsAdaptor(@PathVariable String username) throws IOException {
 

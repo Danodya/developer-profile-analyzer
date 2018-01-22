@@ -1,17 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import {CommitsService} from "../../../services/github/commits.service";
 
 @Component({
   selector: 'app-commits',
   templateUrl: './commits.component.html',
   styleUrls: ['./commits.component.css'],
-  providers: []
+  providers: [CommitsService]
 })
 export class CommitsComponent implements OnInit {
 
-  protected commitsArray: any[];
+  protected chartLabels: any[];
 
-  constructor() {
-    this.commitsArray = [];
+  constructor(protected commitServive: CommitsService) {
+
+    this.chartLabels = [];
+
+   this.commitServive.getCommitDetails("dasunpubudumal").subscribe((commits) => {
+     this.chartLabels = this.commitServive.extractChartData(commits);
+     console.log(this.chartLabels);
+   });
+
   }
 
   ngOnInit() {}
