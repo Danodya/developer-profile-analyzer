@@ -12,12 +12,15 @@ export class CommitsService {
       .map(data => data);
   }
 
-  public extractChartData(chartDetails: any): any[] {
-
-    let chartData = Object.keys(chartDetails);
-
-    return chartData;
+  public extractChartLabels(chartDetails: any): any[] {
+    return Object.keys(chartDetails);
   }
+
+  public extractChartData(chartDetails: any): any[] {
+    return Object.values(chartDetails);
+  }
+
+
 
 
 

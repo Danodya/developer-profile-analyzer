@@ -3,6 +3,7 @@ import { GithubService } from '../../services/github/gihubservice.service';
 import {User} from '../models/user';
 import {ChartService} from "../../services/github/chart.service";
 import {ChartComponent} from "./chart/chart.component";
+import {CommitsComponent} from "./commits/commits.component";
 
 @Component({
   selector: 'app-github',
@@ -20,6 +21,7 @@ export class GithubComponent implements OnInit {
   protected prog: boolean;
 
   @ViewChild(ChartComponent) chartComponent: ChartComponent;
+  @ViewChild(CommitsComponent) commitComponent: CommitsComponent;
 
   // Need to send this repos array to the child component to chart component.
 
@@ -52,6 +54,7 @@ export class GithubComponent implements OnInit {
         // console.log(this.repos);
       });
       this.chartComponent._get();
+      this.commitComponent._get();
 
     }, 1000);
 
