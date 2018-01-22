@@ -1,11 +1,11 @@
 <div>
   <canvas
     baseChart
-    [chartType]="'doughnut'"
+    [chartType]="'pie'"
     [datasets]="chartData"
     [labels]="chartLabels"
     [options]="chartOptions"
-    [legend]="false"
+    [legend]="true"
     [colors] = "chartColors"
     (chartClick)="onChartClick($event)">
   </canvas>

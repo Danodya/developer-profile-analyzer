@@ -57,7 +57,7 @@ public class GithubController {
         headers.set("User-Agent", "profile-analyzer");
         HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
         ResponseEntity<Object> repository = restTemplate.exchange("https://api.github.com/users/"+ username +
-                        "/repos" + "?client_id=" + client_id + "&client_secret=" + client_secret,
+                        "/repos" + "?per_page=100&client_id=" + client_id + "&client_secret=" + client_secret,
                 HttpMethod.GET, entity, Object.class);
         return repository;
     }
