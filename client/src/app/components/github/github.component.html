@@ -7,25 +7,15 @@
 
   <!--User Card-->
   <div class="row">
-    <div class="col s3">
+    <div class="col s2">
       <div class="card hoverable">
         <div class="card-image waves-effect waves-block waves-light">
           <img class="activator" src="{{githubUser.avatar_url}}">
         </div>
         <div class="card-content">
           <span class="card-title activator grey-text text-darken-4"><p class="left-align">{{githubUser.name}}</span>
-          <div class="row container">
-            <div class="col s6">
-              <p> <a class="btn btn-floating btn-large light-blue darken-3" data-position="bottom" data-delay="50" data-tooltip="Go to my amazing profile!"
-                     style="background-color: #2979ff" href="{{githubUser.html_url}}" target="_blank">
-                <i class="material-icons">person</i></a></p>
-            </div>
-            <div class="col s6">
-              <p> <a class="btn btn-floating btn-large teal darken-2" data-position="bottom" data-delay="50" data-tooltip="Go to my amazing profile!"
-                     style="background-color: #2979ff" (click)="test()" target="_blank">
-                <i class="material-icons">assessment</i></a>
-              </p>
-            </div>
+          <div class="">
+            <a class="waves-effect waves-light btn blue accent-4" href="{{githubUser.html_url}}">Profile</a>
           </div>
         </div>
         <div class="card-reveal">
@@ -36,8 +26,7 @@
 
     </div>
 
-    <!--Basic user data-->
-    <div class="col s4">
+    <div class="col 4">
       <ul class="collection hoverable">
         <li class="collection-item avatar" *ngIf="githubUser.location">
           <i class="material-icons circle indigo">location_city</i>
@@ -80,14 +69,25 @@
     </div>
 
     <!--Charts-->
-    <div class="col s5" *ngIf="prog">
-      <app-chart [repos]="repos" [githubUser]="githubUser" [username]="username"></app-chart>
+    <div class="col s6" *ngIf="prog">
+      <div class="row">
+        <div class="col s6">
+          <!--<app-preloader *ngIf="!commitComponent.loaded"></app-preloader>-->
+          <app-chart [repos]="repos" [githubUser]="githubUser" [username]="username"></app-chart>
+        </div>
+        <div class="col s6">
+          <app-commits [username]="username"></app-commits>
+        </div>
+
+      </div>
     </div>
 
   </div>
 
+
+
   <!--How to-->
   <app-howto></app-howto>
 
-  <app-commits [username]="username"></app-commits>
+
 </div>

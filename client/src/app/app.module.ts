@@ -16,6 +16,8 @@ import { AboutComponent } from './components/github/about/about.component';
 import { HowtoComponent } from './components/github/howto/howto.component';
 import {MaterializeModule} from "angular2-materialize";
 import { CommitsComponent } from './components/github/commits/commits.component';
+import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
+import { PreloaderComponent } from './components/preloader/preloader.component';
 
 const appRoutes = [
   {
@@ -46,7 +48,8 @@ const appRoutes = [
     TwitterComponent,
     AboutComponent,
     HowtoComponent,
-    CommitsComponent
+    CommitsComponent,
+    PreloaderComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +58,7 @@ const appRoutes = [
     ChartsModule,
     AutofocusModule,
     MaterializeModule,
+    Ng4LoadingSpinnerModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
   providers: [GithubService],

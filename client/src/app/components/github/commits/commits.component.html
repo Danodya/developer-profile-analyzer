@@ -1,3 +1,27 @@
-<p>
-  commits works!
-</p>
+<div *ngIf="loaded">
+  <canvas
+    baseChart
+    [chartType]="'doughnut'"
+    [datasets]="chart"
+    [labels]="chartLabels"
+    [options]="chartOptions"
+    [legend]="false"
+    [colors]="chartColors"
+    (chartClick)="onChartClick($event)">
+  </canvas>
+</div>
+
+<div *ngIf="!loaded">
+  <div class="preloader-wrapper big active" align="middle">
+    <div class="spinner-layer spinner-blue-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div><div class="gap-patch">
+      <div class="circle"></div>
+    </div><div class="circle-clipper right">
+      <div class="circle"></div>
+    </div>
+    </div>
+  </div>
+</div>
+

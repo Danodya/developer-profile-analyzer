@@ -33,7 +33,7 @@ public class GithubController {
     private static final Gson gson = new GsonBuilder().create();
     private static final String client_id = "2c77c5a8d6e0519eb3a5";
     private static final String client_secret = "04ba9edca249e4adf378919a5a1d7e36fad00e96";
-    private static final String token = "83248131de25ce7498149357d532249330751327";
+    private static final String token = "003b45caf5afcabe65440cf3f9888e731252f7d6";
     private RestTemplate restTemplate;
     private HttpHeaders headers;
 
