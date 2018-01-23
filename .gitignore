@@ -16,6 +16,7 @@ target/
 *.ipr
 
 client/node_modules
+src/main/java/com/springgithub/springgithub/config/Configuration.java
 
 ### NetBeans ###
 nbproject/private/

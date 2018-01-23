@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.springgithub.springgithub.config.Configuration;
 import com.springgithub.springgithub.model.User;
 import org.eclipse.egit.github.core.Commit;
 import org.eclipse.egit.github.core.IRepositoryIdProvider;
@@ -31,9 +32,9 @@ import java.util.*;
 public class GithubController {
 
     private static final Gson gson = new GsonBuilder().create();
-    private static final String client_id = "2c77c5a8d6e0519eb3a5";
-    private static final String client_secret = "04ba9edca249e4adf378919a5a1d7e36fad00e96";
-    private static final String token = "";
+    private static final String client_id = Configuration.client_id;
+    private static final String client_secret = Configuration.client_secret;
+    private static final String token = Configuration.token;
     private RestTemplate restTemplate;
     private HttpHeaders headers;
 
