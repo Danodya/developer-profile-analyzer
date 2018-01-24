@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ChartService} from "../../../services/github/chart.service";
 import {User} from "../../models/user";
 import {GithubService} from "../../../services/github/gihubservice.service";
+import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
 
 @Component({
   selector: 'app-chart',
@@ -31,13 +32,13 @@ export class ChartComponent implements OnInit {
     legend: {
       labels: {
         fontColor: 'black'
-      },
-      position: 'left'
+      }
     }
   };
 
   constructor(protected chartService: ChartService,
-              protected githubService: GithubService) {
+              protected githubService: GithubService,
+              protected spinnerService: Ng4LoadingSpinnerService) {
     this.chartLabels = ['','',''];
     this.chartDataArray = [];
     this.chartData = [{data: [0,0,0], labels: ''}];
@@ -47,6 +48,7 @@ export class ChartComponent implements OnInit {
 
   public _get() {
     this.githubService.callRepo(this.username).subscribe((repos) => {
+      this.spinnerService.show(); // Not working
       this.chartLabels = this.chartService.getLabelsData(repos);
       this.chartDataArray = this.chartService.getRepoCounts(repos, this.chartLabels);
       this.chartLabels[this.chartLabels.indexOf(null)] = "Other";
@@ -55,6 +57,7 @@ export class ChartComponent implements OnInit {
         labels: this.chartLabels,
         colors: ['red', 'green', 'blue', 'purple']
       };
+      this.spinnerService.hide(); // Not working
     });
   }
 

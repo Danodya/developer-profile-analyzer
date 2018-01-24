@@ -69,10 +69,9 @@
     </div>
 
     <!--Charts-->
-    <div class="col s6" *ngIf="prog">
-      <div class="row">
+    <div class="row" style="height: auto;">
+      <div class="col s6" *ngIf="prog">
         <div class="col s6">
-          <!--<app-preloader *ngIf="!commitComponent.loaded"></app-preloader>-->
           <app-chart [repos]="repos" [githubUser]="githubUser" [username]="username"></app-chart>
         </div>
         <div class="col s6">

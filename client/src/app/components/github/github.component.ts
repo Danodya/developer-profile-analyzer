@@ -4,6 +4,7 @@ import {User} from '../models/user';
 import {ChartService} from "../../services/github/chart.service";
 import {ChartComponent} from "./chart/chart.component";
 import {CommitsComponent} from "./commits/commits.component";
+import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
 
 @Component({
   selector: 'app-github',
@@ -25,7 +26,8 @@ export class GithubComponent implements OnInit {
 
   // Need to send this repos array to the child component to chart component.
 
-  constructor(protected gitHubService: GithubService) {
+  constructor(protected gitHubService: GithubService,
+              private spinnerService: Ng4LoadingSpinnerService) {
     this.githubUser = new User();
     this.username = 'dasunpubudumal';
   }
