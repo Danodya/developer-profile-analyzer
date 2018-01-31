@@ -19,6 +19,7 @@ import { CommitsComponent } from './components/github/commits/commits.component'
 import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
 import { PreloaderComponent } from './components/preloader/preloader.component';
 import { ContributionschartComponent } from './components/github/contributionschart/contributionschart.component';
+import { CountsComponent } from './components/github/counts/counts.component';
 
 const appRoutes = [
   {
@@ -51,7 +52,8 @@ const appRoutes = [
     HowtoComponent,
     CommitsComponent,
     PreloaderComponent,
-    ContributionschartComponent
+    ContributionschartComponent,
+    CountsComponent
   ],
   imports: [
     BrowserModule,

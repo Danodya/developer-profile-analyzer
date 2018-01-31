@@ -100,4 +100,17 @@ public class GithubController {
         return map;
     }
 
+    @CrossOrigin("http://localhost:4200")
+    @RequestMapping(method = RequestMethod.GET, value = "/getcounts/{username}")
+    public Object getCounts(@PathVariable String username) {
+        restTemplate = new RestTemplate();
+        headers = new HttpHeaders();
+//        headers.set("User-Agent", "profile-analyzer");
+        HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
+        ResponseEntity<Object> counts = restTemplate.exchange("https://github-contributions-api.herokuapp.com/" + username+ "/count",
+                HttpMethod.GET, entity, Object.class);
+        return counts.getBody();
+    }
+
+
 }

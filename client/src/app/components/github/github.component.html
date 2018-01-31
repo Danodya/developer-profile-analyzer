@@ -22,10 +22,12 @@
       </div>
     </div>
     <div class="col xl10 l10 m12 s12">
+      <div class="row" *ngIf="githubUser.bio">
+        <blockquote><p class="flow-text center-align">"{{githubUser.bio}}"</p></blockquote>
+      </div>
       <div align="">
         <app-contributionschart [username] ="username" ></app-contributionschart>
       </div>
-
     </div>
   </div>
 

@@ -28,7 +28,7 @@ export class ChartComponent implements OnInit {
     responsive: true,
     title: {
       display: true,
-      text: 'Repositories per language'
+      text: 'Repositories per language (Top 30)'
     },
     legend: {
       labels: {
