@@ -59,7 +59,7 @@ export class GithubComponent implements OnInit {
         // console.log(this.repos);
       });
       this.chartComponent._get();
-      // this.commitComponent._get();
+      this.commitComponent._get();
       this.contributions._get();
 
 
