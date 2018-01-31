@@ -5,6 +5,7 @@ import {ChartService} from "../../services/github/chart.service";
 import {ChartComponent} from "./chart/chart.component";
 import {CommitsComponent} from "./commits/commits.component";
 import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
+import {ContributionschartComponent} from "./contributionschart/contributionschart.component";
 
 @Component({
   selector: 'app-github',
@@ -20,9 +21,11 @@ export class GithubComponent implements OnInit {
   protected githubUser: User;
   protected repos: any[];
   protected prog: boolean;
+  protected URL: string;
 
   @ViewChild(ChartComponent) chartComponent: ChartComponent;
   @ViewChild(CommitsComponent) commitComponent: CommitsComponent;
+  @ViewChild(ContributionschartComponent) contributions: ContributionschartComponent;
 
   // Need to send this repos array to the child component to chart component.
 
@@ -30,6 +33,7 @@ export class GithubComponent implements OnInit {
               private spinnerService: Ng4LoadingSpinnerService) {
     this.githubUser = new User();
     this.username = 'dasunpubudumal';
+    this.URL = "http://ghchart.rshah.org/409ba5/" + this.username;
   }
 
   ngOnInit() {
@@ -42,7 +46,6 @@ export class GithubComponent implements OnInit {
     this.gitHubService.call(this.username).subscribe((user) => {
       this.githubUser = user;
     });
-
   }
 
   test() {
@@ -56,7 +59,9 @@ export class GithubComponent implements OnInit {
         // console.log(this.repos);
       });
       this.chartComponent._get();
-      this.commitComponent._get();
+      // this.commitComponent._get();
+      this.contributions._get();
+
 
     }, 1000);
 

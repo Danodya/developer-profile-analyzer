@@ -11,6 +11,7 @@ import org.eclipse.egit.github.core.IRepositoryIdProvider;
 import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.RepositoryCommit;
 import org.eclipse.egit.github.core.client.GitHubClient;
+import org.eclipse.egit.github.core.client.PageIterator;
 import org.eclipse.egit.github.core.service.CommitService;
 import org.eclipse.egit.github.core.service.RepositoryService;
 import org.eclipse.egit.github.core.service.UserService;
@@ -89,10 +90,11 @@ public class GithubController {
 
         List<Repository> repositories = repositoryService.getRepositories(username);
 
+//        PageIterator<RepositoryCommit> commits = commitService.pageCommits()
+//        PageIterator<Repository> repos = repositoryService.pageRepositories()
 
         for (Repository repository: repositories) {
             map.put(repository.getName(), commitService.getCommits(repository).size());
-
         }
 
         return map;

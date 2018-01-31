@@ -2,12 +2,13 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ChartService} from "../../../services/github/chart.service";
 import {User} from "../../models/user";
 import {GithubService} from "../../../services/github/gihubservice.service";
-import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
+import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
 
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.css']
+  styleUrls: ['./chart.component.css'],
+  providers: [Ng4LoadingSpinnerService]
 })
 export class ChartComponent implements OnInit {
 

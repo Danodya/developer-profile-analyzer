@@ -5,28 +5,33 @@
     <input id="icon_prefix" type="text" class="validate" [(ngModel)]="username" name="username" (keyup.enter) = "get(); test()" autofocus>
   </div>
 
-  <!--User Card-->
   <div class="row">
-    <div class="col s2">
-      <div class="card hoverable">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="{{githubUser.avatar_url}}">
+    <div class="col xl2 l2 m12 s12 card hoverable">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="{{githubUser.avatar_url}}">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4"><p class="left-align">{{githubUser.name}}</span>
+        <div class="">
+          <a class="waves-effect waves-light btn blue accent-4" href="{{githubUser.html_url}}" target="_blank">Profile</a>
         </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4"><p class="left-align">{{githubUser.name}}</span>
-          <div class="">
-            <a class="waves-effect waves-light btn blue accent-4" href="{{githubUser.html_url}}" target="_blank">Profile</a>
-          </div>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">{{githubUser.name}}<i class="material-icons right">close</i></span>
-          <p class="left-align">{{githubUser.bio}}</p>
-        </div>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">{{githubUser.name}}<i class="material-icons right">close</i></span>
+        <p class="left-align">{{githubUser.bio}}</p>
+      </div>
+    </div>
+    <div class="col xl10 l10 m12 s12">
+      <div align="">
+        <app-contributionschart [username] ="username" ></app-contributionschart>
       </div>
 
     </div>
+  </div>
 
-    <div class="col 4">
+  <!--User Card-->
+  <div class="row">
+    <div class="col s4">
       <ul class="collection hoverable">
         <li class="collection-item avatar" *ngIf="githubUser.location">
           <i class="material-icons circle indigo">location_city</i>
@@ -69,21 +74,19 @@
     </div>
 
     <!--Charts-->
-    <div class="row" style="height: auto;">
-      <div class="col s6" *ngIf="prog">
+    <div class="col s8" *ngIf="prog">
+      <div class="row">
         <div class="col s6">
           <app-chart [repos]="repos" [githubUser]="githubUser" [username]="username"></app-chart>
         </div>
         <div class="col s6">
-            <app-commits [username]="username"></app-commits>
+          <app-commits [username]="username"></app-commits>
         </div>
-
       </div>
+
     </div>
 
   </div>
-
-
 
   <!--How to-->
   <app-howto></app-howto>

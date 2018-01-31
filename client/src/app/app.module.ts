@@ -18,6 +18,7 @@ import {MaterializeModule} from "angular2-materialize";
 import { CommitsComponent } from './components/github/commits/commits.component';
 import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
 import { PreloaderComponent } from './components/preloader/preloader.component';
+import { ContributionschartComponent } from './components/github/contributionschart/contributionschart.component';
 
 const appRoutes = [
   {
@@ -49,7 +50,8 @@ const appRoutes = [
     AboutComponent,
     HowtoComponent,
     CommitsComponent,
-    PreloaderComponent
+    PreloaderComponent,
+    ContributionschartComponent
   ],
   imports: [
     BrowserModule,
