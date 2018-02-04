@@ -2,21 +2,13 @@ package com.springgithub.springgithub.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.springgithub.springgithub.config.Configuration;
+import com.springgithub.springgithub.model.Repo;
 import com.springgithub.springgithub.model.User;
-import org.eclipse.egit.github.core.Commit;
-import org.eclipse.egit.github.core.IRepositoryIdProvider;
 import org.eclipse.egit.github.core.Repository;
-import org.eclipse.egit.github.core.RepositoryCommit;
 import org.eclipse.egit.github.core.client.GitHubClient;
-import org.eclipse.egit.github.core.client.PageIterator;
 import org.eclipse.egit.github.core.service.CommitService;
 import org.eclipse.egit.github.core.service.RepositoryService;
-import org.eclipse.egit.github.core.service.UserService;
-import org.eclipse.egit.github.core.service.WatcherService;
-import org.springframework.boot.autoconfigure.info.ProjectInfoProperties;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -24,9 +16,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import javax.json.Json;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -77,41 +70,6 @@ public class GithubController {
         return commits;
     }
 
-    // Commits using adapter
-    @CrossOrigin("http://localhost:4200")
-    @RequestMapping(method = RequestMethod.GET, value = "/getcommitsadapter/{username}")
-    public @ResponseBody Map getCommitsAdaptor(@PathVariable String username) throws IOException {
-
-        GitHubClient client = new GitHubClient();
-        client.setOAuth2Token(token);
-        RepositoryService repositoryService = new RepositoryService(client);
-        CommitService commitService = new CommitService(client);
-        Map<String, Integer> map = new HashMap<>();
-
-        List<Repository> repositories = repositoryService.getRepositories(username);
-
-//        PageIterator<RepositoryCommit> commits = commitService.pageCommits()
-//        PageIterator<Repository> repos = repositoryService.pageRepositories()
-
-        for (Repository repository: repositories) {
-            map.put(repository.getName(), commitService.getCommits(repository).size());
-        }
-
-        return map;
-    }
-
-    @CrossOrigin("http://localhost:4200")
-    @RequestMapping(method = RequestMethod.GET, value = "/getcounts/{username}")
-    public Object getCounts(@PathVariable String username) {
-        restTemplate = new RestTemplate();
-        headers = new HttpHeaders();
-//        headers.set("User-Agent", "profile-analyzer");
-        HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
-        ResponseEntity<Object> counts = restTemplate.exchange("https://github-contributions-api.herokuapp.com/" + username+ "/count",
-                HttpMethod.GET, entity, Object.class);
-        return counts.getBody();
-    }
-
     // New Commits adapter
     @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/getcommitsadapterRe/{username}")
@@ -129,7 +87,7 @@ public class GithubController {
             List<Repository> repositories = repositoryService.getRepositories(username);
 
 //        PageIterator<RepositoryCommit> commits = commitService.pageCommits()
-//        PageIterator<Repository> repos = repositoryService.pageRepositories()
+//        PageIterator<Repo> repos = repositoryService.pageRepositories()
 
             for (Repository repository: repositories) {
                 map.put(repository.getName(), commitService.getCommits(repository).size());
@@ -140,6 +98,54 @@ public class GithubController {
 
 
         return map;
+    }
+
+    @CrossOrigin("http://localhost:4200")
+    @RequestMapping(method = RequestMethod.GET, value = "/getstarsperlang/{username}")
+    public @ResponseBody ArrayList<Object> getStarsPerLang(@PathVariable String username) {
+
+//        Map<String, ArrayList<String>> map = new HashMap<>();
+        ArrayList<Object> output = new ArrayList<>();
+        ArrayList<String> languages = new ArrayList<>();
+        ArrayList<Integer> star_counts = new ArrayList<>();
+
+        String URL = "https://api.github.com/users/" + username + "/starred?client_id=" + Configuration.client_id
+                + "&client_secret=" + Configuration.client_secret;
+
+        restTemplate = new RestTemplate();
+        headers = new HttpHeaders();
+        headers.set("User-Agent", "profile-analyzer");
+        HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
+
+        ResponseEntity<Repo[]> repos = restTemplate.exchange(URL, HttpMethod.GET, entity, Repo[].class);
+
+        Repo[] arr = repos.getBody();
+        ArrayList<Repo> array = new ArrayList<>();
+
+        for (Repo repo : arr) {
+            array.add(repo);
+            languages.add(repo.getLanguage());
+        }
+
+        // Remove Duplicates
+        languages = new ArrayList<String>(new LinkedHashSet<String>(languages));
+
+        // Synthesize the JSON map.
+        for(String language : languages) {
+            int count = 0;
+            for(Repo repo: arr){
+                if(repo.getLanguage().equals(language)){
+                    count++;
+                }
+            }
+            star_counts.add(count);
+        }
+
+        output.add(languages);
+        output.add(star_counts);
+
+        return output;
+
     }
 
 

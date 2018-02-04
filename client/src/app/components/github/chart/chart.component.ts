@@ -32,8 +32,11 @@ export class ChartComponent implements OnInit {
     },
     legend: {
       labels: {
-        fontColor: 'black'
-      }
+        fontColor: 'black',
+        fontSize: 9
+      },
+      position: 'left'
+
     }
   };
 

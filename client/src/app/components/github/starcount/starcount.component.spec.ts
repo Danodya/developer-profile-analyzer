@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CountsComponent } from './counts.component';
+import { StarcountComponent } from './starcount.component';
 
-describe('CountsComponent', () => {
-  let component: CountsComponent;
-  let fixture: ComponentFixture<CountsComponent>;
+describe('StarcountComponent', () => {
+  let component: StarcountComponent;
+  let fixture: ComponentFixture<StarcountComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CountsComponent ]
+      declarations: [ StarcountComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CountsComponent);
+    fixture = TestBed.createComponent(StarcountComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

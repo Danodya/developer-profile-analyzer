@@ -19,8 +19,9 @@ import { CommitsComponent } from './components/github/commits/commits.component'
 import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
 import { PreloaderComponent } from './components/preloader/preloader.component';
 import { ContributionschartComponent } from './components/github/contributionschart/contributionschart.component';
-import { CountsComponent } from './components/github/counts/counts.component';
 import {Customreuse} from "./strategies/customreuse";
+import {StarsService} from "./services/github/stars.service";
+import { StarcountComponent } from './components/github/starcount/starcount.component';
 
 const appRoutes = [
   {
@@ -58,7 +59,7 @@ const appRoutes = [
     CommitsComponent,
     PreloaderComponent,
     ContributionschartComponent,
-    CountsComponent
+    StarcountComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +71,7 @@ const appRoutes = [
     Ng4LoadingSpinnerModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [GithubService, {provide: RouteReuseStrategy, useClass: Customreuse}],
+  providers: [GithubService, {provide: RouteReuseStrategy, useClass: Customreuse}, StarsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -30,7 +30,7 @@ export class CommitsComponent implements OnInit {
     maintainAspectRatio: true,
     title: {
       display: true,
-      text: 'Commits per a Repository'
+      text: 'Commits per a Repo'
     },
     legend: {
       labels: {
