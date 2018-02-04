@@ -22,6 +22,27 @@ _Application when ran through my Github profile_.
 
 4. Start the front end server by running `ng serve` . Make sure you're in `/client` folder.
 
+5. Create a package called `config` in `com/springgithub/springgithub` directory.
+
+6. Create a `Configuration` class and add these into it.
+
+```java
+package com.springgithub.springgithub.config;
+
+public class Configuration {
+    public static final String client_id = "2c77c5a8d6e0519eb3a5";
+    public static final String client_secret = "04ba9edca249e4adf378919a5a1d7e36fad00e96";
+    public static final String token = "";
+}
+
+```
+
+You must get a personal access token from github.
+
+7. Run the backend Tomcat server from IntelliJ.
+
+8. Open the served front end at port `4200` (Default Angular port).
+
 ![Java Toolkit for vscode](doc/screenshots/4.png)
 _Visual Studio Code Java integration_.
 
