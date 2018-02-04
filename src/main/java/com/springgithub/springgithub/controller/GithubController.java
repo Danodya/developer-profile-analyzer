@@ -112,5 +112,35 @@ public class GithubController {
         return counts.getBody();
     }
 
+    // New Commits adapter
+    @CrossOrigin("http://localhost:4200")
+    @RequestMapping(method = RequestMethod.GET, value = "/getcommitsadapterRe/{username}")
+    public @ResponseBody Map getCommitsAdaptorRe(@PathVariable String username){
+
+        Map<String, Integer> map = new HashMap<>();
+
+        try {
+            GitHubClient client = new GitHubClient();
+            client.setOAuth2Token(token);
+            RepositoryService repositoryService = new RepositoryService(client);
+            CommitService commitService = new CommitService(client);
+
+
+            List<Repository> repositories = repositoryService.getRepositories(username);
+
+//        PageIterator<RepositoryCommit> commits = commitService.pageCommits()
+//        PageIterator<Repository> repos = repositoryService.pageRepositories()
+
+            for (Repository repository: repositories) {
+                map.put(repository.getName(), commitService.getCommits(repository).size());
+            }
+        } catch (IOException e) {
+            map.put("NO DATA", 0);
+        }
+
+
+        return map;
+    }
+
 
 }
