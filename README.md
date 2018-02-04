@@ -26,8 +26,6 @@ _Application when ran through my Github profile_.
 
 ![UserController](doc/screenshots/7.png)
 
-```
-
 You must get a personal access token from github.
 
 8. Run the backend Tomcat server from IntelliJ.
