@@ -3,6 +3,7 @@ package com.springgithub.springgithub.controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.springgithub.springgithub.config.Configuration;
+import com.springgithub.springgithub.helpers.StargazerService;
 import com.springgithub.springgithub.model.Repo;
 import com.springgithub.springgithub.model.User;
 import org.eclipse.egit.github.core.Repository;
@@ -13,6 +14,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -104,7 +107,6 @@ public class GithubController {
     @RequestMapping(method = RequestMethod.GET, value = "/getstarsperlang/{username}")
     public @ResponseBody ArrayList<Object> getStarsPerLang(@PathVariable String username) {
 
-//        Map<String, ArrayList<String>> map = new HashMap<>();
         ArrayList<Object> output = new ArrayList<>();
         ArrayList<String> languages = new ArrayList<>();
         ArrayList<Integer> star_counts = new ArrayList<>();
@@ -120,21 +122,23 @@ public class GithubController {
         ResponseEntity<Repo[]> repos = restTemplate.exchange(URL, HttpMethod.GET, entity, Repo[].class);
 
         Repo[] arr = repos.getBody();
-        ArrayList<Repo> array = new ArrayList<>();
 
         for (Repo repo : arr) {
-            array.add(repo);
             languages.add(repo.getLanguage());
         }
 
         // Remove Duplicates
         languages = new ArrayList<String>(new LinkedHashSet<String>(languages));
 
-        // Synthesize the JSON map.
+        if(languages.contains(null)) {
+            languages.set(languages.indexOf(null), "Other");
+        }
+
+        // Synthesize output.
         for(String language : languages) {
             int count = 0;
             for(Repo repo: arr){
-                if(repo.getLanguage().equals(language)){
+                if(Objects.equals(repo.getLanguage(), language)){
                     count++;
                 }
             }
@@ -145,6 +149,7 @@ public class GithubController {
         output.add(star_counts);
 
         return output;
+
 
     }
 
