@@ -89,9 +89,6 @@ public class GithubController {
 
             List<Repository> repositories = repositoryService.getRepositories(username);
 
-//        PageIterator<RepositoryCommit> commits = commitService.pageCommits()
-//        PageIterator<Repo> repos = repositoryService.pageRepositories()
-
             for (Repository repository: repositories) {
                 map.put(repository.getName(), commitService.getCommits(repository).size());
             }
@@ -151,6 +148,59 @@ public class GithubController {
         return output;
 
 
+    }
+
+    
+    @CrossOrigin("http://localhost:4200")
+    @RequestMapping(method = RequestMethod.GET, value = "/getforks/{username}")
+    public @ResponseBody ArrayList<Object> getForks(@PathVariable String username) {
+
+        ArrayList<Object> output = new ArrayList<>();
+        ArrayList<Repository> forkedRepos = new ArrayList<>();
+        ArrayList<String> languages = new ArrayList<>();
+        ArrayList<Integer> forkCounts = new ArrayList<>();
+
+        GitHubClient client = new GitHubClient();
+        client.setOAuth2Token(token);
+        RepositoryService repositoryService = new RepositoryService();
+        List<Repository> repos = null;
+
+        try {
+            repos = repositoryService.getRepositories(username);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Get forked repos
+        for(Repository repo: repos) {
+            if(repo.isFork()) {
+                forkedRepos.add(repo);
+                languages.add(repo.getLanguage());
+            }
+
+        }
+
+        // Set null language to other
+        if(languages.contains(null)) {
+            languages.set(languages.indexOf(null), "Other");
+        }
+
+        // Remove Duplicates
+        languages = new ArrayList<String>(new LinkedHashSet<String>(languages));
+
+        for (String language: languages){
+            int count = 0;
+            for(Repository forkedRepo: forkedRepos) {
+                if(Objects.equals(forkedRepo.getLanguage(), language)) count++;
+            }
+            forkCounts.add(count);
+        }
+
+        // Synthesize the output
+        output.add(languages);
+        output.add(forkCounts);
+
+        return output;
     }
 
 
