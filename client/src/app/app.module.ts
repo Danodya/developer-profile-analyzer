@@ -24,6 +24,7 @@ import {StarsService} from "./services/github/stars.service";
 import { StarcountComponent } from './components/github/starcount/starcount.component';
 import $ from 'jquery';
 import { ForksComponent } from './components/github/forks/forks.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const appRoutes = [
   {
@@ -62,7 +63,8 @@ const appRoutes = [
     PreloaderComponent,
     ContributionschartComponent,
     StarcountComponent,
-    ForksComponent
+    ForksComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
