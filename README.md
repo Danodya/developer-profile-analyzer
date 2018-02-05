@@ -24,7 +24,16 @@ _Application when ran through my Github profile_.
 
 7. Create a `Configuration` class and add these into it.
 
-![UserController](doc/screenshots/7.png)
+```java
+package com.springgithub.springgithub.config;
+
+public class Configuration {
+    public static final String client_id = "";
+    public static final String client_secret = "";
+    public static final String token = "";
+}
+
+```
 
 You must get a personal access token from github.
 
