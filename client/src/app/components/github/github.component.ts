@@ -7,6 +7,7 @@ import {CommitsComponent} from "./commits/commits.component";
 import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
 import {ContributionschartComponent} from "./contributionschart/contributionschart.component";
 import {StarcountComponent} from "./starcount/starcount.component";
+import {ForksComponent} from "./forks/forks.component";
 
 @Component({
   selector: 'app-github',
@@ -28,6 +29,7 @@ export class GithubComponent implements OnInit {
   @ViewChild(CommitsComponent) commitComponent: CommitsComponent;
   @ViewChild(ContributionschartComponent) contributions: ContributionschartComponent;
   @ViewChild(StarcountComponent) starsComponent: StarcountComponent;
+  @ViewChild(ForksComponent) forksComponent: ForksComponent;
 
   // Need to send this repos array to the child component to chart component.
 
@@ -64,6 +66,7 @@ export class GithubComponent implements OnInit {
       this.commitComponent._get();
       this.contributions._get();
       this.starsComponent._get();
+      this.forksComponent._get();
 
 
     }, 1000);

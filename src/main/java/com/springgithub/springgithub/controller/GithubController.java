@@ -60,19 +60,6 @@ public class GithubController {
         return repository;
     }
 
-    // Commits
-    @RequestMapping(method = RequestMethod.GET, value = "/getcommits/{username}/{repo}")
-    public @ResponseBody Object getCommits(@PathVariable String username, @PathVariable String repo) {
-        restTemplate = new RestTemplate();
-        headers = new HttpHeaders();
-        headers.set("User-Agent", "profile-analyzer");
-        HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
-
-        ResponseEntity<Object> commits = restTemplate.exchange("https://api.github.com/repos/" + username + "/" + repo + "/commits?client_id=" +  client_id + "&client_secret=" + client_secret,HttpMethod.GET, entity, Object.class);
-
-        return commits;
-    }
-
     // New Commits adapter
     @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/getcommitsadapterRe/{username}")
@@ -86,7 +73,6 @@ public class GithubController {
             RepositoryService repositoryService = new RepositoryService(client);
             CommitService commitService = new CommitService(client);
 
-
             List<Repository> repositories = repositoryService.getRepositories(username);
 
             for (Repository repository: repositories) {
@@ -96,10 +82,10 @@ public class GithubController {
             map.put("NO DATA", 0);
         }
 
-
         return map;
     }
 
+    // Uses RestTemplate to fetch from API
     @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/getstarsperlang/{username}")
     public @ResponseBody ArrayList<Object> getStarsPerLang(@PathVariable String username) {
@@ -147,10 +133,9 @@ public class GithubController {
 
         return output;
 
-
     }
 
-    
+    // Uses Egit adapter
     @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/getforks/{username}")
     public @ResponseBody ArrayList<Object> getForks(@PathVariable String username) {
@@ -162,7 +147,7 @@ public class GithubController {
 
         GitHubClient client = new GitHubClient();
         client.setOAuth2Token(token);
-        RepositoryService repositoryService = new RepositoryService();
+        RepositoryService repositoryService = new RepositoryService(client);
         List<Repository> repos = null;
 
         try {

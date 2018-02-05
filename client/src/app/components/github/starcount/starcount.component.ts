@@ -4,7 +4,8 @@ import {StarsService} from "../../../services/github/stars.service";
 @Component({
   selector: 'app-starcount',
   templateUrl: './starcount.component.html',
-  styleUrls: ['./starcount.component.css']
+  styleUrls: ['./starcount.component.css'],
+  providers: [StarsService]
 })
 export class StarcountComponent implements OnInit {
 

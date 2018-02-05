@@ -1,0 +1,11 @@
+<div>
+  <canvas
+    baseChart
+    [chartType]="'doughnut'"
+    [datasets]="chart"
+    [labels]="chartLabels"
+    [options]="chartOptions"
+    [legend]="true"
+    (chartClick)="onChartClick($event)">
+  </canvas>
+</div>

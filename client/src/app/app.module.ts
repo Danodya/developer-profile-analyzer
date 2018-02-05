@@ -23,6 +23,7 @@ import {Customreuse} from "./strategies/customreuse";
 import {StarsService} from "./services/github/stars.service";
 import { StarcountComponent } from './components/github/starcount/starcount.component';
 import $ from 'jquery';
+import { ForksComponent } from './components/github/forks/forks.component';
 
 const appRoutes = [
   {
@@ -60,7 +61,8 @@ const appRoutes = [
     CommitsComponent,
     PreloaderComponent,
     ContributionschartComponent,
-    StarcountComponent
+    StarcountComponent,
+    ForksComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +74,7 @@ const appRoutes = [
     Ng4LoadingSpinnerModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [GithubService, {provide: RouteReuseStrategy, useClass: Customreuse}, StarsService],
+  providers: [GithubService, {provide: RouteReuseStrategy, useClass: Customreuse}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
