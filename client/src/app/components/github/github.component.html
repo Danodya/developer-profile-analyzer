@@ -2,8 +2,21 @@
  <!--Search input-->
   <div class="container input-field col s6" style="width: 40%">
     <i class="material-icons prefix">account_circle</i>
-    <input id="icon_prefix" type="text" class="validate" [(ngModel)]="username" name="username" (keyup.enter) = "get(); test()" autofocus>
+    <input id="icon_prefix" type="text" class="validate" [(ngModel)]="username" name="username" (keyup.enter) = "get(); test(); openModal()" autofocus>
+    <!-- Modal Trigger --><a class="waves-effect waves-light btn blue accent-4 modal-trigger" href="#modal1">Caution</a>
   </div>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
+    <div class="modal-content">
+      <h4>Please wait a little while..</h4>
+      <p>Fetching commits from <strong>Github</strong> is a heavy operation. Therefore, if the user you're trying to fetch has a heavy amount of repositories and commits, fetching the commits might take a while.</p>
+    </div>
+    <div class="modal-footer">
+      <a class="waves-effect waves-green btn-flat" (click)="closeModal()">Okay</a>
+    </div>
+  </div>
+
 
   <div class="row">
     <div class="col xl2 l2 m12 s12 card hoverable">

@@ -11,6 +11,7 @@ import {ForksComponent} from "./forks/forks.component";
 import {WatchersService} from "../../services/github/watchers.service";
 import {WatchersComponent} from "./watchers/watchers.component";
 import {IssuesComponent} from "./issues/issues.component";
+import {MaterializeAction} from "angular2-materialize";
 
 @Component({
   selector: 'app-github',
@@ -21,7 +22,7 @@ import {IssuesComponent} from "./issues/issues.component";
 export class GithubComponent implements OnInit {
 
   // This is the parent component.
-
+  modalActions = new EventEmitter<string|MaterializeAction>();
   protected username: string;
   protected githubUser: User;
   protected repos: any[];
@@ -88,6 +89,13 @@ export class GithubComponent implements OnInit {
     this.display_commits = !this.display_commits;
   }
 
+  openModal(){
+    this.modalActions.emit({action:"modal",params:['open']});
+  }
+
+  closeModal() {
+    this.modalActions.emit({action:"modal",params:['close']});
+  }
 
 
 }

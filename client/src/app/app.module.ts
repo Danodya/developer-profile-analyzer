@@ -22,7 +22,6 @@ import { ContributionschartComponent } from './components/github/contributionsch
 import {Customreuse} from "./strategies/customreuse";
 import {StarsService} from "./services/github/stars.service";
 import { StarcountComponent } from './components/github/starcount/starcount.component';
-import $ from 'jquery';
 import { ForksComponent } from './components/github/forks/forks.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { WatchersComponent } from './components/github/watchers/watchers.component';
