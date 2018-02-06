@@ -1,4 +1,4 @@
-# Github Profile Analyzer with Angular + Spring
+# Github + Stack + Twitter Profile Analyzer with Angular + Spring
 
 A simple profile analyzer for developers. **You can follow a thorough walkthrough through this application by visiting my series of blogposts starting from [this.](https://dasunpubudu.wordpress.com/2018/01/13/creating-a-github-profile-analyzer-with-spring-boot-angular-part-i-introduction/)**
 
@@ -52,9 +52,6 @@ You must get a personal access token from github.
 8. Run the backend Tomcat server from IntelliJ.
 
 9. Open the served front end at port `4200` (Default Angular port).
-
-![Java Toolkit for vscode](doc/screenshots/4.png)
-_Visual Studio Code Java integration_.
 
 ## Acknowledgements
 
