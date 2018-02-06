@@ -28,9 +28,21 @@ _Application when ran through my Github profile_.
 package com.springgithub.springgithub.config;
 
 public class Configuration {
+   
+   // Github
     public static final String client_id = "";
     public static final String client_secret = "";
     public static final String token = "";
+    
+    //    Stack Overflow
+    public static final String STACK_KEY = "";
+    public static String SITE = "stackoverflow";
+    
+    //    Twitter
+    public static final String TWITTER_CONSUMER_KEY = "";
+    public static final String TWITTER_CONSUMER_SECRET = "";
+    public static final String TWITTER_ACCESS_TOKEN = "";
+    public static final String TWITTER_ACCESS_TOKEN_SECRET = "";
 }
 
 ```
