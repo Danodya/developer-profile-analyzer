@@ -6,6 +6,7 @@ import com.google.code.stackexchange.common.PagedList;
 import com.google.code.stackexchange.schema.Badge;
 import com.google.code.stackexchange.schema.StackExchangeSite;
 import com.springgithub.springgithub.config.Configuration;
+import com.springgithub.springgithub.helpers.stackoverflow.CustomStackService;
 import com.springgithub.springgithub.model.StackOverflow.Badges;
 import com.springgithub.springgithub.model.StackOverflow.StackUser;
 import com.springgithub.springgithub.model.User;
@@ -23,17 +24,11 @@ public class StackController {
 
     private static final String key = Configuration.STACK_KEY;
     private static final String site = Configuration.SITE;
+    private static final CustomStackService so = new CustomStackService();
 
     @RequestMapping(method = RequestMethod.GET, value = "/getstackuserbadges/{id}")
     public @ResponseBody Object getBadges(@PathVariable String id) {
-
-        StackExchangeApiClientFactory clientFactory = StackExchangeApiClientFactory
-                .newInstance(key, StackExchangeSite.fromValue(site));
-
-        StackExchangeApiClient client = clientFactory.createStackExchangeApiClient();
-
-        return client.getBadgesForUsers(Long.valueOf(id));
-
+        return so.getBadges(id);
     }
 
 
