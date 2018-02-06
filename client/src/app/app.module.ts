@@ -26,6 +26,7 @@ import { ForksComponent } from './components/github/forks/forks.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { WatchersComponent } from './components/github/watchers/watchers.component';
 import { IssuesComponent } from './components/github/issues/issues.component';
+import { OrganizationsComponent } from './components/github/organizations/organizations.component';
 
 const appRoutes = [
   {
@@ -72,7 +73,8 @@ const appRoutes = [
     ForksComponent,
     FooterComponent,
     WatchersComponent,
-    IssuesComponent
+    IssuesComponent,
+    OrganizationsComponent
   ],
   imports: [
     BrowserModule,

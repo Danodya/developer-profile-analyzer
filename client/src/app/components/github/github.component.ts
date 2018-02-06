@@ -12,6 +12,7 @@ import {WatchersService} from "../../services/github/watchers.service";
 import {WatchersComponent} from "./watchers/watchers.component";
 import {IssuesComponent} from "./issues/issues.component";
 import {MaterializeAction} from "angular2-materialize";
+import {OrganizationsComponent} from "./organizations/organizations.component";
 
 @Component({
   selector: 'app-github',
@@ -37,6 +38,7 @@ export class GithubComponent implements OnInit {
   @ViewChild(ForksComponent) forksComponent: ForksComponent;
   @ViewChild(WatchersComponent) watchersComponent: WatchersComponent;
   @ViewChild(IssuesComponent) issuesComponent: IssuesComponent;
+  @ViewChild(OrganizationsComponent) organizationsComponent: OrganizationsComponent;
 
   // Need to send this repos array to the child component to chart component.
 
@@ -78,6 +80,7 @@ export class GithubComponent implements OnInit {
       this.forksComponent._get();
       this.watchersComponent._get();
       this.issuesComponent._get();
+      this.organizationsComponent._get();
 
     }, 1000);
 

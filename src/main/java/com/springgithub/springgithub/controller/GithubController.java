@@ -59,7 +59,7 @@ public class GithubController {
         return repository;
     }
 
-    // New Commits adapter
+    // New Commits adapter - Uses EGit
     @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/getcommitsadapterRe/{username}")
     public @ResponseBody Map getCommitsAdaptorRe(@PathVariable String username){
@@ -224,7 +224,6 @@ public class GithubController {
         gitHubClient.setOAuth2Token(token);
         List<Repository> repositories = new ArrayList<>();
         RepositoryService repositoryService = new RepositoryService(gitHubClient);
-        IssueService issueService = new IssueService(gitHubClient);
 
         try {
             repositories = repositoryService.getRepositories(username);
@@ -237,6 +236,29 @@ public class GithubController {
         }
 
         return issue_count;
+    }
+
+    // Uses Egit adapter
+    @CrossOrigin("http://localhost:4200")
+    @RequestMapping(method = RequestMethod.GET, value = "/getorganizations/{username}")
+    public @ResponseBody Integer getCommitsLastYear(@PathVariable String username) {
+
+        int organization_count = 0;
+
+        GitHubClient gitHubClient = new GitHubClient();
+        gitHubClient.setOAuth2Token(token);
+        List<org.eclipse.egit.github.core.User> organizations = new ArrayList<>();
+        OrganizationService organizationService = new OrganizationService(gitHubClient);
+
+        try {
+            organizations = organizationService.getOrganizations(username);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        organization_count = organizations.size();
+
+        return organization_count;
     }
 
 
