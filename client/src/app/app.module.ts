@@ -26,6 +26,7 @@ import $ from 'jquery';
 import { ForksComponent } from './components/github/forks/forks.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { WatchersComponent } from './components/github/watchers/watchers.component';
+import { IssuesComponent } from './components/github/issues/issues.component';
 
 const appRoutes = [
   {
@@ -47,6 +48,11 @@ const appRoutes = [
     path: 'about',
     component: AboutComponent,
     data: {shouldDetach: true}
+  },
+  {
+    path: 'commits',
+    component: CommitsComponent,
+    data: {shouldDetach: true}
   }
 ];
 
@@ -66,7 +72,8 @@ const appRoutes = [
     StarcountComponent,
     ForksComponent,
     FooterComponent,
-    WatchersComponent
+    WatchersComponent,
+    IssuesComponent
   ],
   imports: [
     BrowserModule,

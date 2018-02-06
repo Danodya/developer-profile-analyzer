@@ -8,9 +8,7 @@ import com.springgithub.springgithub.model.Repo;
 import com.springgithub.springgithub.model.User;
 import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.client.GitHubClient;
-import org.eclipse.egit.github.core.service.CommitService;
-import org.eclipse.egit.github.core.service.RepositoryService;
-import org.eclipse.egit.github.core.service.WatcherService;
+import org.eclipse.egit.github.core.service.*;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -205,7 +203,7 @@ public class GithubController {
         List<Repository> repositories = new ArrayList<>();
 
         try {
-            repositories = watcherService.getWatched();
+            repositories = watcherService.getWatched(username);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -213,6 +211,32 @@ public class GithubController {
         watchers = repositories.size();
 
         return watchers;
+    }
+
+    // Uses Egit adapter
+    @CrossOrigin("http://localhost:4200")
+    @RequestMapping(method = RequestMethod.GET, value = "/getissues/{username}")
+    public @ResponseBody Integer getIssues(@PathVariable String username) {
+
+        int issue_count = 0;
+
+        GitHubClient gitHubClient = new GitHubClient();
+        gitHubClient.setOAuth2Token(token);
+        List<Repository> repositories = new ArrayList<>();
+        RepositoryService repositoryService = new RepositoryService(gitHubClient);
+        IssueService issueService = new IssueService(gitHubClient);
+
+        try {
+            repositories = repositoryService.getRepositories(username);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (Repository repository: repositories) {
+            if(repository.isHasIssues()) issue_count++;
+        }
+
+        return issue_count;
     }
 
 

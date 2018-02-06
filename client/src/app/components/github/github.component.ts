@@ -10,6 +10,7 @@ import {StarcountComponent} from "./starcount/starcount.component";
 import {ForksComponent} from "./forks/forks.component";
 import {WatchersService} from "../../services/github/watchers.service";
 import {WatchersComponent} from "./watchers/watchers.component";
+import {IssuesComponent} from "./issues/issues.component";
 
 @Component({
   selector: 'app-github',
@@ -26,6 +27,7 @@ export class GithubComponent implements OnInit {
   protected repos: any[];
   protected prog: boolean;
   protected URL: string;
+  protected display_commits: boolean;
 
   @ViewChild(ChartComponent) chartComponent: ChartComponent;
   @ViewChild(CommitsComponent) commitComponent: CommitsComponent;
@@ -33,6 +35,7 @@ export class GithubComponent implements OnInit {
   @ViewChild(StarcountComponent) starsComponent: StarcountComponent;
   @ViewChild(ForksComponent) forksComponent: ForksComponent;
   @ViewChild(WatchersComponent) watchersComponent: WatchersComponent;
+  @ViewChild(IssuesComponent) issuesComponent: IssuesComponent;
 
   // Need to send this repos array to the child component to chart component.
 
@@ -41,6 +44,7 @@ export class GithubComponent implements OnInit {
     this.githubUser = new User();
     this.username = 'dasunpubudumal';
     this.URL = "http://ghchart.rshah.org/409ba5/" + this.username;
+    this.display_commits = false;
   }
 
   ngOnInit() {
@@ -60,6 +64,7 @@ export class GithubComponent implements OnInit {
 
     this.prog = false;
 
+
     setTimeout(() => {
       this.gitHubService.callRepo(this.username).subscribe((repo) => {
         this.repos = repo;
@@ -71,11 +76,16 @@ export class GithubComponent implements OnInit {
       this.starsComponent._get();
       this.forksComponent._get();
       this.watchersComponent._get();
+      this.issuesComponent._get();
 
     }, 1000);
 
     this.prog = true;
 
+  }
+
+  toggleBoolean() {
+    this.display_commits = !this.display_commits;
   }
 
 

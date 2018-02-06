@@ -69,6 +69,7 @@ export class CommitsComponent implements OnInit {
       console.log(this.chartLabels);
       this.loaded = true;
     });
+
   }
 
   public onChartClick(event) {
