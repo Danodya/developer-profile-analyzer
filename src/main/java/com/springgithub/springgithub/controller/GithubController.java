@@ -10,6 +10,7 @@ import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.service.CommitService;
 import org.eclipse.egit.github.core.service.RepositoryService;
+import org.eclipse.egit.github.core.service.WatcherService;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -135,6 +136,7 @@ public class GithubController {
 
     }
 
+
     // Uses Egit adapter
     @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/getforks/{username}")
@@ -186,6 +188,31 @@ public class GithubController {
         output.add(forkCounts);
 
         return output;
+    }
+
+    // Uses Egit adapte
+    @CrossOrigin("http://localhost:4200")
+    @RequestMapping(method = RequestMethod.GET, value = "/getwatchers/{username}")
+    public @ResponseBody Integer getWatchers(@PathVariable String username) {
+
+        int watchers = 0;
+
+        GitHubClient gitHubClient = new GitHubClient();
+        gitHubClient.setOAuth2Token(token);
+
+        WatcherService watcherService = new WatcherService(gitHubClient);
+
+        List<Repository> repositories = new ArrayList<>();
+
+        try {
+            repositories = watcherService.getWatched();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        watchers = repositories.size();
+
+        return watchers;
     }
 
 

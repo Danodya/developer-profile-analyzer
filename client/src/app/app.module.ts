@@ -25,6 +25,7 @@ import { StarcountComponent } from './components/github/starcount/starcount.comp
 import $ from 'jquery';
 import { ForksComponent } from './components/github/forks/forks.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { WatchersComponent } from './components/github/watchers/watchers.component';
 
 const appRoutes = [
   {
@@ -64,7 +65,8 @@ const appRoutes = [
     ContributionschartComponent,
     StarcountComponent,
     ForksComponent,
-    FooterComponent
+    FooterComponent,
+    WatchersComponent
   ],
   imports: [
     BrowserModule,
