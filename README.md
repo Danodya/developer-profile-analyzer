@@ -11,6 +11,19 @@ _Application when ran through my Github profile_.
 * JDK (Java Development Kit)
 * Node.js  (npm)
 
+## Problem Domain
+
+Given the usernames of stackoverflow, github, twitter and similar sites,
+generate a complete insighful view of a particular software develper
+(Focus should be on analyzing developers' profiles). All github,
+stackoverflow and twitter provide public APIs which can be used to obtain
+information. For example, through stackoverflow, we can get popular tags
+(java, php, javascript), reputation, most voted questions and etc. Think
+ffrom the perspective of a HR manager of a software engineering
+company where all the important information of a particular candidate can
+be viewed through the application (a web application preferred)
+developed.
+
 ## Usage
 
 1. Clone the repository using `git clone` (Or any other method i.e. using an IDE) and open the project folder, import the maven dependencies.
