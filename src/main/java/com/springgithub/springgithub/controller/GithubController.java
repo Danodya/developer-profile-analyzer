@@ -45,15 +45,13 @@ public class GithubController {
     // New Commits adapter - Uses EGit
     @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/getcommitsadapterRe/{username}")
-    public @ResponseBody Map getCommitsAdaptorRe(@PathVariable String username){
-        return gh.getCommitsAdaptorRe(username);
+    public @ResponseBody Map getCommitsAdaptorRe(@PathVariable String username){ return gh.getCommitsAdaptorRe(username);
     }
 
     // Uses RestTemplate to fetch from API
     @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/getstarsperlang/{username}")
-    public @ResponseBody ArrayList<Object> getStarsPerLang(@PathVariable String username) {
-        return gh.getStarsPerLang(username);
+    public @ResponseBody ArrayList<Object> getStarsPerLang(@PathVariable String username) { return gh.getStarsPerLang(username);
     }
 
 
@@ -81,8 +79,7 @@ public class GithubController {
     // Uses Egit adapter
     @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/getorganizations/{username}")
-    public @ResponseBody Integer getCommitsLastYear(@PathVariable String username) {
-        return gh.getOrganizations(username);
+    public @ResponseBody Integer getCommitsLastYear(@PathVariable String username) { return gh.getOrganizations(username);
     }
 
 

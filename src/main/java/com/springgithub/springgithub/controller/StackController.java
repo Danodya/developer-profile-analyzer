@@ -22,14 +22,27 @@ import java.util.List;
 @RestController
 public class StackController {
 
-    private static final String key = Configuration.STACK_KEY;
-    private static final String site = Configuration.SITE;
     private static final CustomStackService so = new CustomStackService();
 
+    // Uses an adapter
     @RequestMapping(method = RequestMethod.GET, value = "/getstackuserbadges/{id}")
     public @ResponseBody Object getBadges(@PathVariable String id) {
         return so.getBadges(id);
     }
+
+    // Uses an adapter
+    @RequestMapping(method = RequestMethod.GET, value = "/getstackuserquestions/{id}")
+    public @ResponseBody Object getQuestions(@PathVariable String id) {
+        return so.getQuestions(id);
+    }
+
+    // Uses RestTemplate
+    @RequestMapping(method = RequestMethod.GET, value = "/getstackuseranswers/{id}")
+    public @ResponseBody Object getAnswers(@PathVariable String id) { return so.getAnswers(id); }
+
+    // Uses an adapter
+    @RequestMapping(method = RequestMethod.GET, value = "/getstackusercomments/{id}")
+    public @ResponseBody Object getComments(@PathVariable String id) { return so.getComments(id); }
 
 
 }
