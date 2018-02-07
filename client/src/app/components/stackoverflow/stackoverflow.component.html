@@ -3,7 +3,7 @@
   <!--Search input-->
   <div class="container input-field col s6" style="width: 40%">
     <i class="material-icons prefix">account_circle</i>
-    <input id="icon_prefix" type="text" class="validate" [(ngModel)]="id" name="id" (keyup.enter) = "_get()" autofocus>
+    <input id="icon_prefix" type="text" class="validate" [(ngModel)]="id" name="id" (keyup.enter) = "test()" autofocus>
   </div>
 
   <!--Profile Card-->
@@ -22,7 +22,9 @@
       </div>
     </div>
 
-    <div class="col l10 xl10"></div>
+    <div class="col l10 xl10">
+      <app-dashboard [id]="id" [user]="user"></app-dashboard>
+    </div>
   </div>
 </div>
 

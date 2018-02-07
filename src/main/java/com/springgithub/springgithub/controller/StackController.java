@@ -34,13 +34,15 @@ public class StackController {
 
     // Uses an adapter
     // This will give you a lesser amount of badges.
+    @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/getstackuserbadges/{id}")
     public @ResponseBody Object getBadges(@PathVariable String id) {
         return so.getBadges(id);
     }
 
     // Uses an adapter
-    @RequestMapping(method = RequestMethod.GET, value = "/getstackuserquestions/{id}")
+    @CrossOrigin("http://localhost:4200")
+    @RequestMapping(method = RequestMethod.GET, value = "/getstackuserquestionscount/{id}")
     public @ResponseBody Object getQuestions(@PathVariable String id) {
         return so.getQuestionsCount(id);
     }

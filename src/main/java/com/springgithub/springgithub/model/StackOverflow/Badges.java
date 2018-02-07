@@ -1,19 +1,24 @@
 package com.springgithub.springgithub.model.StackOverflow;
 
 public class Badges {
-    private String gold;
-    private String silver;
-    private String bronze;
+    private int badgeId;
+    private String rank;
+    private String name;
+    private String awardCount;
 
-    public String getGold() {
-        return gold;
+    public int getBadgeId() {
+        return badgeId;
     }
 
-    public String getSilver() {
-        return silver;
+    public String getRank() {
+        return rank;
     }
 
-    public String getBronze() {
-        return bronze;
+    public String getName() {
+        return name;
+    }
+
+    public String getAwardCount() {
+        return awardCount;
     }
 }

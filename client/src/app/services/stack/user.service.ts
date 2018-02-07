@@ -12,4 +12,9 @@ export class UserService {
       .map(user => user);
   }
 
+  public _getQuestions(id: string) {
+    return this.http.get<any>("http://localhost:8080/getstackuserquestionscount/".concat(id))
+      .map(questions => questions);
+  }
+
 }

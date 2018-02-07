@@ -4,11 +4,9 @@ import com.google.code.stackexchange.client.StackExchangeApiClient;
 import com.google.code.stackexchange.client.StackExchangeApiClientFactory;
 import com.google.code.stackexchange.client.query.*;
 import com.google.code.stackexchange.common.PagedList;
-import com.google.code.stackexchange.schema.Answer;
-import com.google.code.stackexchange.schema.Paging;
-import com.google.code.stackexchange.schema.Question;
-import com.google.code.stackexchange.schema.StackExchangeSite;
+import com.google.code.stackexchange.schema.*;
 import com.springgithub.springgithub.config.Configuration;
+import com.springgithub.springgithub.model.StackOverflow.Badges;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -17,7 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
+import java.util.*;
 
 /*
 StackOverflow resoponses are gzip encoded. Therefore, Jackson cannot parse the data directly. Therefore, HttpComponentsClientHttpRequestFactory should be employed into RestTemplate.
@@ -40,10 +38,29 @@ public class CustomStackService {
         return restTemplate.getForObject(URL, Object.class);
     }
 
-    //    Get User badges
-    public Object getBadges(String id) {
+    /* Get User badges
+     *  This will return a map of <Badge, Count>
+     *  */
+    public Map getBadges(String id) {
         StackExchangeApiClient client = clientFactory.createStackExchangeApiClient();
-        return client.getBadgesForUsers(Long.valueOf(id));
+        Map<String, Integer> map = new HashMap<>();
+
+        PagedList<Badge> badges = client.getBadgesForUsers(Long.valueOf(id));
+
+        ArrayList<String> ranks = new ArrayList<>();
+        ranks.add("BRONZE");
+        ranks.add("GOLD");
+        ranks.add("SILVER");
+
+        for (String rank: ranks) {
+            int count = 0;
+            for (Badge badge: badges) {
+                if(Objects.equals(badge.getRank().toString(), rank)) count++;
+            }
+            map.put(rank, count);
+        }
+
+        return map;
     }
 
     //    Get user questions - No Adapter
