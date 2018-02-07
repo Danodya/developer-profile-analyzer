@@ -45,7 +45,7 @@ export class GithubComponent implements OnInit {
   constructor(protected gitHubService: GithubService,
               private spinnerService: Ng4LoadingSpinnerService) {
     this.githubUser = new User();
-    this.username = 'dasunpubudumal';
+    this.username = 'dilantha95';
     this.URL = "http://ghchart.rshah.org/409ba5/" + this.username;
     this.display_commits = false;
   }

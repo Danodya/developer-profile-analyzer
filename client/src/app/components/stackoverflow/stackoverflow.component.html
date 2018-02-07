@@ -1,3 +1,28 @@
-<p>
-  stackoverflow works!
-</p>
+<div>
+
+  <!--Search input-->
+  <div class="container input-field col s6" style="width: 40%">
+    <i class="material-icons prefix">account_circle</i>
+    <input id="icon_prefix" type="text" class="validate" [(ngModel)]="id" name="id" (keyup.enter) = "_get()" autofocus>
+  </div>
+
+  <!--Profile Card-->
+  <div class="row">
+    <div class="col s12 m12 l2 xl2">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{user.profile_image}}">
+        </div>
+        <div class="card-content">
+          <span class="card-title grey-text text-darken-4">{{user.display_name}}</span>
+          <a class="waves-effect waves-light btn orange darken-3" href="{{user.website_url}}" target="_blank">Website</a>
+        </div>
+        <div class="card-reveal">
+        </div>
+      </div>
+    </div>
+
+    <div class="col l10 xl10"></div>
+  </div>
+</div>
+

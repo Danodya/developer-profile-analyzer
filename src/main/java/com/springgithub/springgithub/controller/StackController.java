@@ -25,6 +25,15 @@ public class StackController {
     private static final CustomStackService so = new CustomStackService();
 
     // Uses an adapter
+    // You can get user badges from here as well.
+    @CrossOrigin("http://localhost:4200")
+    @RequestMapping(method = RequestMethod.GET, value = "/getstackuser/{id}")
+    public @ResponseBody Object getUser(@PathVariable String id) {
+        return so.getUser(id);
+    }
+
+    // Uses an adapter
+    // This will give you a lesser amount of badges.
     @RequestMapping(method = RequestMethod.GET, value = "/getstackuserbadges/{id}")
     public @ResponseBody Object getBadges(@PathVariable String id) {
         return so.getBadges(id);
@@ -33,16 +42,23 @@ public class StackController {
     // Uses an adapter
     @RequestMapping(method = RequestMethod.GET, value = "/getstackuserquestions/{id}")
     public @ResponseBody Object getQuestions(@PathVariable String id) {
-        return so.getQuestions(id);
+        return so.getQuestionsCount(id);
     }
 
     // Uses RestTemplate
-    @RequestMapping(method = RequestMethod.GET, value = "/getstackuseranswers/{id}")
-    public @ResponseBody Object getAnswers(@PathVariable String id) { return so.getAnswers(id); }
+    @RequestMapping(method = RequestMethod.GET, value = "/getstackuseranswerscount/{id}")
+    public @ResponseBody Object getAnswers(@PathVariable String id) { return so.getAnswersCount(id); }
 
     // Uses an adapter
     @RequestMapping(method = RequestMethod.GET, value = "/getstackusercomments/{id}")
     public @ResponseBody Object getComments(@PathVariable String id) { return so.getComments(id); }
 
+    // Uses an adapter
+    @RequestMapping(method = RequestMethod.GET, value = "/getstackuserreputation/{id}")
+    public @ResponseBody Object getReputation(@PathVariable String id) { return so.getReputation(id); }
+
+    // Test
+    @RequestMapping(method = RequestMethod.GET, value = "/test/{id}")
+    public @ResponseBody Object test(@PathVariable String id) { return so.test(id); }
 
 }
