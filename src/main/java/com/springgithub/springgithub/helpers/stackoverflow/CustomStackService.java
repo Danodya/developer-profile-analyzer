@@ -53,5 +53,10 @@ public class CustomStackService {
         return client.getUsersComments(Long.valueOf(id));
     }
 
+    public Object getFavorites(String id) {
+        StackExchangeApiClient client = clientFactory.createStackExchangeApiClient();
+        return client.getFavoriteQuestionsByUsers(Long.valueOf(id));
+    }
+
 
 }
