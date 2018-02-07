@@ -37,7 +37,7 @@ public class CustomGithubService {
         headers.set("User-Agent", "profile-analyzer");
         HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
         ResponseEntity<User> user = restTemplate.exchange("https://api.github.com/users/"+ username +
-                        "?client_id=" + Configuration.client_id + "&client_secret=" + Configuration.client_secret,
+                        "?client_id=" + Configuration.GITHUB_CLIENT_ID + "&client_secret=" + Configuration.GITHUB_CLIENT_SECRET,
                 HttpMethod.GET, entity, User.class);
         return user.getBody();
     }
@@ -48,7 +48,7 @@ public class CustomGithubService {
         headers.set("User-Agent", "profile-analyzer");
         HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
         ResponseEntity<Object> repository = restTemplate.exchange("https://api.github.com/users/"+ username +
-                        "/repos" + "?per_page=100&client_id=" + Configuration.client_id + "&client_secret=" + Configuration.client_secret,
+                        "/repos" + "?per_page=100&client_id=" + Configuration.GITHUB_CLIENT_ID + "&client_secret=" + Configuration.GITHUB_CLIENT_SECRET,
                 HttpMethod.GET, entity, Object.class);
         return repository;
     }
@@ -59,7 +59,7 @@ public class CustomGithubService {
 
         try {
             GitHubClient client = new GitHubClient();
-            client.setOAuth2Token(Configuration.token);
+            client.setOAuth2Token(Configuration.GITHUB_TOKEN);
             RepositoryService repositoryService = new RepositoryService(client);
             CommitService commitService = new CommitService(client);
 
@@ -81,8 +81,8 @@ public class CustomGithubService {
         ArrayList<String> languages = new ArrayList<>();
         ArrayList<Integer> star_counts = new ArrayList<>();
 
-        String URL = "https://api.github.com/users/" + username + "/starred?client_id=" + Configuration.client_id
-                + "&client_secret=" + Configuration.client_secret;
+        String URL = "https://api.github.com/users/" + username + "/starred?client_id=" + Configuration.GITHUB_CLIENT_ID
+                + "&client_secret=" + Configuration.GITHUB_CLIENT_SECRET;
 
         restTemplate = new RestTemplate();
         headers = new HttpHeaders();
@@ -130,7 +130,7 @@ public class CustomGithubService {
         ArrayList<Integer> forkCounts = new ArrayList<>();
 
         GitHubClient client = new GitHubClient();
-        client.setOAuth2Token(Configuration.token);
+        client.setOAuth2Token(Configuration.GITHUB_TOKEN);
         RepositoryService repositoryService = new RepositoryService(client);
         List<Repository> repos = null;
 
@@ -177,7 +177,7 @@ public class CustomGithubService {
         int watchers = 0;
 
         GitHubClient gitHubClient = new GitHubClient();
-        gitHubClient.setOAuth2Token(Configuration.token);
+        gitHubClient.setOAuth2Token(Configuration.GITHUB_TOKEN);
 
         WatcherService watcherService = new WatcherService(gitHubClient);
 
@@ -199,7 +199,7 @@ public class CustomGithubService {
         int issue_count = 0;
 
         GitHubClient gitHubClient = new GitHubClient();
-        gitHubClient.setOAuth2Token(Configuration.token);
+        gitHubClient.setOAuth2Token(Configuration.GITHUB_TOKEN);
         List<Repository> repositories = new ArrayList<>();
         RepositoryService repositoryService = new RepositoryService(gitHubClient);
 
@@ -221,7 +221,7 @@ public class CustomGithubService {
         int organization_count = 0;
 
         GitHubClient gitHubClient = new GitHubClient();
-        gitHubClient.setOAuth2Token(Configuration.token);
+        gitHubClient.setOAuth2Token(Configuration.GITHUB_TOKEN);
         List<org.eclipse.egit.github.core.User> organizations = new ArrayList<>();
         OrganizationService organizationService = new OrganizationService(gitHubClient);
 

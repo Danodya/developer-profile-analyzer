@@ -30,9 +30,9 @@ package com.springgithub.springgithub.config;
 public class Configuration {
    
    // Github
-    public static final String client_id = "";
-    public static final String client_secret = "";
-    public static final String token = "";
+    public static final String GITHUB_CLIENT_ID = "";
+    public static final String GITHUB_CLIENT_SECRET = "";
+    public static final String GITHUB_TOKEN = "";
     
     //    Stack Overflow
     public static final String STACK_KEY = "";
