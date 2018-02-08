@@ -9,6 +9,7 @@ import com.springgithub.springgithub.model.Repo;
 import com.springgithub.springgithub.model.User;
 import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.client.GitHubClient;
+import org.eclipse.egit.github.core.client.PageIterator;
 import org.eclipse.egit.github.core.service.*;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -80,6 +81,11 @@ public class GithubController {
     @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/getorganizations/{username}")
     public @ResponseBody Integer getCommitsLastYear(@PathVariable String username) { return gh.getOrganizations(username);
+    }
+
+    // Test
+    @RequestMapping(method = RequestMethod.GET, value = "/testgithub/{username}")
+    public @ResponseBody Object test(@PathVariable String username) { return gh.test(username);
     }
 
 

@@ -2,10 +2,12 @@ package com.springgithub.springgithub.helpers.github;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springgithub.springgithub.config.Configuration;
+import com.springgithub.springgithub.controller.GithubController;
 import com.springgithub.springgithub.model.Repo;
 import com.springgithub.springgithub.model.User;
 import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.client.GitHubClient;
+import org.eclipse.egit.github.core.client.PageIterator;
 import org.eclipse.egit.github.core.service.CommitService;
 import org.eclipse.egit.github.core.service.OrganizationService;
 import org.eclipse.egit.github.core.service.RepositoryService;
@@ -64,8 +66,9 @@ public class CustomGithubService {
             CommitService commitService = new CommitService(client);
 
             List<Repository> repositories = repositoryService.getRepositories(username);
+            PageIterator<Repository> pageIterator = repositoryService.pageRepositories(username, 1, 10);
 
-            for (Repository repository: repositories) {
+            for (Repository repository: pageIterator.iterator().next()) {
                 map.put(repository.getName(), commitService.getCommits(repository).size());
             }
         } catch (IOException e) {
@@ -234,6 +237,21 @@ public class CustomGithubService {
         organization_count = organizations.size();
 
         return organization_count;
+    }
+
+    public Object test(String username) {
+
+        Map<String, Integer> map = new HashMap<>();
+
+        GitHubClient client = new GitHubClient();
+        client.setOAuth2Token(Configuration.GITHUB_TOKEN);
+        RepositoryService repositoryService = new RepositoryService(client);
+        CommitService commitService = new CommitService(client);
+        List<Repository> r = new ArrayList<>();
+
+        PageIterator<Repository> iterator = repositoryService.pageRepositories(username,1,20);
+
+        return iterator.iterator().next().size();
     }
 
 }
