@@ -33,6 +33,7 @@ public class CustomGithubService {
         restTemplate = new RestTemplate();
     }
 
+    // Get basic info of a user.
     public User getUser(String username) {
         headers = new HttpHeaders();
         headers = new HttpHeaders();
@@ -44,6 +45,7 @@ public class CustomGithubService {
         return user.getBody();
     }
 
+    // Get top 30 repositories
     public Object getRepo(String username) {
         restTemplate = new RestTemplate();
         headers = new HttpHeaders();
@@ -55,6 +57,7 @@ public class CustomGithubService {
         return repository;
     }
 
+    // Get a map with <Repository, Commits>
     public Map getCommitsAdaptorRe(String username){
 
         Map<String, Integer> map = new HashMap<>();
@@ -78,6 +81,7 @@ public class CustomGithubService {
         return map;
     }
 
+    // Get starts per Language
     public ArrayList<Object> getStarsPerLang(String username) {
 
         ArrayList<Object> output = new ArrayList<>();
@@ -125,6 +129,7 @@ public class CustomGithubService {
 
     }
 
+    // Get the total amount of forks
     public ArrayList<Object> getForks(String username) {
 
         ArrayList<Object> output = new ArrayList<>();
@@ -149,7 +154,6 @@ public class CustomGithubService {
                 forkedRepos.add(repo);
                 languages.add(repo.getLanguage());
             }
-
         }
 
         // Set null language to other
@@ -175,6 +179,7 @@ public class CustomGithubService {
         return output;
     }
 
+    // Get total amount of watchers.
     public Integer getWatchers(String username) {
 
         int watchers = 0;
@@ -197,6 +202,7 @@ public class CustomGithubService {
         return watchers;
     }
 
+    // Get total amount of issues
     public Integer getIssues(String username) {
 
         int issue_count = 0;
@@ -219,6 +225,7 @@ public class CustomGithubService {
         return issue_count;
     }
 
+    // Get total amount of organizations
     public Integer getOrganizations(String username) {
 
         int organization_count = 0;
@@ -238,6 +245,10 @@ public class CustomGithubService {
 
         return organization_count;
     }
+
+    /*
+    Testing Sandbox
+     */
 
     public Object test(String username) {
 
