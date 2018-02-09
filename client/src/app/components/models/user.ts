@@ -18,9 +18,15 @@ export class User {
   private _following: string;
   private _created_at: string;
   private _convdate: any;
+  private _validated: boolean;
 
   constructor() {
   }
+
+  get validated(): boolean {
+    return this._validated;
+  }
+
 
   get created_at(): string {
     return this._created_at;

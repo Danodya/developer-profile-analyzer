@@ -38,6 +38,7 @@ public class GithubController {
         return gh.getUser(username);
     }
 
+    @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/getrepo/{username}")
     public @ResponseBody Object getRepository(@PathVariable String username) {
         return gh.getRepo(username);
@@ -85,8 +86,7 @@ public class GithubController {
 
     // Test
     @RequestMapping(method = RequestMethod.GET, value = "/testgithub/{username}")
-    public @ResponseBody Object test(@PathVariable String username) { return gh.test(username);
-    }
+    public @ResponseBody void test(@PathVariable String username) { }
 
 
 }

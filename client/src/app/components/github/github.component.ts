@@ -13,6 +13,7 @@ import {WatchersComponent} from "./watchers/watchers.component";
 import {IssuesComponent} from "./issues/issues.component";
 import {MaterializeAction} from "angular2-materialize";
 import {OrganizationsComponent} from "./organizations/organizations.component";
+import {ErrorComponent} from "./error/error.component";
 
 @Component({
   selector: 'app-github',
@@ -30,6 +31,7 @@ export class GithubComponent implements OnInit {
   protected prog: boolean;
   protected URL: string;
   protected display_commits: boolean;
+  protected validated: boolean;
 
   @ViewChild(ChartComponent) chartComponent: ChartComponent;
   @ViewChild(CommitsComponent) commitComponent: CommitsComponent;
@@ -39,50 +41,61 @@ export class GithubComponent implements OnInit {
   @ViewChild(WatchersComponent) watchersComponent: WatchersComponent;
   @ViewChild(IssuesComponent) issuesComponent: IssuesComponent;
   @ViewChild(OrganizationsComponent) organizationsComponent: OrganizationsComponent;
+  @ViewChild(ErrorComponent) error: ErrorComponent;
 
   // Need to send this repos array to the child component to chart component.
-
   constructor(protected gitHubService: GithubService,
               private spinnerService: Ng4LoadingSpinnerService) {
     this.githubUser = new User();
     this.username = 'dilantha95';
     this.URL = "http://ghchart.rshah.org/409ba5/" + this.username;
     this.display_commits = false;
+    this.validated = true;
+    this.get();
+    this.test();
   }
 
   ngOnInit() {
-    this.get();
-    this.test();
   }
 
   get() {
     // Usual user data.
     this.gitHubService.call(this.username).subscribe((user) => {
       this.githubUser = user;
+      this.validated = user.validated;
+      // console.log(user.validated);
     });
   }
 
   test() {
-    // Test
-
-    this.prog = false;
-
-
+    // This timeout is there because test() should run after get() runs. If not, the `validated` boolean value would
+    // not update. I can use promises for this as well. Check out the proper way. However, giving timeouts, works.
     setTimeout(() => {
-      this.gitHubService.callRepo(this.username).subscribe((repo) => {
-        this.repos = repo;
-        // console.log(this.repos);
-      });
-      this.chartComponent._get();
-      this.commitComponent._get();
-      this.contributions._get();
-      this.starsComponent._get();
-      this.forksComponent._get();
-      this.watchersComponent._get();
-      this.issuesComponent._get();
-      this.organizationsComponent._get();
+      // Test
+      this.prog = false;
+      if (this.validated) {
+        console.log("INSIDE");
+        console.log(this.validated);
+        setTimeout(() => {
+          this.gitHubService.callRepo(this.username).subscribe((repo) => {
+            this.repos = repo;
+          });
+          this.chartComponent._get();
+          this.commitComponent._get();
+          this.contributions._get();
+          this.starsComponent._get();
+          this.forksComponent._get();
+          this.watchersComponent._get();
+          this.issuesComponent._get();
+          this.organizationsComponent._get();
 
-    }, 1000);
+        }, 1000);
+
+        this.prog = true;
+      } else {
+        this.error.openModal();
+      }
+    }, 2000);
 
     this.prog = true;
 

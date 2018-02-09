@@ -28,6 +28,7 @@ import { WatchersComponent } from './components/github/watchers/watchers.compone
 import { IssuesComponent } from './components/github/issues/issues.component';
 import { OrganizationsComponent } from './components/github/organizations/organizations.component';
 import { DashboardComponent } from './components/stackoverflow/dashboard/dashboard.component';
+import { ErrorComponent } from './components/github/error/error.component';
 
 const appRoutes = [
   {
@@ -76,7 +77,8 @@ const appRoutes = [
     WatchersComponent,
     IssuesComponent,
     OrganizationsComponent,
-    DashboardComponent
+    DashboardComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

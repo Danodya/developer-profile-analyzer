@@ -30,6 +30,8 @@ public class Repo {
     private String stargazers_count;
     @JsonProperty("watchers_count")
     private String watchers_count;
+    @JsonProperty("validated")
+    private boolean validated;
 
 
 
@@ -90,4 +92,12 @@ public class Repo {
     }
 
     String full_name;
+
+    public boolean isValidated() {
+        return validated;
+    }
+
+    public void setValidated(boolean validated) {
+        this.validated = validated;
+    }
 }
