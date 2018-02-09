@@ -2,28 +2,11 @@ package com.springgithub.springgithub.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.springgithub.springgithub.config.Configuration;
-import com.springgithub.springgithub.helpers.StargazerService;
 import com.springgithub.springgithub.helpers.github.CustomGithubService;
-import com.springgithub.springgithub.model.Repo;
 import com.springgithub.springgithub.model.User;
-import org.eclipse.egit.github.core.Repository;
-import org.eclipse.egit.github.core.client.GitHubClient;
-import org.eclipse.egit.github.core.client.PageIterator;
-import org.eclipse.egit.github.core.service.*;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 @RestController

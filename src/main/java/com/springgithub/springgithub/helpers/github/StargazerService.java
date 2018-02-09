@@ -1,4 +1,4 @@
-package com.springgithub.springgithub.helpers;
+package com.springgithub.springgithub.helpers.github;
 
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_REPOS;
 
