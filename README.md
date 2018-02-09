@@ -178,6 +178,8 @@ Model classes are used to store the data (Or _attach_ data) which were acquired 
    shown until the data are being loaded. To make a better user experience (UX), more data, which does
    not consume a large amount of time to load, are displayed for the user to observe until the timeconsuming operation finishes.
    
+   Here it is appropriate to note that this is the major reason why the _Commits per Repo_ chart displays commits only for 10 repositories. This is done to enhance the User Experience (UX) so that the user would not have to wait until the server finishes up fetching and processing Repositories and specially, Commits. However, for these 10 top repositories, the total number of commits (Even though it had large number of commits) would get displayed in the charts. Therefore, it still might incur some time.
+   
 4. **Documentation** - Even though some API libraries are very popular among developers, and employed in
    various applications, a lack of official documentation is still present. Therefore, it takes some time to
    understand how the library works.
