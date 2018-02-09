@@ -2,12 +2,14 @@
 
 A simple profile analyzer for developers. **You can follow a thorough walkthrough through this application by visiting my series of blogposts starting from [this.](https://dasunpubudu.wordpress.com/2018/01/13/creating-a-github-profile-analyzer-with-spring-boot-angular-part-i-introduction/)**
 
+![Application Screenshot](doc/screenshots/14.png)
+----
 
-|        |           |
-| ------------- |:-------------:|
-| ![Application Screenshot](doc/screenshots/14.png)     | ![Application Screenshot](doc/screenshots/15.png)|
-| ![Application Screenshot](doc/screenshots/16.png)    |       |
+![Application Screenshot](doc/screenshots/15.png)
+----
 
+![Application Screenshot](doc/screenshots/16.png)
+----
 
 _Application when ran through my Github profile_.
 
@@ -16,6 +18,7 @@ _Application when ran through my Github profile_.
 * Angular-CLI installed. ( You can install it by running ``sudo npm install -g @angular/cli`` ).
 * JDK (Java Development Kit)
 * Node.js  (npm)
+
 
 ## Problem Domain
 
