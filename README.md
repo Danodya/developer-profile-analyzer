@@ -72,6 +72,97 @@ You must get a personal access token from github.
 
 9. Open the served front end at port `4200` (Default Angular port).
 
+## Techniques
+
+### Validating a Github User
+
+Validating a GitHub user is done through his/her username, via the `GET /getuser/:username` endpoint. It is done via a separate validation procedure made in the `GithubUserValidator` class located in `com.springgithub.springgithub.helpers.github.validators`. 
+
+```java
+    public class GithubUserValidator implements ResponseErrorHandler{
+    
+        private boolean found;  // 404 Error Handler
+        private boolean badRequest; // 400 Bad Request
+        private boolean unexpected;
+    
+        public GithubUserValidator() {
+            this.found = true;
+            this.badRequest = false;
+            this.unexpected = false;
+        }
+    
+        @Override
+        public boolean hasError(ClientHttpResponse response) throws IOException {
+            return RESTUtil.isError(response.getStatusCode());
+        }
+    
+        @Override
+        public void handleError(ClientHttpResponse response) throws IOException {
+            String responseBody = "";
+            if(response != null && response.getBody() != null) {
+                responseBody = response.getBody().toString();
+            }
+            switch (response.getRawStatusCode()) {
+                case 200:
+                    this.found = true;
+                case 404:
+                    this.found = false;
+                case 400:
+                    this.badRequest = true;
+                default:
+                    this.unexpected = true;
+            }
+        }
+    
+        public boolean isFound() {
+            return found;
+        }
+    
+        public void setFound(boolean found) {
+            this.found = found;
+        }
+    }
+
+```
+An instance of this class is fed into the `RestTemplate` class using the `setErrorHandler()` injector.
+
+* _Note_ : Validations were done only for *Not Found 404* requests. However, same strategy can be implemented for *400* requests as well.
+
+### Returning JSON Responses
+
+```java
+// Get a map with <Repository, Commits>
+    public Map getCommitsAdaptorRe(String username){
+
+        Map<String, Integer> map = new HashMap<>();
+
+        try {
+            GitHubClient client = new GitHubClient();
+            client.setOAuth2Token(Configuration.GITHUB_TOKEN);
+            RepositoryService repositoryService = new RepositoryService(client);
+            CommitService commitService = new CommitService(client);
+
+            List<Repository> repositories = repositoryService.getRepositories(username);
+            PageIterator<Repository> pageIterator = repositoryService.pageRepositories(username, 1, 10);
+
+            for (Repository repository: pageIterator.iterator().next()) {
+                map.put(repository.getName(), commitService.getCommits(repository).size());
+            }
+        } catch (IOException e) {
+            map.put("NO DATA", 0);
+        }
+
+        return map;
+    }
+```
+
+`Map` class was used to synthesize a JSON response from the data which were acquired and processed using `CustomGithubService` class.
+
+### Model Classes
+
+Model classes are used to store the data (Or _attach_ data) which were acquired from the endpoint. For an example, `User` model will have the same `private` attributes which the JSON response from the `API` has. The model classes also includes `GETTERS` and `SETTERS` which are used to process and synthesize useful kinds of responses in `CustomGithubService` class. The same concept is used in Angular if the JSON response consists of a considerable amount of keys in the Object (So it would easier to be proccesses - if the data needs to be processed in Angular layer as well). 
+
+
 ## Acknowledgements
 
 * [Eclipse Software Foundation](http://www.eclipse.org/org/) for their [EGit](https://github.com/eclipse/egit-github/tree/master/org.eclipse.egit.github.core) adapter.
