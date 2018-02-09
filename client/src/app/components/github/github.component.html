@@ -11,18 +11,15 @@
   <!-- Modal Structure -->
   <div id="modal1" class="modal blue darken-3 white-text" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
     <div class="modal-content">
-      <div class="row">
-        <br />
-        <div class="col l1 xl1 m12 s12"><i class="medium material-icons">info</i></div>
-        <div class="col l11 xl11 m12 s12"><div class="valign-wrapper"><h4>Please wait a little while..</h4></div></div>
-      </div>
-      <div class="row"><h5 class="light">Fetching commits from <strong>Github</strong> is a heavy operation. Therefore, if the user you're trying to fetch has a heavy amount of repositories and commits, fetching the commits might take a while.</h5>
-      </div>
+      <div class="valign-wrapper"><h4><i class="medium material-icons">info</i> Please wait a little while..</h4></div>
+      <h5 class="light">Fetching data from <strong>GitHub</strong> is sometimes a heavy operation.</h5>
     </div>
     <div class="modal-footer blue darken-4">
       <a class="waves-effect waves-green btn-flat white-text" (click)="closeModal()">Okay</a>
     </div>
   </div>
+
+
 
 
   <div class="row">
