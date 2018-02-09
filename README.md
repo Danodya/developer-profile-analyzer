@@ -162,6 +162,29 @@ An instance of this class is fed into the `RestTemplate` class using the `setErr
 
 Model classes are used to store the data (Or _attach_ data) which were acquired from the endpoint. For an example, `User` model will have the same `private` attributes which the JSON response from the `API` has. The model classes also includes `GETTERS` and `SETTERS` which are used to process and synthesize useful kinds of responses in `CustomGithubService` class. The same concept is used in Angular if the JSON response consists of a considerable amount of keys in the Object (So it would easier to be proccesses - if the data needs to be processed in Angular layer as well). 
 
+## Challenges, Issues and Risks
+
+1. **Rate Limit of APIs** – When consuming data from APIs, the web services would not allow more than 100
+   responses (At most). Therefore, paginated responses are offered which needs to be iterated through
+   Hypermedia Link Relations. Therefore, a loop through responses (A Page Iterator) is needed to be
+   employed.
+   
+2. **Use of Adapters** – To ease the use of paginated responses, third party libraries for the APIs are used. A
+   pertaining risk exists if the web services change the API versions drastically which would lead for a need
+   to change the codebase of third party libraries, which is needed to be done manually.
+   
+3. **Time consuming requests** - Consuming some kinds of data (e.g. Commits from Github API) is time
+   consuming. This fact is stated in the API Documentation as well. Therefore, "loading spinners" are
+   shown until the data are being loaded. To make a better user experience (UX), more data, which does
+   not consume a large amount of time to load, are displayed for the user to observe until the timeconsuming operation finishes.
+   
+4. **Documentation** - Even though some API libraries are very popular among developers, and employed in
+   various applications, a lack of official documentation is still present. Therefore, it takes some time to
+   understand how the library works.
+   
+5. **Wrappers** - Since Angular is used at front-end, wrappers for normal JavaScript libraries are used.
+   Sometimes these wrappers offer only a subset of the original library (e.g. ng2-charts).
+
 
 ## Acknowledgements
 
