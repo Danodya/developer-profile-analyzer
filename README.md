@@ -2,6 +2,8 @@
 
 A simple profile analyzer for developers. **You can follow a thorough walkthrough through this application by visiting my series of blogposts starting from [this.](https://dasunpubudu.wordpress.com/2018/01/13/creating-a-github-profile-analyzer-with-spring-boot-angular-part-i-introduction/)**
 
+*Note* - This *README* consists of only the implementation details for **GitHub** profile search. However, this project was chosen as my *Semester V Project* and hence, I've extended it to *StackOverflow* and *Twitter* profile searches to give a better scope. For implementation details and help on the extended components, please refer to the [wiki](https://github.com/dasunpubudumal/spring-github-repo/wiki) page.
+
 ![Application Screenshot](doc/preview.gif)
 ----
 
