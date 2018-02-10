@@ -32,7 +32,7 @@ public class GithubControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(githubController).build();
     }
 
-    // Test for validation of the user.
+    // Test for validation of the user. Tested with the user with the highest volume of data.
     @Test
     public void testValidateUser() throws Exception {
         mockMvc.perform(get("/getuser/fabpot").accept(MediaType.APPLICATION_JSON))

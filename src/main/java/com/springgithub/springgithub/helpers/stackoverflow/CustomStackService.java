@@ -12,6 +12,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
@@ -23,6 +24,7 @@ import java.util.*;
 StackOverflow resoponses are gzip encoded. Therefore, Jackson cannot parse the data directly. Therefore, HttpComponentsClientHttpRequestFactory should be employed into RestTemplate.
  */
 
+@Service
 public class CustomStackService {
 
     private static final String key = Configuration.STACK_KEY;
