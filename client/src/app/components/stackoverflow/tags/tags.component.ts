@@ -65,7 +65,6 @@ export class TagsComponent implements OnInit {
     console.log(event);
   }
 
-
   get hasData(): boolean {
     return this._hasData;
   }
