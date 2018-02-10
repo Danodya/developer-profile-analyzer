@@ -65,6 +65,7 @@ You must get a personal access token from github.
 * [Sanjiv Singh](https://github.com/sanjivsingh) for his [stackoverflow-java-sdk](https://github.com/sanjivsingh/stackoverflow-java-sdk) library.
 * [Valor Software Foundation](https://valor-software.com/ng2-charts/) for their [ng2-charts](https://github.com/valor-software/ng2-charts) wrapper for _Chart.js_.
 * [InfoMediaLtd](https://github.com/InfomediaLtd) for their [angular2-materialize](https://github.com/InfomediaLtd/angular2-materialize) wrapper for MaterializeCSS. 
+* [In28Minutes](http://www.springboottutorial.com/unit-testing-for-spring-boot-rest-services) for their Unit Testing (Based on JUnit and Mockito) blogpost. 
 
 
 
