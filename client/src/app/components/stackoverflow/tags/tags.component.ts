@@ -13,6 +13,7 @@ export class TagsComponent implements OnInit {
   protected chartLabels: any[];
   protected chartData: any[];
   protected chart: any[];
+  private _hasData: boolean = true;
   protected chartOptions = {
     responsive: true,
     maintainAspectRatio: true,
@@ -37,23 +38,27 @@ export class TagsComponent implements OnInit {
     this.chart = [{data: [], labels:[]}];
     this.chartData = [];
     this.chartLabels = [];
+    this._hasData = true;
 
     this.tagsService._get("4012073").subscribe(tags => {
-      this.chartLabels = tags[0];
-      this.chartData = tags[1];
-      this.chart[0] = {data: tags[1], labels: tags[0]};
-      // console.log(tags[1]);
+        this.chartLabels = tags[0];
+        this.chartData = tags[1];
+        this.chart[0] = {data: tags[1], labels: tags[0]};
     });
   }
 
   ngOnInit() {}
 
   public _get() {
-    this.tagsService._get(this.id).subscribe(tags => {
-      this.chartData = tags[1];
-      this.chartLabels = tags[0];
-      this.chart[0] = [{data: tags[1], labels: tags[0]}];
-    });
+    setTimeout(() => {
+      this.tagsService._get(this.id).subscribe(tags => {
+        this._hasData = true;
+        this.chartData = tags[1];
+        this.chartLabels = tags[0];
+        this.chart[0] = {data: tags[1], labels: tags[0]};
+      });
+    }, 2000);
+
   }
 
   public onChartClick(event) {
@@ -61,4 +66,7 @@ export class TagsComponent implements OnInit {
   }
 
 
+  get hasData(): boolean {
+    return this._hasData;
+  }
 }

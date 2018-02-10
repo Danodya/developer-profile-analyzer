@@ -36,7 +36,7 @@ export class StackoverflowComponent implements OnInit {
   }
 
   public test() {
-    this._get();
+    // this._get();
     this.dashboard._getBadges();
     this.tags._get();
   }
