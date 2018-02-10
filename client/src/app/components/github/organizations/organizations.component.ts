@@ -11,7 +11,7 @@ import {OrganizationsService} from "../../../services/github/organizations.servi
 export class OrganizationsComponent implements OnInit {
 
   @Input() username: string;
-  protected organizations_count: number;
+  organizations_count: number;
 
   constructor(protected organizationsService: OrganizationsService) {
     this.organizations_count = 0;

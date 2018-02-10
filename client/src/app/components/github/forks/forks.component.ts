@@ -10,11 +10,11 @@ import {ForksService} from "../../../services/github/forks.service";
 export class ForksComponent implements OnInit {
 
   @Input() username: string;
-  protected chartLabels: any[];
-  protected chartData: any[];
-  protected chart: any[];
-  protected hasData: boolean;
-  protected chartOptions = {
+  chartLabels: any[];
+  chartData: any[];
+  chart: any[];
+  hasData: boolean;
+   chartOptions = {
     responsive: true,
     maintainAspectRatio: true,
     title: {
@@ -56,6 +56,10 @@ export class ForksComponent implements OnInit {
         this.hasData = true;
       }else {this.hasData = false}
     });
+  }
+
+  public onChartClick(event) {
+    console.log(event);
   }
 
 }

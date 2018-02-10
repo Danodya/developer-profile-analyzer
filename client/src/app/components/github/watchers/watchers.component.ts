@@ -10,7 +10,7 @@ import {WatchersService} from "../../../services/github/watchers.service";
 export class WatchersComponent implements OnInit {
 
   @Input() username: string;
-  protected watchers: number;
+  watchers: number;
 
 
   constructor(protected watcherService: WatchersService) {

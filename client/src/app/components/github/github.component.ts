@@ -25,13 +25,13 @@ export class GithubComponent implements OnInit {
 
   // This is the parent component.
   modalActions = new EventEmitter<string|MaterializeAction>();
-  protected username: string;
-  protected githubUser: User;
-  protected repos: any[];
-  protected prog: boolean;
-  protected URL: string;
-  protected display_commits: boolean;
-  protected validated: boolean;
+  username: string;
+  githubUser: User;
+  repos: any[];
+  prog: boolean;
+  URL: string;
+  display_commits: boolean;
+  validated: boolean;
 
   @ViewChild(ChartComponent) chartComponent: ChartComponent;
   @ViewChild(CommitsComponent) commitComponent: CommitsComponent;

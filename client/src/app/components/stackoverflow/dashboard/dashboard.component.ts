@@ -13,11 +13,11 @@ export class DashboardComponent implements OnInit {
 
   @Input() id: string;
   @Input() user: Stackuser;
-  protected questions: number;
-  protected answers: number;
-  protected bronze: number;
-  protected silver: number;
-  protected gold: number;
+   questions: number;
+   answers: number;
+   bronze: number;
+   silver: number;
+   gold: number;
 
   constructor(protected userService: UserService) {
     this.bronze = 0;

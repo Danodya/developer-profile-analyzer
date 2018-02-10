@@ -30,6 +30,8 @@ import { OrganizationsComponent } from './components/github/organizations/organi
 import { DashboardComponent } from './components/stackoverflow/dashboard/dashboard.component';
 import { ErrorComponent } from './components/github/error/error.component';
 import { TagsComponent } from './components/stackoverflow/tags/tags.component';
+import {ServiceWorkerModule} from "@angular/service-worker";
+import {environment} from "../environments/environment";
 
 const appRoutes = [
   {
@@ -90,7 +92,8 @@ const appRoutes = [
     AutofocusModule,
     MaterializeModule,
     Ng4LoadingSpinnerModule.forRoot(),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [GithubService, {provide: RouteReuseStrategy, useClass: Customreuse}],
   bootstrap: [AppComponent]

@@ -10,10 +10,10 @@ import {StarsService} from "../../../services/github/stars.service";
 export class StarcountComponent implements OnInit {
 
   @Input() username: string;
-  protected chartData: any[];
-  protected chartLabels: any[];
-  protected chart: any[];
-  protected hasData: boolean;
+  chartData: any[];
+  chartLabels: any[];
+  chart: any[];
+  hasData: boolean;
 
   protected chartOptions = {
     responsive: true,

@@ -10,11 +10,11 @@ import {TagsService} from "../../../services/stack/tags.service";
 export class TagsComponent implements OnInit {
 
   @Input() id: string;
-  protected chartLabels: any[];
-  protected chartData: any[];
-  protected chart: any[];
-  private _hasData: boolean = true;
-  protected chartOptions = {
+   chartLabels: any[];
+   chartData: any[];
+   chart: any[];
+   _hasData: boolean = true;
+   chartOptions = {
     responsive: true,
     maintainAspectRatio: true,
     title: {
@@ -29,7 +29,7 @@ export class TagsComponent implements OnInit {
       position: 'left'
     }
   };
-  protected chartColors: any[] = [
+   chartColors: any[] = [
     {
       backgroundColor:["#0091ea"]
     }];

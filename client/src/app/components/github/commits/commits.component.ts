@@ -12,11 +12,11 @@ import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
 export class CommitsComponent implements OnInit {
 
   public loaded: boolean;
-  protected chartLabels: any[];
-  protected chartData: any[];
-  protected chart: any[];
+  chartLabels: any[];
+  chartData: any[];
+  chart: any[];
   @Input() username;
-  protected chartColors: any[] = [
+  chartColors: any[] = [
     {
       backgroundColor:["#f44336", "#b71c1c",
         "#ff8a80", "#f06292", "#e91e63", "#c2185b", "#c2185b", "#ff80ab", "#c51162", "#ba68c8", "#9c27b0",
@@ -25,7 +25,7 @@ export class CommitsComponent implements OnInit {
         "#9ccc65", "#9ccc65", "#cddc39", "#827717", "#f9a825", "#ffeb3b", "#e65100", "#e65100", "#f4511e",
         "#a1887f", "#a1887f", "#3e2723", "#bdbdbd"]
     }];
-  protected chartOptions = {
+  chartOptions = {
     responsive: true,
     maintainAspectRatio: true,
     title: {

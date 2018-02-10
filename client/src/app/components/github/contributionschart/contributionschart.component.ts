@@ -8,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ContributionschartComponent implements OnInit {
 
   @Input() username: string;
-  protected URL: string;
+  URL: string;
 
   constructor() {
     this.URL = "http://ghchart.rshah.org/" + this.username;

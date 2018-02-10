@@ -15,16 +15,16 @@ export class ChartComponent implements OnInit {
   @Input() repos: any[];
   @Input() githubUser: User;
   @Input() username;
-  protected chartLabels: any[];
-  protected chartDataArray: any[];
-  protected chartData: any[];
-  protected chartColors: any[] = [
+  chartLabels: any[];
+  chartDataArray: any[];
+  chartData: any[];
+  chartColors: any[] = [
     {
       backgroundColor:["#0277bd", "#689f38",
       "#6a1b9a", "#ffeb3b", "#d84315", "#5d4037", "#263238"]
     }];
 
-  protected chartOptions = {
+  chartOptions = {
     responsive: true,
     title: {
       display: true,

@@ -12,8 +12,8 @@ import {TagsComponent} from "./tags/tags.component";
 })
 export class StackoverflowComponent implements OnInit {
 
-  protected id: string;
-  protected user: Stackuser;
+  id: string;
+  user: Stackuser;
 
   @ViewChild(DashboardComponent) dashboard: DashboardComponent;
   @ViewChild(TagsComponent) tags: TagsComponent;

@@ -10,7 +10,7 @@ import {IssuesService} from "../../../services/github/issues.service";
 export class IssuesComponent implements OnInit {
 
   @Input() username: string;
-  protected issues_count: number;
+  issues_count: number;
 
   constructor(protected issuesService: IssuesService) {
     this.issues_count = 0;
