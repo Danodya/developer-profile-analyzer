@@ -29,6 +29,7 @@ import { IssuesComponent } from './components/github/issues/issues.component';
 import { OrganizationsComponent } from './components/github/organizations/organizations.component';
 import { DashboardComponent } from './components/stackoverflow/dashboard/dashboard.component';
 import { ErrorComponent } from './components/github/error/error.component';
+import { TagsComponent } from './components/stackoverflow/tags/tags.component';
 
 const appRoutes = [
   {
@@ -78,7 +79,8 @@ const appRoutes = [
     IssuesComponent,
     OrganizationsComponent,
     DashboardComponent,
-    ErrorComponent
+    ErrorComponent,
+    TagsComponent
   ],
   imports: [
     BrowserModule,

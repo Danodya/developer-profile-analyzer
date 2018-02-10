@@ -6,6 +6,7 @@ import com.google.code.stackexchange.client.query.*;
 import com.google.code.stackexchange.common.PagedList;
 import com.google.code.stackexchange.schema.*;
 import com.springgithub.springgithub.config.Configuration;
+import com.springgithub.springgithub.helpers.stackoverflow.services.ReputationParser;
 import com.springgithub.springgithub.model.StackOverflow.Badges;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.http.HttpEntity;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 /*
@@ -90,11 +92,34 @@ public class CustomStackService {
     }
 
     // Get user reputations
-    public Object getReputation(String id) {
+    public List<Reputation> getReputation(String id) {
         StackExchangeApiClient client = clientFactory.createStackExchangeApiClient();
         return client.getUsersReputations(Long.valueOf(id));
     }
 
+    // Get tag names and counts
+    public ArrayList<Object> getTags(String id) {
+        StackExchangeApiClient client = clientFactory.createStackExchangeApiClient();
+
+        List<Tag> tags = client.getTagsForUsers(new Paging(1, 100), Long.valueOf(id));
+        ArrayList<String> name = new ArrayList<>();
+        ArrayList<Long> count = new ArrayList<>();
+        ArrayList<Object> output = new ArrayList<>();
+
+        for (Tag tag: tags) {
+            name.add(tag.getName());
+            count.add(tag.getCount());
+        }
+
+        output.add(name);
+        output.add(count);
+
+        return output;
+    }
+
+    /*
+    SANDBOX
+     */
     public Object test(String id) {
         return "";
     }

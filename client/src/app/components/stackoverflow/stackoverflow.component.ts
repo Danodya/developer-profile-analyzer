@@ -2,6 +2,7 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {UserService} from "../../services/stack/user.service";
 import {Stackuser} from "../models/stackuser";
 import {DashboardComponent} from "./dashboard/dashboard.component";
+import {TagsComponent} from "./tags/tags.component";
 
 @Component({
   selector: 'app-stackoverflow',
@@ -15,6 +16,7 @@ export class StackoverflowComponent implements OnInit {
   protected user: Stackuser;
 
   @ViewChild(DashboardComponent) dashboard: DashboardComponent;
+  @ViewChild(TagsComponent) tags: TagsComponent;
 
   constructor(protected userService: UserService) {
     this.user = new Stackuser();
@@ -36,6 +38,7 @@ export class StackoverflowComponent implements OnInit {
   public test() {
     this._get();
     this.dashboard._getBadges();
+    this.tags._get();
   }
 
 

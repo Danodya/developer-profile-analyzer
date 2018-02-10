@@ -4,7 +4,9 @@ import com.google.code.stackexchange.client.StackExchangeApiClient;
 import com.google.code.stackexchange.client.StackExchangeApiClientFactory;
 import com.google.code.stackexchange.common.PagedList;
 import com.google.code.stackexchange.schema.Badge;
+import com.google.code.stackexchange.schema.Reputation;
 import com.google.code.stackexchange.schema.StackExchangeSite;
+import com.google.code.stackexchange.schema.Tag;
 import com.springgithub.springgithub.config.Configuration;
 import com.springgithub.springgithub.helpers.stackoverflow.CustomStackService;
 import com.springgithub.springgithub.model.StackOverflow.Badges;
@@ -17,7 +19,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class StackController {
@@ -57,10 +61,11 @@ public class StackController {
 
     // Uses an adapter
     @RequestMapping(method = RequestMethod.GET, value = "/getstackuserreputation/{id}")
-    public @ResponseBody Object getReputation(@PathVariable String id) { return so.getReputation(id); }
+    public @ResponseBody List<Reputation> getReputation(@PathVariable String id) { return so.getReputation(id); }
 
-    // Test
-    @RequestMapping(method = RequestMethod.GET, value = "/test/{id}")
-    public @ResponseBody Object test(@PathVariable String id) { return so.test(id); }
+    // Get Tags (100 responses) -- Can put up a chart.
+    @CrossOrigin("http://localhost:4200")
+    @RequestMapping(method = RequestMethod.GET, value = "/getstackusertags/{id}")
+    public @ResponseBody ArrayList<Object> getTags(@PathVariable String id) { return so.getTags(id); }
 
 }
