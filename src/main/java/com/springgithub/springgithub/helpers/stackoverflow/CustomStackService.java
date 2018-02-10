@@ -85,12 +85,6 @@ public class CustomStackService {
         return client.getUsersComments(Long.valueOf(id));
     }
 
-    // Get favorite questions by users
-    public Object getFavorites(String id) {
-        StackExchangeApiClient client = clientFactory.createStackExchangeApiClient();
-        return client.getFavoriteQuestionsByUsers(Long.valueOf(id));
-    }
-
     // Get user reputations
     public List<Reputation> getReputation(String id) {
         StackExchangeApiClient client = clientFactory.createStackExchangeApiClient();
@@ -116,6 +110,24 @@ public class CustomStackService {
 
         return output;
     }
+
+    // Get the number of mentions for a user
+    public Object getMentions(String id) {
+        RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory);
+        String URL = "http://api.stackexchange.com/users/" + id + "/mentioned?site=stackoverflow&key="
+                + Configuration.STACK_KEY + "&filter=total";
+        return restTemplate.getForObject(URL, Object.class);
+    }
+
+    // Get the number of mentions for a user
+    public Object getFavorites(String id) {
+        RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory);
+        String URL = "http://api.stackexchange.com/users/" + id + "/favorites?site=stackoverflow&key="
+                + Configuration.STACK_KEY + "&filter=total";
+        return restTemplate.getForObject(URL, Object.class);
+    }
+
+
 
     /*
     SANDBOX

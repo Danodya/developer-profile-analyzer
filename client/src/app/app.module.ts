@@ -32,6 +32,7 @@ import { ErrorComponent } from './components/github/error/error.component';
 import { TagsComponent } from './components/stackoverflow/tags/tags.component';
 import {ServiceWorkerModule} from "@angular/service-worker";
 import {environment} from "../environments/environment";
+import { MentionsComponent } from './components/stackoverflow/mentions/mentions.component';
 
 const appRoutes = [
   {
@@ -82,7 +83,8 @@ const appRoutes = [
     OrganizationsComponent,
     DashboardComponent,
     ErrorComponent,
-    TagsComponent
+    TagsComponent,
+    MentionsComponent
   ],
   imports: [
     BrowserModule,

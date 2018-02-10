@@ -31,7 +31,7 @@
     <div class="col l10 xl10">
       <app-dashboard [id]="id" [user]="user"></app-dashboard>
       <div class="row">
-        <div class="col l5 xl5 m12 s12"></div>
+        <div class="col l5 xl5 m12 s12"><app-mentions [id]="id" [username]="user.display_name"></app-mentions></div>
         <div class="col l7 xl7 m12 s12"><app-tags [id]="id"></app-tags></div>
       </div>
 

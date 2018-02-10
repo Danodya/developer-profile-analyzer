@@ -3,6 +3,7 @@ import {UserService} from "../../services/stack/user.service";
 import {Stackuser} from "../models/stackuser";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {TagsComponent} from "./tags/tags.component";
+import {MentionsComponent} from "./mentions/mentions.component";
 
 @Component({
   selector: 'app-stackoverflow',
@@ -17,6 +18,7 @@ export class StackoverflowComponent implements OnInit {
 
   @ViewChild(DashboardComponent) dashboard: DashboardComponent;
   @ViewChild(TagsComponent) tags: TagsComponent;
+  @ViewChild(MentionsComponent) mentions: MentionsComponent;
 
   constructor(protected userService: UserService) {
     this.user = new Stackuser();
@@ -39,6 +41,7 @@ export class StackoverflowComponent implements OnInit {
     // this._get();
     this.dashboard._getBadges();
     this.tags._get();
+    this.mentions._get();
   }
 
 
