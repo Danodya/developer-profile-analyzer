@@ -23,5 +23,15 @@
         "/assets/**"
       ]
     }
+  }],
+  "dataGroups": [{
+    "name": "user-data",
+    "urls": ["http://localhost:8080/getuser/**" , "http://localhost:8080/getcommitsadapterRe/**"],
+    "cacheConfig": {
+      "strategy": "freshness",
+      "maxSize": 20,
+      "maxAge": "1h",
+      "timeout": "5s"
+    }
   }]
 }
