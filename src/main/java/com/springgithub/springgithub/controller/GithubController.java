@@ -36,9 +36,7 @@ public class GithubController {
     // Uses RestTemplate to fetch from API
     @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/getstarsperlang/{username}")
-    public @ResponseBody ArrayList<Object> getStarsPerLang(@PathVariable String username) { return gh.getStarsPerLang(username);
-    }
-
+    public @ResponseBody ArrayList<Object> getStarsPerLang(@PathVariable String username) { return gh.getStarsPerLang(username); }
 
     // Uses Egit adapter
     @CrossOrigin("http://localhost:4200")
