@@ -48,12 +48,12 @@ export class WordcloudComponent implements OnInit {
       maxFontSize: 100,
     },
     margin: {
-      top: 10,
-      right: 10,
-      bottom: 10,
-      left: 10
+      top: 5,
+      right: 5,
+      bottom: 50,
+      left: 5
     },
-    labels: true // false to hide hover labels
+    labels: false // false to hide hover labels
   };
 
   constructor(protected tagsService: TagsService) {
@@ -63,7 +63,7 @@ export class WordcloudComponent implements OnInit {
         this.myWordData.push({size: Math.floor(Math.random() * Math.floor(1000)), text: value.toLocaleString()})
       });
       this.bool = true;
-      console.log(this.myWordData);
+      // console.log(this.myWordData);
     });
   }
 
@@ -71,9 +71,14 @@ export class WordcloudComponent implements OnInit {
   }
 
   public _get() {
-    // this.tagsService._get(this.id).subscribe(tags => {
-    //
-    // });
+    this.bool = false;
+    this.myWordData = [];
+    this.tagsService._get(this.id).subscribe(tags => {
+      tags[0].forEach((value) => {
+        this.myWordData.push({size: Math.floor(Math.random() * Math.floor(1000)), text: value.toLocaleString()})
+      });
+      this.bool = true;
+    });
   }
 
 }
