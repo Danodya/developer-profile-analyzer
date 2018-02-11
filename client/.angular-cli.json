@@ -28,7 +28,8 @@
         "../node_modules/jquery/dist/jquery.js",
         "../node_modules/hammerjs/hammer.js",
         "../node_modules/materialize-css/dist/js/materialize.js",
-        "../node_modules/chart.js/dist/Chart.min.js"
+        "../node_modules/chart.js/dist/Chart.min.js",
+        "../node_modules/angular4-word-cloud/d3.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

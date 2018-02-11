@@ -16,15 +16,6 @@ export class CommitsComponent implements OnInit {
   chartData: any[];
   chart: any[];
   @Input() username;
-  chartColors: any[] = [
-    {
-      backgroundColor:["#f44336", "#b71c1c",
-        "#ff8a80", "#f06292", "#e91e63", "#c2185b", "#c2185b", "#ff80ab", "#c51162", "#ba68c8", "#9c27b0",
-        "#4a148c", "#d500f9", "#673ab7", "#311b92", "#3f51b5", "#1a237e", "#1a237e", "#0d47a1", "#4dd0e1",
-        "#00838f", "#006064", "#00e5ff", "#26a69a", "#004d40", "#1de9b6", "#a5d6a7", "#4caf50", "#1b5e20",
-        "#9ccc65", "#9ccc65", "#cddc39", "#827717", "#f9a825", "#ffeb3b", "#e65100", "#e65100", "#f4511e",
-        "#a1887f", "#a1887f", "#3e2723", "#bdbdbd"]
-    }];
   chartOptions = {
     responsive: true,
     maintainAspectRatio: true,

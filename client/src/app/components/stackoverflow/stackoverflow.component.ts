@@ -4,6 +4,7 @@ import {Stackuser} from "../models/stackuser";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {TagsComponent} from "./tags/tags.component";
 import {MentionsComponent} from "./mentions/mentions.component";
+import {WordcloudComponent} from "./wordcloud/wordcloud.component";
 
 @Component({
   selector: 'app-stackoverflow',
@@ -19,6 +20,7 @@ export class StackoverflowComponent implements OnInit {
   @ViewChild(DashboardComponent) dashboard: DashboardComponent;
   @ViewChild(TagsComponent) tags: TagsComponent;
   @ViewChild(MentionsComponent) mentions: MentionsComponent;
+  @ViewChild(WordcloudComponent) wordCloud: WordcloudComponent;
 
   constructor(protected userService: UserService) {
     this.user = new Stackuser();
@@ -42,6 +44,10 @@ export class StackoverflowComponent implements OnInit {
     this.dashboard._getBadges();
     this.tags._get();
     this.mentions._get();
+    setTimeout(() => {
+      this.wordCloud._get();
+    }, 2000);
+
   }
 
 

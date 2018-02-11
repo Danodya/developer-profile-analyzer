@@ -33,6 +33,8 @@ import { TagsComponent } from './components/stackoverflow/tags/tags.component';
 import {ServiceWorkerModule} from "@angular/service-worker";
 import {environment} from "../environments/environment";
 import { MentionsComponent } from './components/stackoverflow/mentions/mentions.component';
+import {AgWordCloudModule} from "angular4-word-cloud";
+import { WordcloudComponent } from './components/stackoverflow/wordcloud/wordcloud.component';
 
 const appRoutes = [
   {
@@ -84,7 +86,8 @@ const appRoutes = [
     DashboardComponent,
     ErrorComponent,
     TagsComponent,
-    MentionsComponent
+    MentionsComponent,
+    WordcloudComponent
   ],
   imports: [
     BrowserModule,
@@ -95,6 +98,7 @@ const appRoutes = [
     MaterializeModule,
     Ng4LoadingSpinnerModule.forRoot(),
     RouterModule.forRoot(appRoutes),
+    AgWordCloudModule.forRoot(),
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [GithubService, {provide: RouteReuseStrategy, useClass: Customreuse}],

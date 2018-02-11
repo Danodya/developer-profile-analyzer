@@ -122,7 +122,11 @@ public class CustomStackService {
         return restTemplate.getForObject(URL, Object.class);
     }
 
-
+    public Object getTimeline(String id) {
+        RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory);
+        String URL = "http://api.stackexchange.com/users/" + id + "/timeline?site=stackoverflow&key="  + Configuration.STACK_KEY;
+        return restTemplate.getForObject(URL, Object.class);
+    }
 
     /*
     SANDBOX
