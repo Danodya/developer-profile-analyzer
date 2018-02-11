@@ -1,7 +1,7 @@
-package com.springgithub.springgithub.helpers.github;
+package com.springgithub.springgithub.services.github;
 
 import com.springgithub.springgithub.config.Configuration;
-import com.springgithub.springgithub.helpers.github.validators.GithubUserValidator;
+import com.springgithub.springgithub.services.github.validators.GithubUserValidator;
 import com.springgithub.springgithub.model.Repo;
 import com.springgithub.springgithub.model.User;
 import org.eclipse.egit.github.core.Repository;
@@ -72,7 +72,7 @@ public class CustomGithubService {
             CommitService commitService = new CommitService(client);
 
             List<Repository> repositories = repositoryService.getRepositories(username);
-            PageIterator<Repository> pageIterator = repositoryService.pageRepositories(username, 1, 10);
+            PageIterator<Repository> pageIterator = repositoryService.pageRepositories(username, 1, 30);
 
             for (Repository repository: pageIterator.iterator().next()) {
                 map.put(repository.getName(), commitService.getCommits(repository).size());

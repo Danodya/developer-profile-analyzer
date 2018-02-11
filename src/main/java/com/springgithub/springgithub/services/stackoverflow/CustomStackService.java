@@ -1,4 +1,4 @@
-package com.springgithub.springgithub.helpers.stackoverflow;
+package com.springgithub.springgithub.services.stackoverflow;
 
 import com.google.code.stackexchange.client.StackExchangeApiClient;
 import com.google.code.stackexchange.client.StackExchangeApiClientFactory;
@@ -6,18 +6,11 @@ import com.google.code.stackexchange.client.query.*;
 import com.google.code.stackexchange.common.PagedList;
 import com.google.code.stackexchange.schema.*;
 import com.springgithub.springgithub.config.Configuration;
-import com.springgithub.springgithub.helpers.stackoverflow.services.ReputationParser;
-import com.springgithub.springgithub.model.StackOverflow.Badges;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 /*

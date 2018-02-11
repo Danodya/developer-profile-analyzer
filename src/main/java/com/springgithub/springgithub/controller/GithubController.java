@@ -2,7 +2,7 @@ package com.springgithub.springgithub.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.springgithub.springgithub.helpers.github.CustomGithubService;
+import com.springgithub.springgithub.services.github.CustomGithubService;
 import com.springgithub.springgithub.model.User;
 import org.springframework.web.bind.annotation.*;
 

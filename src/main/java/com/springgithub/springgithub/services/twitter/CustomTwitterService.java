@@ -1,7 +1,6 @@
-package com.springgithub.springgithub.helpers.twitter;
+package com.springgithub.springgithub.services.twitter;
 
 import com.springgithub.springgithub.config.Configuration;
-import org.springframework.web.bind.annotation.PathVariable;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;

@@ -1,13 +1,8 @@
 package com.springgithub.springgithub.controller;
 
-import com.springgithub.springgithub.config.Configuration;
-import com.springgithub.springgithub.helpers.twitter.CustomTwitterService;
+import com.springgithub.springgithub.services.twitter.CustomTwitterService;
 import org.springframework.web.bind.annotation.*;
-import twitter4j.Twitter;
 import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
-import twitter4j.User;
-import twitter4j.conf.ConfigurationBuilder;
 
 @RestController
 public class TwitterController {

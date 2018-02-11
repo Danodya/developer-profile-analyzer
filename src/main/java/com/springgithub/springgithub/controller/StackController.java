@@ -1,27 +1,11 @@
 package com.springgithub.springgithub.controller;
 
-import com.google.code.stackexchange.client.StackExchangeApiClient;
-import com.google.code.stackexchange.client.StackExchangeApiClientFactory;
-import com.google.code.stackexchange.common.PagedList;
-import com.google.code.stackexchange.schema.Badge;
 import com.google.code.stackexchange.schema.Reputation;
-import com.google.code.stackexchange.schema.StackExchangeSite;
-import com.google.code.stackexchange.schema.Tag;
-import com.springgithub.springgithub.config.Configuration;
-import com.springgithub.springgithub.helpers.stackoverflow.CustomStackService;
-import com.springgithub.springgithub.model.StackOverflow.Badges;
-import com.springgithub.springgithub.model.StackOverflow.StackUser;
-import com.springgithub.springgithub.model.User;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import com.springgithub.springgithub.services.stackoverflow.CustomStackService;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 public class StackController {

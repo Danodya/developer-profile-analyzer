@@ -1,4 +1,4 @@
-package com.springgithub.springgithub.helpers;
+package com.springgithub.springgithub.services;
 
 import org.springframework.http.HttpStatus;
 

@@ -1,15 +1,10 @@
-package com.springgithub.springgithub.helpers.github.validators;
+package com.springgithub.springgithub.services.github.validators;
 
-import com.springgithub.springgithub.helpers.RESTUtil;
-import com.springgithub.springgithub.model.User;
+import com.springgithub.springgithub.services.RESTUtil;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.client.ResponseErrorHandler;
-import sun.misc.IOUtils;
-import sun.nio.ch.IOUtil;
 
 import java.io.IOException;
-import java.util.Map;
-import java.util.Objects;
 
 public class GithubUserValidator implements ResponseErrorHandler{
 

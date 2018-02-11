@@ -30,14 +30,14 @@ export class CommitsComponent implements OnInit {
     maintainAspectRatio: true,
     title: {
       display: true,
-      text: 'Commits per a Repo (Top 10)'
+      text: 'Commits per a Repo (Top 30)'
     },
     legend: {
       labels: {
         fontColor: 'black',
-        fontSize: 9
+        fontSize: 5
       },
-      position: 'left'
+      position: 'top'
     }
   };
 
@@ -49,7 +49,7 @@ export class CommitsComponent implements OnInit {
     this.loaded = false;
 
     // this.spinnerService.show();
-    this.commitServive.getCommitDetails("dasunpubudumal").subscribe((commits) => {
+    this.commitServive.getCommitDetails(this.username).subscribe((commits) => {
      this.chartLabels = this.commitServive.extractChartLabels(commits);
       // this.spinnerService.hide();
    });
