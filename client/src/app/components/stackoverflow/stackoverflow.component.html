@@ -40,18 +40,19 @@
     <div class="col l7 xl7 m12 s12">
       <div class="row">
         <div class="col l6 xl6 m12 s12">
-          <div class="container">
             <h4 class="light blue-grey-text center-align">Tags by Score</h4>
             <app-toptags [id]="id"></app-toptags>
-          </div>
         </div>
-        <div class="col l6 x6 m12 s12"><app-tags [id]="id"></app-tags></div>
+        <div class="col l6 x6 m12 s12">
+          <div class="container"><h4 class="light blue-grey-text center-align">More stats about Tags/Topic</h4></div>
+          <app-tags [id]="id"></app-tags>
+        </div>
       </div>
 
     </div>
     <div class="col l5 xl5 m12 s12">
       <h4 class="light blue-grey-text center-align">Popular Tags by {{user.display_name}}</h4>
-      <div class="container">
+      <div class="center-align">
         <app-wordcloud [id]="id" [username]="user.display_name"></app-wordcloud>
       </div>
     </div>
