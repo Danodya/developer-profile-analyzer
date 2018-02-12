@@ -36,6 +36,8 @@ import { MentionsComponent } from './components/stackoverflow/mentions/mentions.
 import {AgWordCloudModule} from "angular4-word-cloud";
 import { WordcloudComponent } from './components/stackoverflow/wordcloud/wordcloud.component';
 import { ToptagsComponent } from './components/stackoverflow/toptags/toptags.component';
+import {CapitalizeFirstPipe} from "./pipes/capitalize.pipe";
+import { ReputationComponent } from './components/stackoverflow/reputation/reputation.component';
 
 const appRoutes = [
   {
@@ -89,7 +91,9 @@ const appRoutes = [
     TagsComponent,
     MentionsComponent,
     WordcloudComponent,
-    ToptagsComponent
+    ToptagsComponent,
+    CapitalizeFirstPipe,
+    ReputationComponent
   ],
   imports: [
     BrowserModule,

@@ -81,9 +81,10 @@ public class CustomStackService {
     }
 
     // Get user reputations
-    public List<Reputation> getReputation(String id) {
-        StackExchangeApiClient client = clientFactory.createStackExchangeApiClient();
-        return client.getUsersReputations(Long.valueOf(id));
+    public Object getReputation(String id) {
+        RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory);
+        String URL = "http://api.stackexchange.com/users/" + id + "/reputation?site=stackoverflow&pagesize=100&key="  + Configuration.STACK_KEY;
+        return restTemplate.getForObject(URL, Object.class);
     }
 
     // Get tag names and counts
@@ -133,6 +134,14 @@ public class CustomStackService {
         String URL = "http://api.stackexchange.com/users/" + id + "/top-answer-tags?site=stackoverflow&pagesize=5&key="  + Configuration.STACK_KEY;
         return restTemplate.getForObject(URL, Object.class);
     }
+
+    public Object getReputationHistory(String id) {
+        RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory);
+        String URL = "http://api.stackexchange.com/users/" + id + "/reputation-history?site=stackoverflow&pagesize=5&key="  + Configuration.STACK_KEY;
+        return restTemplate.getForObject(URL, Object.class);
+    }
+
+
 
     /*
     SANDBOX

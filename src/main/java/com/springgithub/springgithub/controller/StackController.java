@@ -44,8 +44,9 @@ public class StackController {
     public @ResponseBody Object getComments(@PathVariable String id) { return so.getComments(id); }
 
     // Uses an adapter
+    @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/getstackuserreputation/{id}")
-    public @ResponseBody List<Reputation> getReputation(@PathVariable String id) { return so.getReputation(id); }
+    public @ResponseBody Object getReputation(@PathVariable String id) { return so.getReputation(id); }
 
     // Get Tags (100 responses) -- Can put up a chart.
     @CrossOrigin("http://localhost:4200")
@@ -63,6 +64,11 @@ public class StackController {
     @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/getstackusertoptags/{id}")
     public @ResponseBody Object getUserTopTags(@PathVariable String id) { return so.getTopTags(id); }
+
+    @CrossOrigin("http://localhost:4200")
+    @RequestMapping(method = RequestMethod.GET, value = "/getstackuserrephis/{id}")
+    public @ResponseBody Object getReputationHistory(@PathVariable String id) { return so.getReputationHistory(id); }
+
 
 
 }

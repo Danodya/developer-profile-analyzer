@@ -19,7 +19,6 @@
           <p class="light">Age: <span class="blue-grey-text"><strong>{{user.age}}</strong></span></p>
           <p class="light">Accept Rate: <span class="blue-grey-text"><strong>{{user.accept_rate}}%</strong></span></p>
           <p class="light">Reputation: <span class="blue-grey-text"><strong>{{user.reputation}}</strong></span></p>
-          <br />
           <a class="waves-effect waves-light btn blue darken-3" href="{{user.website_url}}" target="_blank">Website</a>
         </div>
         <div class="card-reveal">
@@ -31,7 +30,7 @@
       <app-dashboard [id]="id" [user]="user"></app-dashboard>
       <div class="row">
         <div class="col l5 xl5 m12 s12"><app-mentions [id]="id" [username]="user.display_name"></app-mentions></div>
-        <div class="col l7 xl7 m12 s12"><app-tags [id]="id"></app-tags></div>
+        <div class="col l7 xl7 m12 s12"><app-reputation [id] = "id"></app-reputation></div>
       </div>
 
     </div>
@@ -39,13 +38,22 @@
 
   <div class="row">
     <div class="col l7 xl7 m12 s12">
-      <app-toptags [id]="id"></app-toptags>
+      <div class="row">
+        <div class="col l6 xl6 m12 s12">
+          <div class="container">
+            <h4 class="light blue-grey-text center-align">Tags by Score</h4>
+            <app-toptags [id]="id"></app-toptags>
+          </div>
+        </div>
+        <div class="col l6 x6 m12 s12"><app-tags [id]="id"></app-tags></div>
+      </div>
+
     </div>
     <div class="col l5 xl5 m12 s12">
+      <h4 class="light blue-grey-text center-align">Popular Tags by {{user.display_name}}</h4>
       <div class="container">
-        <h4 class="light blue-grey-text center-align">Popular Tags by {{user.display_name}}</h4>
+        <app-wordcloud [id]="id" [username]="user.display_name"></app-wordcloud>
       </div>
-      <app-wordcloud [id]="id" [username]="user.display_name"></app-wordcloud>
     </div>
   </div>
 

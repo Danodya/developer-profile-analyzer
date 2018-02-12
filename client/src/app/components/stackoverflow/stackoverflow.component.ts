@@ -6,6 +6,7 @@ import {TagsComponent} from "./tags/tags.component";
 import {MentionsComponent} from "./mentions/mentions.component";
 import {WordcloudComponent} from "./wordcloud/wordcloud.component";
 import {ToptagsComponent} from "./toptags/toptags.component";
+import {ReputationComponent} from "./reputation/reputation.component";
 
 @Component({
   selector: 'app-stackoverflow',
@@ -23,6 +24,7 @@ export class StackoverflowComponent implements OnInit {
   @ViewChild(MentionsComponent) mentions: MentionsComponent;
   @ViewChild(WordcloudComponent) wordCloud: WordcloudComponent;
   @ViewChild(ToptagsComponent) topTagsComponent: ToptagsComponent;
+  @ViewChild(ReputationComponent) reputation: ReputationComponent;
 
   constructor(protected userService: UserService) {
     this.user = new Stackuser();
@@ -49,6 +51,7 @@ export class StackoverflowComponent implements OnInit {
     setTimeout(() => {
       this.wordCloud._get();
     }, 2000);
+    this.reputation._get();
 
   }
 

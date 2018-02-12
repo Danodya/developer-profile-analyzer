@@ -1,13 +1,23 @@
-<ul materialize="collapsible" class="collapsible" data-collapsible="accordion" [materializeParams]="params" [materializeActions]="actions1">
-  <li *ngFor="let tag of topTags">
-    <div class="collapsible-header"><i class="material-icons">filter_drama</i>{{tag.tag_name}}</div>
-    <div class="collapsible-body">
+<ul materialize="collapsible" class="collapsible popout" data-collapsible="accordion" [materializeParams]="params" [materializeActions]="actions1" *ngIf="enable">
+  <li *ngFor="let tag of topTags" class="blue">
+    <div class="collapsible-header">
+      <i class="material-icons">developer_mode</i>{{tag.tag_name | capitalizeFirst}}
+      <div class="right-align">
+        <div class="chip blue darken-3 white-text">
+          Answers: {{tag.answer_count}}
+        </div>
+        <div class="chip green darken-1 white-text">
+          Questions: {{tag.question_count}}
+        </div>
+      </div>
+    </div>
+    <div class="collapsible-body white-text">
       <span>
-        Answer Count: {{tag.answer_count}}
-        Answer Score: {{tag.answer_score}}
-        Question Count: {{tag.question_count}}
-        Question Score: {{tag.question_score}}
+        This user has answered <strong>{{tag.answer_count}}</strong> times under this tag, and received <strong>{{tag.answer_score}}</strong> points.
+        <strong>{{tag.question_count}}</strong> questions under this tag have been asked by this user and received <strong>{{tag.question_score}}</strong> points for that.
       </span>
     </div>
   </li>
 </ul>
+
+<small><p class="light center-align" *ngIf="enable">Click on a tag for more details.</p></small>
