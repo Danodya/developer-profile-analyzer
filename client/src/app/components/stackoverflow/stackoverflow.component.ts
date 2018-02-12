@@ -52,6 +52,7 @@ export class StackoverflowComponent implements OnInit {
       this.wordCloud._get();
     }, 2000);
     this.reputation._get();
+    this.topTagsComponent._get();
 
   }
 
