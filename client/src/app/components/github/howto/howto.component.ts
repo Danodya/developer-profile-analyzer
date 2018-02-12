@@ -7,6 +7,8 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class HowtoComponent implements OnInit {
 
+  text: string = "Enter the developer's Github username. Since the search is interactive, you might have to wait a little while to get the data depending on the internet connection.";
+
   protected showHide: boolean = false;
 
   constructor() { }

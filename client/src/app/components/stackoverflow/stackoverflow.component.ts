@@ -5,6 +5,7 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 import {TagsComponent} from "./tags/tags.component";
 import {MentionsComponent} from "./mentions/mentions.component";
 import {WordcloudComponent} from "./wordcloud/wordcloud.component";
+import {ToptagsComponent} from "./toptags/toptags.component";
 
 @Component({
   selector: 'app-stackoverflow',
@@ -21,6 +22,7 @@ export class StackoverflowComponent implements OnInit {
   @ViewChild(TagsComponent) tags: TagsComponent;
   @ViewChild(MentionsComponent) mentions: MentionsComponent;
   @ViewChild(WordcloudComponent) wordCloud: WordcloudComponent;
+  @ViewChild(ToptagsComponent) topTagsComponent: ToptagsComponent;
 
   constructor(protected userService: UserService) {
     this.user = new Stackuser();

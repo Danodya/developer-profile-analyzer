@@ -1,10 +1,14 @@
-<div AgWordCloud *ngIf="bool"
-     #word_cloud_chart=ag-word-cloud
-     [wordData]="myWordData"
-     [options]="options">
+<div *ngIf="bool">
+  <div AgWordCloud
+       #word_cloud_chart=ag-word-cloud
+       [wordData]="myWordData"
+       [options]="options"
+       [color]="colors">
+  </div>
+  <span class="light center-align"><p>This is a random cloud of tags favored by {{username}}.</p></span>
 </div>
 
-<div>
+<div class="container center-align">
   <div *ngIf="!bool" style="">
     <br /> <br /> <br />
     <div class="preloader-wrapper big active" align="middle">
@@ -19,5 +23,4 @@
       </div>
     </div>
   </div>
-
 </div>

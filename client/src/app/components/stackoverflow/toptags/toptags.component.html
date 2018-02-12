@@ -1,0 +1,13 @@
+<ul materialize="collapsible" class="collapsible" data-collapsible="accordion" [materializeParams]="params" [materializeActions]="actions1">
+  <li *ngFor="let tag of topTags">
+    <div class="collapsible-header"><i class="material-icons">filter_drama</i>{{tag.tag_name}}</div>
+    <div class="collapsible-body">
+      <span>
+        Answer Count: {{tag.answer_count}}
+        Answer Score: {{tag.answer_score}}
+        Question Count: {{tag.question_count}}
+        Question Score: {{tag.question_score}}
+      </span>
+    </div>
+  </li>
+</ul>

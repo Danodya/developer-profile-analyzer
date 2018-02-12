@@ -60,5 +60,9 @@ public class StackController {
     @RequestMapping(method = RequestMethod.GET, value = "/getstackuserfavorites/{id}")
     public @ResponseBody Object getFavorites(@PathVariable String id) { return so.getFavorites(id); }
 
+    @CrossOrigin("http://localhost:4200")
+    @RequestMapping(method = RequestMethod.GET, value = "/getstackusertoptags/{id}")
+    public @ResponseBody Object getUserTopTags(@PathVariable String id) { return so.getTopTags(id); }
+
 
 }

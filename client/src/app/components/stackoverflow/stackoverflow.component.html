@@ -16,9 +16,8 @@
         <div class="card-content">
           <span class="card-title grey-text text-darken-4">{{user.display_name}}</span>
           <p class="light">From: <span class="blue-grey-text"><strong>{{user.location}}</strong></span></p>
-          <p class="light">Joined: <span class="blue-grey-text"><strong>{{user.creation_date | date:'longDate'}}</strong></span></p>
           <p class="light">Age: <span class="blue-grey-text"><strong>{{user.age}}</strong></span></p>
-          <p class="light">Accept Rate: <span class="blue-grey-text"><strong>{{user.accept_rate}}</strong></span></p>
+          <p class="light">Accept Rate: <span class="blue-grey-text"><strong>{{user.accept_rate}}%</strong></span></p>
           <p class="light">Reputation: <span class="blue-grey-text"><strong>{{user.reputation}}</strong></span></p>
           <br />
           <a class="waves-effect waves-light btn blue darken-3" href="{{user.website_url}}" target="_blank">Website</a>
@@ -38,17 +37,21 @@
     </div>
   </div>
 
-  <div class="container">
-    <h3 class="center-align">User Statistics</h3>
-  </div>
-  <br />
-
   <div class="row">
     <div class="col l7 xl7 m12 s12">
+      <app-toptags [id]="id"></app-toptags>
     </div>
     <div class="col l5 xl5 m12 s12">
-      <app-wordcloud [id]="id"></app-wordcloud>
+      <div class="container">
+        <h4 class="light blue-grey-text center-align">Popular Tags by {{user.display_name}}</h4>
+      </div>
+      <app-wordcloud [id]="id" [username]="user.display_name"></app-wordcloud>
     </div>
   </div>
+
+
+  <!--How to-->
+  <app-howto></app-howto>
+
 </div>
 

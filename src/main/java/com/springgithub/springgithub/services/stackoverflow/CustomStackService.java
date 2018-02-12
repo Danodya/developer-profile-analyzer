@@ -128,6 +128,12 @@ public class CustomStackService {
         return restTemplate.getForObject(URL, Object.class);
     }
 
+    public Object getTopTags(String id) {
+        RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory);
+        String URL = "http://api.stackexchange.com/users/" + id + "/top-answer-tags?site=stackoverflow&pagesize=5&key="  + Configuration.STACK_KEY;
+        return restTemplate.getForObject(URL, Object.class);
+    }
+
     /*
     SANDBOX
      */

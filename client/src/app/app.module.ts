@@ -35,6 +35,7 @@ import {environment} from "../environments/environment";
 import { MentionsComponent } from './components/stackoverflow/mentions/mentions.component';
 import {AgWordCloudModule} from "angular4-word-cloud";
 import { WordcloudComponent } from './components/stackoverflow/wordcloud/wordcloud.component';
+import { ToptagsComponent } from './components/stackoverflow/toptags/toptags.component';
 
 const appRoutes = [
   {
@@ -87,7 +88,8 @@ const appRoutes = [
     ErrorComponent,
     TagsComponent,
     MentionsComponent,
-    WordcloudComponent
+    WordcloudComponent,
+    ToptagsComponent
   ],
   imports: [
     BrowserModule,
