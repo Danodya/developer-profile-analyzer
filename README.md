@@ -4,7 +4,7 @@ A simple profile analyzer for developers. **You can follow a thorough walkthroug
 
 *Note* - This *README* consists of only the implementation details for **GitHub** profile search. However, this project was chosen as my *Semester V Project* and hence, I've extended it to *StackOverflow* and *Twitter* profile searches to give a better scope. For implementation details and help on the extended components, **please refer to the [wiki](https://github.com/dasunpubudumal/spring-github-repo/wiki) page**.
 
-![Application Screenshot](https://ibb.co/g2rNBS)
+![Application Screenshot](docs/preview_3.gif)
 
 
 _Application when ran through my Github profile_.
