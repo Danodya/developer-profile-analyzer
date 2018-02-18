@@ -2,10 +2,12 @@ package com.springgithub.springgithub.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.springgithub.springgithub.data.GithubData;
 import com.springgithub.springgithub.services.github.CustomGithubService;
 import com.springgithub.springgithub.model.User;
 import com.springgithub.springgithub.services.github.GithubDBUtility;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -24,8 +26,14 @@ public class GithubController {
     @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/getuser/{username}")
     public User getUser(@PathVariable String username) {
-        this.githubDBUtility.insertData(username);
-        return gh.getUser(username);
+
+        // This condition will ADD a user if the user is not in the DB.
+        // But this would not solve the issue of having a 404 error in the server.
+        if(githubDBUtility.getUserDB(username).getUser().getLogin() == null) {
+            githubDBUtility.insertData(username);
+        }
+
+        return githubDBUtility.getUserDB(username).getUser();
     }
 
     @CrossOrigin("http://localhost:4200")

@@ -1,8 +1,10 @@
 package com.springgithub.springgithub.services.github;
 
 import com.springgithub.springgithub.data.GithubData;
+import com.springgithub.springgithub.model.User;
 import com.springgithub.springgithub.repositories.GithubRepository;
 import org.bson.types.ObjectId;
+import org.eclipse.egit.github.core.client.GitHubClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.convert.DbRefResolver;
 import org.springframework.data.mongodb.core.convert.DefaultDbRefResolver;
@@ -26,18 +28,36 @@ public class GithubDBUtility {
 
         GithubData githubData = new GithubData(ObjectId.get());
 
-        // Insert Data
-        githubData.setUser(customGithubService.getUser(username));
-        githubData.setCommits(this.customGithubService.getCommitsAdaptorRe(username));
-//        githubData.setForks(this.customGithubService.getForks(username));
-//        githubData.setIssues(this.customGithubService.getIssues(username));
-//        githubData.setRepos(this.customGithubService.getRepo(username));
-//        githubData.setOrganizations(this.customGithubService.getOrganizations(username));
-//        githubData.setStarsPerLang(this.customGithubService.getStarsPerLang(username));
-//        githubData.setWatchers(this.customGithubService.getWatchers(username));
+        if(customGithubService.getUser(username).getLogin() != null) {
+            githubData.setUsername(customGithubService.getUser(username).getLogin().toLowerCase());
+            githubData.setUser(customGithubService.getUser(username));
+//            githubData.setCommits(this.customGithubService.getCommitsAdaptorRe(username));
 
-        githubRepository.save(githubData);
+            githubRepository.save(githubData);
+        }
+
     }
 
+    public GithubData getUserDB(String username) {
+
+        GithubData githubData = githubRepository.findByUsername(username);
+        if(githubData == null) {
+            githubData = new GithubData(ObjectId.get());
+            User user = new User();
+            user.setValidated(false);
+            user.setLogin(null);
+            user.setAvatar_url(null);
+            user.setBio(null);
+            user.setBlog(null);
+            user.setCompany(null);
+            user.setCreated_at(null);
+            user.setEmail(null);
+            user.setFollowers(null);
+            user.setFollowing(null);
+            githubData.setUser(user);
+        }
+
+        return githubData;
+    }
 
 }
