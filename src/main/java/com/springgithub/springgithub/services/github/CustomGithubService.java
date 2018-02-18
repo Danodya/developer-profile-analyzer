@@ -1,9 +1,13 @@
 package com.springgithub.springgithub.services.github;
 
 import com.springgithub.springgithub.config.Configuration;
+import com.springgithub.springgithub.data.GithubData;
+import com.springgithub.springgithub.data.TestData;
+import com.springgithub.springgithub.repositories.TestRepository;
 import com.springgithub.springgithub.services.github.validators.GithubUserValidator;
 import com.springgithub.springgithub.model.Repo;
 import com.springgithub.springgithub.model.User;
+import org.bson.types.ObjectId;
 import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.client.PageIterator;
@@ -11,6 +15,9 @@ import org.eclipse.egit.github.core.service.CommitService;
 import org.eclipse.egit.github.core.service.OrganizationService;
 import org.eclipse.egit.github.core.service.RepositoryService;
 import org.eclipse.egit.github.core.service.WatcherService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.info.ProjectInfoProperties;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -21,6 +28,7 @@ import org.springframework.web.client.RestTemplate;
 import java.io.IOException;
 import java.util.*;
 
+@EnableMongoRepositories(basePackageClasses = TestRepository.class)
 @Service
 public class CustomGithubService {
     private RestTemplate restTemplate;
@@ -72,7 +80,7 @@ public class CustomGithubService {
             CommitService commitService = new CommitService(client);
 
             List<Repository> repositories = repositoryService.getRepositories(username);
-            PageIterator<Repository> pageIterator = repositoryService.pageRepositories(username, 1, 30);
+            PageIterator<Repository> pageIterator = repositoryService.pageRepositories(username, 1, 10);
 
             for (Repository repository: pageIterator.iterator().next()) {
                 map.put(repository.getName(), commitService.getCommits(repository).size());
@@ -255,6 +263,8 @@ public class CustomGithubService {
 
     public void test(String username) {
 //
+
+
     }
 
 }

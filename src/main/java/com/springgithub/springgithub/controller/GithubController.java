@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.springgithub.springgithub.services.github.CustomGithubService;
 import com.springgithub.springgithub.model.User;
+import com.springgithub.springgithub.services.github.GithubDBUtility;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -12,11 +14,17 @@ import java.util.*;
 public class GithubController {
 
     private static final Gson gson = new GsonBuilder().create();
-    private static final CustomGithubService gh = new CustomGithubService();
+
+    @Autowired
+    private CustomGithubService gh = new CustomGithubService();
+
+    @Autowired
+    GithubDBUtility githubDBUtility;
 
     @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/getuser/{username}")
     public User getUser(@PathVariable String username) {
+        this.githubDBUtility.insertData(username);
         return gh.getUser(username);
     }
 
