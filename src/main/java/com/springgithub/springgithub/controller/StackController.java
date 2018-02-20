@@ -69,6 +69,4 @@ public class StackController {
     @RequestMapping(method = RequestMethod.GET, value = "/getstackuserrephis/{id}")
     public @ResponseBody Object getReputationHistory(@PathVariable String id) { return so.getReputationHistory(id); }
 
-
-
 }

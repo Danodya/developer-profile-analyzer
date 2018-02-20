@@ -17,7 +17,6 @@
           <span class="card-title grey-text text-darken-4">{{user.display_name}}</span>
           <p class="light">From: <span class="blue-grey-text"><strong>{{user.location}}</strong></span></p>
           <p class="light">Age: <span class="blue-grey-text"><strong>{{user.age}}</strong></span></p>
-          <p class="light">Accept Rate: <span class="blue-grey-text"><strong>{{user.accept_rate}}%</strong></span></p>
           <p class="light">Reputation: <span class="blue-grey-text"><strong>{{user.reputation}}</strong></span></p>
           <a class="waves-effect waves-light btn blue darken-3" href="{{user.website_url}}" target="_blank">Website</a>
         </div>
@@ -46,6 +45,11 @@
         <div class="col l6 x6 m12 s12">
           <div class="container"><h4 class="light blue-grey-text center-align">More stats about Tags/Topic</h4></div>
           <app-tags [id]="id"></app-tags>
+          <div class="card light-blue darken-4">
+            <div class="card-content white-text">
+              <h4 class="center-align"> <strong>{{user.display_name}}</strong><span class="light"> has</span><strong> {{user.accept_rate}}</strong>% of acceptance rate.</h4>
+            </div>
+          </div>
         </div>
       </div>
 

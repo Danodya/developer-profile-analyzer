@@ -7,6 +7,8 @@ import com.google.code.stackexchange.common.PagedList;
 import com.google.code.stackexchange.schema.*;
 import com.springgithub.springgithub.config.Configuration;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.eclipse.egit.github.core.client.PageLinks;
+import org.springframework.data.domain.Page;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -140,8 +142,6 @@ public class CustomStackService {
         String URL = "http://api.stackexchange.com/users/" + id + "/reputation-history?site=stackoverflow&pagesize=5&key="  + Configuration.STACK_KEY;
         return restTemplate.getForObject(URL, Object.class);
     }
-
-
 
     /*
     SANDBOX

@@ -41,12 +41,12 @@ import { ReputationComponent } from './components/stackoverflow/reputation/reput
 
 const appRoutes = [
   {
-    path: '',
+    path: 'github',
     component: GithubComponent,
     data: {shouldDetach: true}
   },
   {
-    path: 'stackoverflow',
+    path: '',
     component: StackoverflowComponent,
     data: {shouldDetach: true}
   },
