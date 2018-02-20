@@ -17,11 +17,8 @@ public class CustomTwitterService {
     private static final TwitterFactory tf = new TwitterFactory(cb.build());
 
     public Object getTwitterUser(String username) throws TwitterException {
-
         Twitter twitter = tf.getInstance();
-
         return twitter.showUser(username);
-
     }
 
 }

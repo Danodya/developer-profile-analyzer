@@ -32,14 +32,12 @@ public class GithubDBUtility {
             githubData.setUsername(customGithubService.getUser(username).getLogin().toLowerCase());
             githubData.setUser(customGithubService.getUser(username));
 //            githubData.setCommits(this.customGithubService.getCommitsAdaptorRe(username));
-
             githubRepository.save(githubData);
         }
 
     }
 
     public GithubData getUserDB(String username) {
-
         GithubData githubData = githubRepository.findByUsername(username);
         if(githubData == null) {
             githubData = new GithubData(ObjectId.get());
@@ -56,7 +54,6 @@ public class GithubDBUtility {
             user.setFollowing(null);
             githubData.setUser(user);
         }
-
         return githubData;
     }
 
