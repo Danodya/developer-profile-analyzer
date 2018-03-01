@@ -1,0 +1,34 @@
+
+${AnsiStyle.BOLD} ${AnsiColor.RED}
+DDDDDDDDDDDDD      EEEEEEEEEEEEEEEEEEEEEEVVVVVVVV           VVVVVVVV   SSSSSSSSSSSSSSS TTTTTTTTTTTTTTTTTTTTTTT         AAA         TTTTTTTTTTTTTTTTTTTTTTT   SSSSSSSSSSSSSSS
+D::::::::::::DDD   E::::::::::::::::::::EV::::::V           V::::::V SS:::::::::::::::ST:::::::::::::::::::::T        A:::A        T:::::::::::::::::::::T SS:::::::::::::::S
+D:::::::::::::::DD E::::::::::::::::::::EV::::::V           V::::::VS:::::SSSSSS::::::ST:::::::::::::::::::::T       A:::::A       T:::::::::::::::::::::TS:::::SSSSSS::::::S
+DDD:::::DDDDD:::::DEE::::::EEEEEEEEE::::EV::::::V           V::::::VS:::::S     SSSSSSST:::::TT:::::::TT:::::T      A:::::::A      T:::::TT:::::::TT:::::TS:::::S     SSSSSSS
+  D:::::D    D:::::D E:::::E       EEEEEE V:::::V           V:::::V S:::::S            TTTTTT  T:::::T  TTTTTT     A:::::::::A     TTTTTT  T:::::T  TTTTTTS:::::S
+  D:::::D     D:::::DE:::::E               V:::::V         V:::::V  S:::::S                    T:::::T            A:::::A:::::A            T:::::T        S:::::S
+  D:::::D     D:::::DE::::::EEEEEEEEEE      V:::::V       V:::::V    S::::SSSS                 T:::::T           A:::::A A:::::A           T:::::T         S::::SSSS
+  D:::::D     D:::::DE:::::::::::::::E       V:::::V     V:::::V      SS::::::SSSSS            T:::::T          A:::::A   A:::::A          T:::::T          SS::::::SSSSS
+  D:::::D     D:::::DE:::::::::::::::E        V:::::V   V:::::V         SSS::::::::SS          T:::::T         A:::::A     A:::::A         T:::::T            SSS::::::::SS
+  D:::::D     D:::::DE::::::EEEEEEEEEE         V:::::V V:::::V             SSSSSS::::S         T:::::T        A:::::AAAAAAAAA:::::A        T:::::T               SSSSSS::::S
+  D:::::D     D:::::DE:::::E                    V:::::V:::::V                   S:::::S        T:::::T       A:::::::::::::::::::::A       T:::::T                    S:::::S
+  D:::::D    D:::::D E:::::E       EEEEEE        V:::::::::V                    S:::::S        T:::::T      A:::::AAAAAAAAAAAAA:::::A      T:::::T                    S:::::S
+DDD:::::DDDDD:::::DEE::::::EEEEEEEE:::::E         V:::::::V         SSSSSSS     S:::::S      TT:::::::TT   A:::::A             A:::::A   TT:::::::TT      SSSSSSS     S:::::S
+D:::::::::::::::DD E::::::::::::::::::::E          V:::::V          S::::::SSSSSS:::::S      T:::::::::T  A:::::A               A:::::A  T:::::::::T      S::::::SSSSSS:::::S
+D::::::::::::DDD   E::::::::::::::::::::E           V:::V           S:::::::::::::::SS       T:::::::::T A:::::A                 A:::::A T:::::::::T      S:::::::::::::::SS
+DDDDDDDDDDDDD      EEEEEEEEEEEEEEEEEEEEEE            VVV             SSSSSSSSSSSSSSS         TTTTTTTTTTTAAAAAAA                   AAAAAAATTTTTTTTTTT       SSSSSSSSSSSSSSS
+${Ansi.DEFAULT}
+
+${AnsiColor.RED}==========================================================================================${Ansi.DEFAULT}
+
+${Ansi.RED} :: DEVELOPER PROFILE ANALYZER :: ${Ansi.DEFAULT}
+${Ansi.RED} :: DESIGNED AND DEVELOPED BY ${Ansi.BLUE}DASUN PUBUDUMAL :: ${Ansi.DEFAULT}
+
+${AnsiColor.RED}==========================================================================================${Ansi.DEFAULT}
+
+${Ansi.BLUE}
+-----------------------------
+
+Starting Tomcat Server.....
+
+-----------------------------
+${Ansi.DEFAULT}

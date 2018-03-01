@@ -18,7 +18,7 @@ public class GithubController {
     private static final Gson gson = new GsonBuilder().create();
 
     @Autowired
-    private CustomGithubService gh = new CustomGithubService();
+    private CustomGithubService gh;
 
     @Autowired
     GithubDBUtility githubDBUtility;
