@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ErrorComponent } from './error.component';
+import {MaterializeModule} from "angular2-materialize";
 
 describe('ErrorComponent', () => {
   let component: ErrorComponent;
@@ -8,7 +9,8 @@ describe('ErrorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ErrorComponent ]
+      declarations: [ ErrorComponent ],
+      imports: [MaterializeModule]
     })
     .compileComponents();
   }));

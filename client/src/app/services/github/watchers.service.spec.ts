@@ -1,11 +1,13 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { WatchersService } from './watchers.service';
+import {HttpClientModule} from "@angular/common/http";
 
 describe('WatchersService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [WatchersService]
+      providers: [WatchersService],
+      imports: [HttpClientModule]
     });
   });
 

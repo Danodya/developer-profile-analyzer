@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WatchersComponent } from './watchers.component';
+import {HttpClientModule} from "@angular/common/http";
 
 describe('WatchersComponent', () => {
   let component: WatchersComponent;
@@ -8,7 +9,8 @@ describe('WatchersComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WatchersComponent ]
+      declarations: [ WatchersComponent ],
+      imports: [HttpClientModule]
     })
     .compileComponents();
   }));

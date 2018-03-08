@@ -38,6 +38,7 @@ import { WordcloudComponent } from './components/stackoverflow/wordcloud/wordclo
 import { ToptagsComponent } from './components/stackoverflow/toptags/toptags.component';
 import {CapitalizeFirstPipe} from "./pipes/capitalize.pipe";
 import { ReputationComponent } from './components/stackoverflow/reputation/reputation.component';
+import {RouterTestingModule} from '@angular/router/testing'
 
 const appRoutes = [
   {
@@ -105,7 +106,8 @@ const appRoutes = [
     Ng4LoadingSpinnerModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     AgWordCloudModule.forRoot(),
-    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
+    RouterTestingModule
   ],
   providers: [GithubService, {provide: RouteReuseStrategy, useClass: Customreuse}],
   bootstrap: [AppComponent]

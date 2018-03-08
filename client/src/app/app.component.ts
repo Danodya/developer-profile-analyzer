@@ -9,5 +9,5 @@ import { User } from './components/models/user';
   providers: [HttpClient]
 })
 export class AppComponent {
-  title = 'DEVSTATS';
+  title = 'app';
 }

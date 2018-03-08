@@ -1,11 +1,13 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { CommitsService } from './commits.service';
+import {HttpClientModule} from "@angular/common/http";
 
 describe('CommitsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [CommitsService]
+      providers: [CommitsService],
+      imports: [HttpClientModule]
     });
   });
 

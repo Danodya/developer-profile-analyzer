@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StarcountComponent } from './starcount.component';
+import {ChartsModule} from "ng2-charts";
+import {HttpClientModule} from "@angular/common/http";
 
 describe('StarcountComponent', () => {
   let component: StarcountComponent;
@@ -8,7 +10,8 @@ describe('StarcountComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StarcountComponent ]
+      declarations: [ StarcountComponent ],
+      imports: [ChartsModule, HttpClientModule]
     })
     .compileComponents();
   }));

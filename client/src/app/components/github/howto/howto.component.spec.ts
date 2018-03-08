@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HowtoComponent } from './howto.component';
+import {MaterializeModule} from "angular2-materialize";
 
 describe('HowtoComponent', () => {
   let component: HowtoComponent;
@@ -8,7 +9,8 @@ describe('HowtoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HowtoComponent ]
+      declarations: [ HowtoComponent ],
+      imports: [MaterializeModule]
     })
     .compileComponents();
   }));

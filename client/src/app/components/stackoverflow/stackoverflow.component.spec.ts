@@ -1,6 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StackoverflowComponent } from './stackoverflow.component';
+import {FormsModule} from "@angular/forms";
+import {DashboardComponent} from "./dashboard/dashboard.component";
+import {MentionsComponent} from "./mentions/mentions.component";
+import {ReputationComponent} from "../../services/reputation/reputation.component";
+import {TagsComponent} from "./tags/tags.component";
+import {ToptagsComponent} from "./toptags/toptags.component";
+import {WordcloudComponent} from "./wordcloud/wordcloud.component";
+import {HowtoComponent} from "../github/howto/howto.component";
+import {ChartsModule} from "ng2-charts";
+import {MaterializeModule} from "angular2-materialize";
+import {CapitalizeFirstPipe} from "../../pipes/capitalize.pipe";
+import {AgWordCloudModule} from "angular4-word-cloud";
+import {HttpClientModule} from "@angular/common/http";
 
 describe('StackoverflowComponent', () => {
   let component: StackoverflowComponent;
@@ -8,7 +21,18 @@ describe('StackoverflowComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StackoverflowComponent ]
+      declarations: [
+        StackoverflowComponent,
+        DashboardComponent,
+        MentionsComponent,
+        ReputationComponent,
+        TagsComponent,
+        ToptagsComponent,
+        WordcloudComponent,
+        HowtoComponent,
+        CapitalizeFirstPipe
+      ],
+      imports: [FormsModule, ChartsModule, MaterializeModule, AgWordCloudModule, HttpClientModule]
     })
     .compileComponents();
   }));
