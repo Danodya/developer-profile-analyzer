@@ -17,10 +17,10 @@ import org.springframework.stereotype.Service;
 public class GithubDBUtility {
 
     @Autowired
-    GithubRepository githubRepository;
+    CustomGithubService customGithubService;
 
     @Autowired
-    private CustomGithubService customGithubService;
+    GithubRepository githubRepository;
 
     public GithubDBUtility() { }
 

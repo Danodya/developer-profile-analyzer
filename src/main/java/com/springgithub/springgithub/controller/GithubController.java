@@ -18,21 +18,27 @@ public class GithubController {
     private static final Gson gson = new GsonBuilder().create();
 
     @Autowired
-    private CustomGithubService gh;
+    private CustomGithubService gh = new CustomGithubService();
 
     @Autowired
-    GithubDBUtility githubDBUtility;
+    private GithubDBUtility githubDBUtility;
 
     @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/getuser/{username}")
     public User getUser(@PathVariable String username) {
         // This condition will ADD a user if the user is not in the DB.
         // But this would not solve the issue of having a 404 error in the server.
+        // Testing this function would be an integration test.
         if(githubDBUtility.getUserDB(username.toLowerCase()).getUser().getLogin() == null) {
             githubDBUtility.insertData(username.toLowerCase());
         }
         return githubDBUtility.getUserDB(username.toLowerCase()).getUser();
 //        return gh.getUser(username);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/getuserfortests/{username}")
+    public @ResponseBody User getUserForTests(@PathVariable String username) {
+        return gh.getUser(username);
     }
 
     @CrossOrigin("http://localhost:4200")
