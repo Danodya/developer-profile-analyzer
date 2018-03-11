@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, ViewChild} from '@angular/core';
 import {UserService} from "../../services/stack/user.service";
 import {Stackuser} from "../models/stackuser";
 import {DashboardComponent} from "./dashboard/dashboard.component";
@@ -7,6 +7,7 @@ import {MentionsComponent} from "./mentions/mentions.component";
 import {WordcloudComponent} from "./wordcloud/wordcloud.component";
 import {ToptagsComponent} from "./toptags/toptags.component";
 import {ReputationComponent} from "./reputation/reputation.component";
+import {StackerrorComponent} from "./stackerror/stackerror.component";
 
 @Component({
   selector: 'app-stackoverflow',
@@ -18,6 +19,7 @@ export class StackoverflowComponent implements OnInit {
 
   id: string;
   user: Stackuser;
+  validated: boolean;
 
   @ViewChild(DashboardComponent) dashboard: DashboardComponent;
   @ViewChild(TagsComponent) tags: TagsComponent;
@@ -25,10 +27,12 @@ export class StackoverflowComponent implements OnInit {
   @ViewChild(WordcloudComponent) wordCloud: WordcloudComponent;
   @ViewChild(ToptagsComponent) topTagsComponent: ToptagsComponent;
   @ViewChild(ReputationComponent) reputation: ReputationComponent;
+  @ViewChild(StackerrorComponent) errorComponent: StackerrorComponent;
 
   constructor(protected userService: UserService) {
     this.user = new Stackuser();
     this.id = "4012073";
+    this.validated = true;
   }
 
   ngOnInit() {
@@ -40,21 +44,30 @@ export class StackoverflowComponent implements OnInit {
     this.userService._get(this.id).subscribe(user => {
       console.log(user.items[0]);
         this.user = user.items[0];
+        this.validated = user.validated;
     })
   }
 
   public test() {
     // this._get();
-    this.dashboard._getBadges();
-    this.tags._get();
-    this.mentions._get();
     setTimeout(() => {
-      this.wordCloud._get();
+      if(this.validated) {
+        console.log(this.validated);
+        setTimeout(() => {
+          this.dashboard._getBadges();
+          this.tags._get();
+          this.mentions._get();
+          setTimeout(() => {
+            this.wordCloud._get();
+          }, 2000);
+          this.reputation._get();
+          this.topTagsComponent._get()
+        }, 1000)
+        ;
+      } else {
+        this.errorComponent.openModal();
+      }
     }, 2000);
-    this.reputation._get();
-    this.topTagsComponent._get();
-
   }
-
 
 }

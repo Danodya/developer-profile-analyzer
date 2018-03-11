@@ -38,7 +38,8 @@ import { WordcloudComponent } from './components/stackoverflow/wordcloud/wordclo
 import { ToptagsComponent } from './components/stackoverflow/toptags/toptags.component';
 import {CapitalizeFirstPipe} from "./pipes/capitalize.pipe";
 import { ReputationComponent } from './components/stackoverflow/reputation/reputation.component';
-import {RouterTestingModule} from '@angular/router/testing'
+import {RouterTestingModule} from '@angular/router/testing';
+import { StackerrorComponent } from './components/stackoverflow/stackerror/stackerror.component'
 
 const appRoutes = [
   {
@@ -94,7 +95,8 @@ const appRoutes = [
     WordcloudComponent,
     ToptagsComponent,
     CapitalizeFirstPipe,
-    ReputationComponent
+    ReputationComponent,
+    StackerrorComponent
   ],
   imports: [
     BrowserModule,

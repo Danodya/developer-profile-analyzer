@@ -1,0 +1,14 @@
+<!-- Modal Structure -->
+<div id="modal1" class="modal red darken-3 white-text" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
+  <div class="modal-content">
+    <div class="valign-wrapper"><h4><i class="medium material-icons">help</i>  ERROR!</h4></div>
+    <h5 class="light">You have entered an <strong>invalid Github username.</strong> GitHub usernames can be identified by the URL for the users' GitHub profile.</h5>
+    <br />
+    <h5><strong>For an example,</strong></h5>
+    <br />
+    <h5 class="light">https://github.com/dasunpubudumal suggests that the users' username is <strong>dasunpubudumal</strong>.</h5>
+  </div>
+  <div class="modal-footer red darken-4">
+    <a class="waves-effect waves-green btn-flat white-text" (click)="closeModal()">Okay</a>
+  </div>
+</div>

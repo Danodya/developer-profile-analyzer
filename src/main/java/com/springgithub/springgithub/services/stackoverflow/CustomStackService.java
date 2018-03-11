@@ -6,9 +6,15 @@ import com.google.code.stackexchange.client.query.*;
 import com.google.code.stackexchange.common.PagedList;
 import com.google.code.stackexchange.schema.*;
 import com.springgithub.springgithub.config.Configuration;
+import com.springgithub.springgithub.model.StackOverflow.StackUser;
+import com.springgithub.springgithub.services.stackoverflow.validators.CustomStackVallidator;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.eclipse.egit.github.core.client.PageLinks;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -31,10 +37,22 @@ public class CustomStackService {
     private static final StackExchangeApiQueryFactory queryFactory = StackExchangeApiQueryFactory.newInstance(key, StackExchangeSite.fromValue(site));
 
     // Get User information
-    public Object getUser(String id) {
+    public StackUser getUser(String id) {
+        CustomStackVallidator customStackVallidator = new CustomStackVallidator();
+        customStackVallidator.setFound(true);
         RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory);
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
+        restTemplate.setErrorHandler(customStackVallidator);
         String URL = "https://api.stackexchange.com/users/" + id + "?site=" + Configuration.SITE + "&key=" + Configuration.STACK_KEY;
-        return restTemplate.getForObject(URL, Object.class);
+        ResponseEntity<StackUser> user = restTemplate.exchange(URL, HttpMethod.GET, entity, StackUser.class);
+        System.out.println(customStackVallidator.isFound());
+        if(user.getBody().getItems().length == 0 || Objects.equals(user.getBody().getItems(), null)) {
+            user.getBody().setValidated(false);
+        } else {
+            user.getBody().setValidated(true);
+        }
+        return user.getBody();
     }
 
     /* Get User badges
