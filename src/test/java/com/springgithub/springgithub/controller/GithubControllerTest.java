@@ -1,5 +1,7 @@
 package com.springgithub.springgithub.controller;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.google.gson.JsonObject;
 import com.springgithub.springgithub.repositories.GithubRepository;
 import com.springgithub.springgithub.services.github.CustomGithubService;
 import org.hamcrest.Matcher;
@@ -18,6 +20,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver;
 
 import static org.junit.Assert.*;
 
@@ -33,12 +36,19 @@ public class GithubControllerTest {
 
     @Before
     public void setUp() throws Exception {
-        mockMvc = MockMvcBuilders.standaloneSetup(githubController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(githubController).setHandlerExceptionResolvers(new ExceptionHandlerExceptionResolver()).build();
     }
+    
+    /*
+     * Testing for the /getuser/:username endpoint is an integration test - not a unit test
+     * This fact can be supported by the fact that it traverses through several layers like -
+     * - Data Access layer and Service Layer
+     */
 
     @Test
     // Tests for whether the user is validated.
-    public void testUserEndpoint() throws Exception{
+    // A positive case.
+    public void testUserEndpointCorrect() throws Exception{
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/getuserfortests/dasunpubudumal")
                         .accept(MediaType.APPLICATION_JSON)
@@ -51,9 +61,22 @@ public class GithubControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.public_repos",
                         org.hamcrest.Matchers.is("20")));
     }
+    
+    @Test
+    // Negative case for the user endpoint.
+    // Since the error is handled through ResponseErrorHandler class, you should still get an okay response
+    // - eventually.
+    public void testUserEndpointIncorrect() throws Exception {
+    	mockMvc.perform(MockMvcRequestBuilders.get("/getuserfortests/dausnpubudumal")
+    					.accept(MediaType.APPLICATION_JSON)
+    					
+    	)
+    			.andExpect(MockMvcResultMatchers.status().isOk());
+    }
 
     @Test
     // Checks whether this endpoint returns anything
+    // A positive case.
     public void testCommitsEndpoint() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/getcommitsadapterRe/dilantha95")
@@ -61,9 +84,23 @@ public class GithubControllerTest {
         )
                 .andExpect(MockMvcResultMatchers.jsonPath("$.*", org.hamcrest.Matchers.hasSize(9)));
     }
+    
+    @Test
+    // Negative case for the commits endpoint.
+    // This should result in a 4xx error. (Bad request)
+    public void testCommitsEndpointIncorrect() throws Exception {
+    	JsonObject jsonObject = new JsonObject();
+    	jsonObject.addProperty("NO DATA", 0);
+    	mockMvc.perform(
+    			MockMvcRequestBuilders.get("/getcommitsadapterRe/dilanthaa95")
+    					.accept(MediaType.APPLICATION_JSON)
+    	)
+    			.andExpect(MockMvcResultMatchers.content().string(jsonObject.toString()));
+    }
 
     @Test
     // Checks whether there are two arrays - one for languages and the other for counts.
+    // A positive case.
     public void testStarsPerLang() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/getstarsperlang/dasunpubudumal")
@@ -74,7 +111,18 @@ public class GithubControllerTest {
     }
     
     @Test
+    // Negative case for the stars endpoint.
+    public void testStarsPerLangIncorrect() throws Exception {
+    	mockMvc.perform(
+    			MockMvcRequestBuilders.get("/getstarsperlang/dasunpubudumalaa")
+    	)
+    			.andExpect(MockMvcResultMatchers.status().isInternalServerError());
+    }
+    
+    
+    @Test
     // Checks whether the correct forks are being received.
+    // A positive case.
     public void testGetForks() throws Exception{
 		mockMvc.perform(
 				MockMvcRequestBuilders.get("/getforks/dasunpubudumal")
@@ -98,6 +146,7 @@ public class GithubControllerTest {
 
     @Test
     // Check whether the correct number of issues are received.
+    // A positive case.
     public void testGetIssues() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/getissues/dasunpubudumal")
@@ -109,6 +158,7 @@ public class GithubControllerTest {
 
     @Test
     // Check whether the correct number of organizations are received.
+    // A positive case.
     public void testGetOrganizations() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/getorganizations/dasunpubudumal")

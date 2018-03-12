@@ -39,7 +39,8 @@ import { ToptagsComponent } from './components/stackoverflow/toptags/toptags.com
 import {CapitalizeFirstPipe} from "./pipes/capitalize.pipe";
 import { ReputationComponent } from './components/stackoverflow/reputation/reputation.component';
 import {RouterTestingModule} from '@angular/router/testing';
-import { StackerrorComponent } from './components/stackoverflow/stackerror/stackerror.component'
+import { StackerrorComponent } from './components/stackoverflow/stackerror/stackerror.component';
+import { TwitterdashboardComponent } from './components/twitter/twitterdashboard/twitterdashboard.component'
 
 const appRoutes = [
   {
@@ -96,7 +97,8 @@ const appRoutes = [
     ToptagsComponent,
     CapitalizeFirstPipe,
     ReputationComponent,
-    StackerrorComponent
+    StackerrorComponent,
+    TwitterdashboardComponent
   ],
   imports: [
     BrowserModule,

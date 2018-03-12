@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class GithubUserValidator implements ResponseErrorHandler{
 
-    private boolean found;  // 404 Error Handler
+    private boolean found;  	// 404 Error Handler
     private boolean badRequest; // 400 Bad Request
     private boolean unexpected;
 
@@ -24,6 +24,7 @@ public class GithubUserValidator implements ResponseErrorHandler{
     }
 
     @Override
+    // Handles 200, 404 or 400 server responses.
     public void handleError(ClientHttpResponse response) throws IOException {
         String responseBody = "";
         if(response != null && response.getBody() != null) {

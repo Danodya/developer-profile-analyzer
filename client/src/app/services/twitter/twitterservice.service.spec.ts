@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { TwitterserviceService } from './twitterservice.service';
+import { TwitterserviceService } from './twitter.service';
 
 describe('TwitterserviceService', () => {
   beforeEach(() => {

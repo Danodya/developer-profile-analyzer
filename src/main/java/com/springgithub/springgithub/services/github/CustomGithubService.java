@@ -94,6 +94,8 @@ public class CustomGithubService {
 
     // Get starts per Language
     public ArrayList<Object> getStarsPerLang(String username) {
+    	
+    	GithubUserValidator githubUserValidator = new GithubUserValidator();
 
         ArrayList<Object> output = new ArrayList<>();
         ArrayList<String> languages = new ArrayList<>();
@@ -103,12 +105,14 @@ public class CustomGithubService {
                 + "&client_secret=" + Configuration.GITHUB_CLIENT_SECRET;
 
         restTemplate = new RestTemplate();
+        restTemplate.setErrorHandler(githubUserValidator);
         headers = new HttpHeaders();
         headers.set("User-Agent", "profile-analyzer");
         HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
 
         ResponseEntity<Repo[]> repos = restTemplate.exchange(URL, HttpMethod.GET, entity, Repo[].class);
 
+        // JSON Parse error is caused by this line.
         Repo[] arr = repos.getBody();
 
         for (Repo repo : arr) {
