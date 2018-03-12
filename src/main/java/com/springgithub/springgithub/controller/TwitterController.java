@@ -18,4 +18,15 @@ public class TwitterController {
         return tw.getTwitterUser(username);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/gettwittertimeline/{handle}")
+    public Object getTwitterUserTimelline(@PathVariable String handle) throws TwitterException {
+        return tw.getTwitterUserTimelines(handle);
+    }
+
+    @CrossOrigin("http://localhost:4200")
+    @RequestMapping(method = RequestMethod.GET, value = "/gettwitterstatuses/{handle}")
+    public Object getTwitterUserStatuses(@PathVariable String handle) throws TwitterException {
+        return tw.getTwitterUserTimelines(handle);
+    }
+
 }

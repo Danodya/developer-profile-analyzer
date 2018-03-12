@@ -13,9 +13,6 @@
       </div>
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4"><p class="left-align">{{user.name}}</span>
-        <div class="">
-          <a class="waves-effect waves-light btn blue accent-4" href="{{user.url}}" target="_blank">Profile</a>
-        </div>
       </div>
     </div>
     <div class="col xl10 l10 m12 s12" *ngIf="isDataLoaded">
@@ -23,6 +20,27 @@
         <blockquote><p class="flow-text center-align">"{{user.description}}"</p></blockquote>
       </div>
      <app-twitterdashboard [user]="user"></app-twitterdashboard>
+      <br />
+      <div class="row">
+        <div class="col xl8 l8 m12 s12">
+          <app-twittertimeline [(handle)]="handle"></app-twittertimeline>
+        </div>
+        <div class="col xl4 l4 m12 s12">
+          <div class="card blue-grey darken-4">
+            <div class="card-content white-text">
+              <div class="row">
+                <div class="col l4 xl4">
+                  <i class="large material-icons">insert_emoticon</i>
+                </div>
+                <div class="col l8 xl8">
+                  <span class="card-title"><strong><p class="center-align">Friends</p></strong></span>
+                  <h4 class="center-align"><strong>{{user.friendsCount}}</strong></h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

@@ -40,7 +40,9 @@ import {CapitalizeFirstPipe} from "./pipes/capitalize.pipe";
 import { ReputationComponent } from './components/stackoverflow/reputation/reputation.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import { StackerrorComponent } from './components/stackoverflow/stackerror/stackerror.component';
-import { TwitterdashboardComponent } from './components/twitter/twitterdashboard/twitterdashboard.component'
+import { TwitterdashboardComponent } from './components/twitter/twitterdashboard/twitterdashboard.component';
+import { TwittertimelineComponent } from './components/twitter/twittertimeline/twittertimeline.component'
+import {Ng4TwitterTimelineModule} from "ng4-twitter-timeline/lib";
 
 const appRoutes = [
   {
@@ -98,7 +100,8 @@ const appRoutes = [
     CapitalizeFirstPipe,
     ReputationComponent,
     StackerrorComponent,
-    TwitterdashboardComponent
+    TwitterdashboardComponent,
+    TwittertimelineComponent
   ],
   imports: [
     BrowserModule,
@@ -111,7 +114,8 @@ const appRoutes = [
     RouterModule.forRoot(appRoutes),
     AgWordCloudModule.forRoot(),
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
-    RouterTestingModule
+    RouterTestingModule,
+    Ng4TwitterTimelineModule
   ],
   providers: [GithubService, {provide: RouteReuseStrategy, useClass: Customreuse}],
   bootstrap: [AppComponent]

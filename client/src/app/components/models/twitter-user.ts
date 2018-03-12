@@ -20,6 +20,7 @@ export class TwitterUser {
   private _profileBannerUrl: string;
   private _miniProfileImageURL: string;
   private _originalProfileImageURLHttps: string;
+  private _statusesCount : number;
 
 
   get id(): number {
@@ -97,4 +98,8 @@ export class TwitterUser {
   get originalProfileImageURLHttps(): string {
     return this._originalProfileImageURLHttps;
   }
+  
+  get statusesCount(): number {
+      return this._statusesCount;
+    }
 }

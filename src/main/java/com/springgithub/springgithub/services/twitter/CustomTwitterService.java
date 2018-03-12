@@ -2,11 +2,10 @@ package com.springgithub.springgithub.services.twitter;
 
 import com.springgithub.springgithub.config.Configuration;
 import org.springframework.stereotype.Service;
-import twitter4j.Twitter;
-import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
-import twitter4j.User;
+import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
+
+import java.util.List;
 
 @Service
 public class CustomTwitterService {
@@ -19,9 +18,28 @@ public class CustomTwitterService {
                     .setOAuthAccessTokenSecret(Configuration.TWITTER_ACCESS_TOKEN_SECRET);
     private static final TwitterFactory tf = new TwitterFactory(cb.build());
 
+    // User details
     public User getTwitterUser(String username) throws TwitterException {
         Twitter twitter = tf.getInstance();
         return twitter.showUser(username);
     }
+
+    // User timelines
+    public Object getTwitterUserTimelines(String handle) throws TwitterException {
+        Twitter twitter = tf.getInstance();
+        Paging paging = new Paging();
+        paging.setCount(5);
+        return twitter.getUserTimeline(handle, paging);
+    }
+
+    public List<Status> getTwitterUserStatuses(String handle) throws TwitterException {
+        Twitter twitter = tf.getInstance();
+        Paging paging = new Paging();
+        paging.setCount(5);
+        return twitter.getUserTimeline(handle, paging);
+    }
+
+
+
 
 }
