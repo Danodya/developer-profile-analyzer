@@ -11,6 +11,7 @@ import {TwitterUser} from "../../models/twitter-user";
 export class TwitterfollowersComponent implements OnInit {
 
   @Input() handle : string;
+  handler: string;
   followers: TwitterUser[];
   isDataLoaded: boolean;
 
@@ -28,6 +29,7 @@ export class TwitterfollowersComponent implements OnInit {
   }
 
   public _get() {
+    console.log(this.handle);
     this.isDataLoaded = false;
     this.followersService._get(this.handle).subscribe((followers) => {
       console.log(followers);
@@ -35,5 +37,6 @@ export class TwitterfollowersComponent implements OnInit {
       this.isDataLoaded = true;
     })
   }
+
 
 }

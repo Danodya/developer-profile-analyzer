@@ -41,7 +41,10 @@ public class CustomTwitterService {
 
     public PagableResponseList<User> getTwitterFollowers(String handle) throws TwitterException {
         Twitter twitter = tf.getInstance();
-        return twitter.getFollowersList(handle, -1);
+//        twitter.onRateLimitReached();
+        Paging paging = new Paging();
+        paging.setCount(5);
+        return twitter.getFriendsList(handle, -1, 5);
     }
 
 

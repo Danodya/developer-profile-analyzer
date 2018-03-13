@@ -1,4 +1,4 @@
-<div style="padding-left: 10px; margin-top: 5%;">
+<div style="padding-left: 10px;">
 
   <!--Search input-->
   <div class="container input-field col s6" style="width: 40%">
@@ -7,17 +7,18 @@
   </div>
 
   <div class="row">
-    <div class="col xl2 l2 m12 s12 card" *ngIf="isDataLoaded">
-      <div class="card-image waves-effect waves-block waves-light">
+    <div class="col xl3 l3 m12 s12" *ngIf="isDataLoaded">
+      <div class="card"><div class="card-image waves-effect waves-block waves-light">
         <img class="activator" src="{{user.originalProfileImageURLHttps}}">
       </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4"><p class="left-align">{{user.name}}</span>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4"><p class="left-align">{{user.name}}</span>
+          <p class="light">{{user.location}}</p>
+        </div>
       </div>
-      <br />
       <app-twitterfollowers [handle]="handle"></app-twitterfollowers>
     </div>
-    <div class="col xl10 l10 m12 s12" *ngIf="isDataLoaded">
+    <div class="col xl9 l9 m12 s12" *ngIf="isDataLoaded">
       <div class="row" *ngIf="user.description">
         <blockquote><p class="flow-text center-align">"{{user.description}}"</p></blockquote>
       </div>
@@ -28,18 +29,9 @@
           <app-twittertimeline [(handle)]="handle"></app-twittertimeline>
         </div>
         <div class="col xl4 l4 m12 s12">
-          <div class="card blue-grey darken-4">
-            <div class="card-content white-text">
-              <div class="row">
-                <div class="col l4 xl4">
-                  <i class="large material-icons">insert_emoticon</i>
-                </div>
-                <div class="col l8 xl8">
-                  <span class="card-title"><strong><p class="center-align">Friends</p></strong></span>
-                  <h4 class="center-align"><strong>{{user.friendsCount}}</strong></h4>
-                </div>
-              </div>
-            </div>
+          <span class="card-title"><strong><p class="center-align">Click here to go to the profile!</p></strong></span>
+          <div class="container" align="center">
+            <a class="waves-effect waves-light btn blue accent-4" href="{{user.urll}}" target="_blank">Click!</a>
           </div>
         </div>
       </div>
