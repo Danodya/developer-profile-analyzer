@@ -1,9 +1,12 @@
 package com.springgithub.springgithub.controller;
 
+import com.springgithub.springgithub.model.StackOverflow.TwitterFriends;
+import com.springgithub.springgithub.model.TokenResponse;
 import com.springgithub.springgithub.services.twitter.CustomTwitterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import twitter4j.PagableResponseList;
+import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.User;
 
@@ -34,6 +37,11 @@ public class TwitterController {
     @RequestMapping(method = RequestMethod.GET, value = "/gettwitterfollowers/{handle}")
     public PagableResponseList<User> getTwitterFollowers(@PathVariable String handle) throws TwitterException {
         return tw.getTwitterFollowers(handle);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/testauth/{handle}")
+    public Object authCheck(@PathVariable String handle) throws TwitterException {
+        return tw.getFriendsAPI(handle);
     }
 
 }

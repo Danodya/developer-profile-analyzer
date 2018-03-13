@@ -40,13 +40,12 @@ export class TwitterComponent implements OnInit {
     })
   }
 
-  test() {
+  public test() {
     this._get();
     setTimeout(() => {
       this.timeline.update();
       this.followers._get();
     }, 2000);
-
   }
 
 }
