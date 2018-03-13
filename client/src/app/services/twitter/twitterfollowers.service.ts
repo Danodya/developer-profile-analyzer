@@ -8,7 +8,7 @@ export class TwitterfollowersService {
   constructor(protected http: HttpClient) { }
 
   public _get(handle: string) {
-    return this.http.get<TwitterUser[]>("http://localhost:8080/gettwitterfollowers/".concat(handle))
+    return this.http.get<any>("http://localhost:8080/gettwitterfollowersRe/".concat(handle))
       .map(res => res);
   }
 }

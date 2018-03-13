@@ -1,8 +1,6 @@
 package com.springgithub.springgithub.services.twitter;
 
 import com.springgithub.springgithub.config.Configuration;
-import com.springgithub.springgithub.model.StackOverflow.TwitterFriends;
-import com.springgithub.springgithub.model.TokenResponse;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -12,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
+
+
 
 import java.util.List;
 
@@ -71,6 +71,9 @@ public class CustomTwitterService {
         headers.add("Authorization", headerValue);
         headers.add("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
         HttpEntity<String> entity = new HttpEntity<>("grant_type=client_credentials", headers);
+
+        // Inner class as a model class to hold the token response.
+
         ResponseEntity<TokenResponse> response = restTemplate.exchange("https://api.twitter.com/oauth2/token"
                 , HttpMethod.POST, entity, TokenResponse.class);
         TokenResponse tokenResponse = response.getBody();

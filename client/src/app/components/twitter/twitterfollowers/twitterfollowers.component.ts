@@ -12,7 +12,7 @@ export class TwitterfollowersComponent implements OnInit {
 
   @Input() handle : string;
   handler: string;
-  followers: TwitterUser[];
+  followers: any;
   isDataLoaded: boolean;
 
   constructor(protected followersService: TwitterfollowersService) {
@@ -23,7 +23,7 @@ export class TwitterfollowersComponent implements OnInit {
   ngOnInit() {
     this.followersService._get("katyperry").subscribe((followers) => {
       console.log(followers);
-      this.followers = followers;
+      this.followers = followers.users;
       this.isDataLoaded = true;
     })
   }
@@ -33,7 +33,7 @@ export class TwitterfollowersComponent implements OnInit {
     this.isDataLoaded = false;
     this.followersService._get(this.handle).subscribe((followers) => {
       console.log(followers);
-      this.followers = followers;
+      this.followers = followers.users;
       this.isDataLoaded = true;
     })
   }

@@ -1,4 +1,4 @@
-package com.springgithub.springgithub.model;
+package com.springgithub.springgithub.services.twitter;
 
 public class TokenResponse {
     private String token_type;
@@ -19,4 +19,5 @@ public class TokenResponse {
     public void setAccess_token(String access_token) {
         this.access_token = access_token;
     }
+
 }

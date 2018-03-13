@@ -1,12 +1,9 @@
 package com.springgithub.springgithub.controller;
 
-import com.springgithub.springgithub.model.StackOverflow.TwitterFriends;
-import com.springgithub.springgithub.model.TokenResponse;
 import com.springgithub.springgithub.services.twitter.CustomTwitterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import twitter4j.PagableResponseList;
-import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.User;
 
@@ -39,7 +36,8 @@ public class TwitterController {
         return tw.getTwitterFollowers(handle);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/testauth/{handle}")
+    @CrossOrigin("http://localhost:4200")
+    @RequestMapping(method = RequestMethod.GET, value = "/gettwitterfollowersRe/{handle}")
     public Object authCheck(@PathVariable String handle) throws TwitterException {
         return tw.getFriendsAPI(handle);
     }
