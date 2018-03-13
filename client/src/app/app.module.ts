@@ -43,6 +43,7 @@ import { StackerrorComponent } from './components/stackoverflow/stackerror/stack
 import { TwitterdashboardComponent } from './components/twitter/twitterdashboard/twitterdashboard.component';
 import { TwittertimelineComponent } from './components/twitter/twittertimeline/twittertimeline.component'
 import {Ng4TwitterTimelineModule} from "ng4-twitter-timeline/lib";
+import { TwitterfollowersComponent } from './components/twitter/twitterfollowers/twitterfollowers.component';
 
 const appRoutes = [
   {
@@ -101,7 +102,8 @@ const appRoutes = [
     ReputationComponent,
     StackerrorComponent,
     TwitterdashboardComponent,
-    TwittertimelineComponent
+    TwittertimelineComponent,
+    TwitterfollowersComponent
   ],
   imports: [
     BrowserModule,

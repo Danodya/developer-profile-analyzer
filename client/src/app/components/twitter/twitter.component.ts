@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {TwitterService} from "../../services/twitter/twitter.service";
 import {TwitterUser} from "../models/twitter-user";
 import {TwittertimelineComponent} from "./twittertimeline/twittertimeline.component";
+import {TwitterfollowersComponent} from "./twitterfollowers/twitterfollowers.component";
 
 @Component({
   selector: 'app-twitter',
@@ -17,6 +18,7 @@ export class TwitterComponent implements OnInit {
   isDataLoaded: boolean;
 
   @ViewChild(TwittertimelineComponent) timeline: TwittertimelineComponent;
+  @ViewChild(TwitterfollowersComponent) followers: TwitterfollowersComponent;
 
   constructor(protected twitterService: TwitterService) {
     this.handle = "katyperry";

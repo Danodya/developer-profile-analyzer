@@ -39,6 +39,11 @@ public class CustomTwitterService {
         return twitter.getUserTimeline(handle, paging);
     }
 
+    public PagableResponseList<User> getTwitterFollowers(String handle) throws TwitterException {
+        Twitter twitter = tf.getInstance();
+        return twitter.getFollowersList(handle, -1);
+    }
+
 
 
 
