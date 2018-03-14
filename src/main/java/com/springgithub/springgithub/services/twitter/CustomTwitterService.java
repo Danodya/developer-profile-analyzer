@@ -11,8 +11,6 @@ import org.springframework.web.client.RestTemplate;
 import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
 
-
-
 import java.util.List;
 
 @Service
@@ -25,6 +23,7 @@ public class CustomTwitterService {
                     .setOAuthAccessToken(Configuration.TWITTER_ACCESS_TOKEN)
                     .setOAuthAccessTokenSecret(Configuration.TWITTER_ACCESS_TOKEN_SECRET);
     private static final TwitterFactory tf = new TwitterFactory(cb.build());
+    private static String bearerToken = "";
 
     // User details
     public User getTwitterUser(String username) throws TwitterException {
@@ -49,7 +48,6 @@ public class CustomTwitterService {
 
     public PagableResponseList<User> getTwitterFollowers(String handle) throws TwitterException {
         Twitter twitter = tf.getInstance();
-//        twitter.onRateLimitReached();
         Paging paging = new Paging();
         paging.setCount(5);
         return twitter.getFriendsList(handle, -1, 5);
@@ -67,18 +65,13 @@ public class CustomTwitterService {
         byte[] bytes = Base64.encodeBase64(enc.getBytes());
         String encoded64 = new String(bytes);
         String headerValue = "Basic " + encoded64;
-        System.out.println(headerValue);
         headers.add("Authorization", headerValue);
         headers.add("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
         HttpEntity<String> entity = new HttpEntity<>("grant_type=client_credentials", headers);
-
-        // Inner class as a model class to hold the token response.
-
-        ResponseEntity<TokenResponse> response = restTemplate.exchange("https://api.twitter.com/oauth2/token"
-                , HttpMethod.POST, entity, TokenResponse.class);
-        TokenResponse tokenResponse = response.getBody();
-        System.out.println("Access Token: " + tokenResponse.getAccess_token());
-
+        ResponseEntity<TwitterToken> response = restTemplate.exchange("https://api.twitter.com/oauth2/token"
+                , HttpMethod.POST, entity, TwitterToken.class);
+        TwitterToken tokenResponse = response.getBody();   // Retrieve the token
+        bearerToken = tokenResponse.getAccess_token();
         // Hit Twitter endpoints with the retrieved token.
         HttpHeaders requestHeaders = new HttpHeaders();
         requestHeaders.add("Authorization", "Bearer " + tokenResponse.getAccess_token());
@@ -91,7 +84,19 @@ public class CustomTwitterService {
         return friends.getBody();
     }
 
+    public Object test() throws TwitterException{
+        Twitter twitter = tf.getInstance();
+        return twitter.trends();
+    }
 
+    public Object getTwitterFollowersRe(String handle) {
+        System.out.println("Token: " + bearerToken);
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization", "Bearer " + bearerToken);
+        HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
 
-
+        String URL = "https://api.twitter.com/1.1/followers/list.json?screen_name=" + handle + "&count=5";
+        return restTemplate.exchange(URL, HttpMethod.GET, entity, Object.class).getBody();
+    }
 }

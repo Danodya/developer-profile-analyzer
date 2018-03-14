@@ -1,6 +1,7 @@
 package com.springgithub.springgithub.controller;
 
 import com.springgithub.springgithub.services.twitter.CustomTwitterService;
+import com.springgithub.springgithub.services.twitter.TwitterToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import twitter4j.PagableResponseList;
@@ -31,15 +32,21 @@ public class TwitterController {
     }
 
     @CrossOrigin("http://localhost:4200")
-    @RequestMapping(method = RequestMethod.GET, value = "/gettwitterfollowers/{handle}")
-    public PagableResponseList<User> getTwitterFollowers(@PathVariable String handle) throws TwitterException {
-        return tw.getTwitterFollowers(handle);
-    }
-
-    @CrossOrigin("http://localhost:4200")
-    @RequestMapping(method = RequestMethod.GET, value = "/gettwitterfollowersRe/{handle}")
+    @RequestMapping(method = RequestMethod.GET, value = "/gettwitterfriends/{handle}")
     public Object authCheck(@PathVariable String handle) throws TwitterException {
         return tw.getFriendsAPI(handle);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/gettrends")
+    public Object twitterTrends() throws TwitterException {
+        return tw.test();
+    }
+
+    // The endpoint `/gettwitterfriends` should be executed before executing this endpoint.
+    @CrossOrigin("http://localhost:4200")
+    @RequestMapping(method = RequestMethod.GET, value = "/gettwitterfollowers/{handle}")
+    public Object getTwitterFollowersRe(@PathVariable String handle) throws TwitterException {
+        return tw.getTwitterFollowersRe(handle);
     }
 
 }

@@ -25,14 +25,15 @@
      <app-twitterdashboard [user]="user"></app-twitterdashboard>
       <br />
       <div class="row">
-        <div class="col xl8 l8 m12 s12">
+        <div class="col xl7 l7 m12 s12">
           <app-twittertimeline [(handle)]="handle"></app-twittertimeline>
         </div>
-        <div class="col xl4 l4 m12 s12">
+        <div class="col xl5 l5 m12 s12">
           <span class="card-title"><strong><p class="center-align">Click here to go to the profile!</p></strong></span>
           <div class="container" align="center">
             <a class="waves-effect waves-light btn blue accent-4" href="{{user.urll}}" target="_blank">Click!</a>
           </div>
+          <app-twitterrealfollowers [handle]="handle"></app-twitterrealfollowers>
         </div>
       </div>
     </div>

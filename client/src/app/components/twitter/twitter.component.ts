@@ -3,6 +3,7 @@ import {TwitterService} from "../../services/twitter/twitter.service";
 import {TwitterUser} from "../models/twitter-user";
 import {TwittertimelineComponent} from "./twittertimeline/twittertimeline.component";
 import {TwitterfollowersComponent} from "./twitterfollowers/twitterfollowers.component";
+import {TwitterrealfollowersComponent} from "./twitterrealfollowers/twitterrealfollowers.component";
 
 @Component({
   selector: 'app-twitter',
@@ -19,6 +20,7 @@ export class TwitterComponent implements OnInit {
 
   @ViewChild(TwittertimelineComponent) timeline: TwittertimelineComponent;
   @ViewChild(TwitterfollowersComponent) followers: TwitterfollowersComponent;
+  @ViewChild(TwitterrealfollowersComponent) realFollowers: TwitterrealfollowersComponent;
 
   constructor(protected twitterService: TwitterService) {
     this.handle = "katyperry";
@@ -45,6 +47,9 @@ export class TwitterComponent implements OnInit {
     setTimeout(() => {
       this.timeline.update();
       this.followers._get();
+      setTimeout(() => {
+        this.realFollowers._get();
+      }, 1000);
     }, 2000);
   }
 
