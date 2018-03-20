@@ -7,5 +7,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.Map;
 
 public interface GithubRepository extends MongoRepository<GithubData, Integer>{
-    public GithubData findByUsername(String username);
+    GithubData findByUsername(String username);
 }

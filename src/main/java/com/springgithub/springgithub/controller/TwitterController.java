@@ -20,11 +20,6 @@ public class TwitterController {
         return tw.getTwitterUser(username);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/gettwittertimeline/{handle}")
-    public Object getTwitterUserTimelline(@PathVariable String handle) throws TwitterException {
-        return tw.getTwitterUserTimelines(handle);
-    }
-
     @CrossOrigin("http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/gettwitterstatuses/{handle}")
     public Object getTwitterUserStatuses(@PathVariable String handle) throws TwitterException {
@@ -35,11 +30,6 @@ public class TwitterController {
     @RequestMapping(method = RequestMethod.GET, value = "/gettwitterfriends/{handle}")
     public Object authCheck(@PathVariable String handle) throws TwitterException {
         return tw.getFriendsAPI(handle);
-    }
-
-    @RequestMapping(method = RequestMethod.GET, value = "/gettrends")
-    public Object twitterTrends() throws TwitterException {
-        return tw.test();
     }
 
     // The endpoint `/gettwitterfriends` should be executed before executing this endpoint.

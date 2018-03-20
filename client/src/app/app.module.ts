@@ -42,9 +42,10 @@ import {RouterTestingModule} from '@angular/router/testing';
 import { StackerrorComponent } from './components/stackoverflow/stackerror/stackerror.component';
 import { TwitterdashboardComponent } from './components/twitter/twitterdashboard/twitterdashboard.component';
 import { TwittertimelineComponent } from './components/twitter/twittertimeline/twittertimeline.component'
-import {Ng4TwitterTimelineModule} from "ng4-twitter-timeline/lib";
+// import {Ng4TwitterTimelineModule} from "ng4-twitter-timeline/lib";
 import { TwitterfollowersComponent } from './components/twitter/twitterfollowers/twitterfollowers.component';
 import { TwitterrealfollowersComponent } from './components/twitter/twitterrealfollowers/twitterrealfollowers.component';
+import { TempComponent } from './components/twitter/temp/temp.component';
 
 const appRoutes = [
   {
@@ -60,17 +61,14 @@ const appRoutes = [
   {
     path: 'twitter',
     component: TwitterComponent,
+    children: [
+      {path:'', component: TempComponent}
+    ],
     data: {shouldDetach: true}
   },
   {
     path: 'about',
-    component: AboutComponent,
-    data: {shouldDetach: true}
-  },
-  {
-    path: 'commits',
-    component: CommitsComponent,
-    data: {shouldDetach: true}
+    component: AboutComponent
   }
 ];
 
@@ -105,7 +103,8 @@ const appRoutes = [
     TwitterdashboardComponent,
     TwittertimelineComponent,
     TwitterfollowersComponent,
-    TwitterrealfollowersComponent
+    TwitterrealfollowersComponent,
+    TempComponent
   ],
   imports: [
     BrowserModule,
@@ -119,7 +118,7 @@ const appRoutes = [
     AgWordCloudModule.forRoot(),
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     RouterTestingModule,
-    Ng4TwitterTimelineModule
+    // Ng4TwitterTimelineModule
   ],
   providers: [GithubService, {provide: RouteReuseStrategy, useClass: Customreuse}],
   bootstrap: [AppComponent]

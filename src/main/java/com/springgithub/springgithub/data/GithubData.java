@@ -44,12 +44,4 @@ public class GithubData {
         this.user = user;
     }
 
-//    public Map getCommits() {
-//        return commits;
-//    }
-//
-//    public void setCommits(Map commits) {
-//        this.commits = commits;
-//    }
-
 }

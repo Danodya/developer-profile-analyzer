@@ -31,6 +31,7 @@ import java.util.*;
 @EnableMongoRepositories(basePackageClasses = TestRepository.class)
 @Service
 public class CustomGithubService {
+
     private RestTemplate restTemplate;
     private HttpHeaders headers;
 
@@ -58,7 +59,6 @@ public class CustomGithubService {
     public Repo[] getRepo(String username) {
         GithubUserValidator githubUserValidator = new GithubUserValidator();
         restTemplate = new RestTemplate();
-//        restTemplate.setErrorHandler(githubUserValidator);
         headers = new HttpHeaders();
         headers.set("User-Agent", "profile-analyzer");
         HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
@@ -79,7 +79,6 @@ public class CustomGithubService {
             RepositoryService repositoryService = new RepositoryService(client);
             CommitService commitService = new CommitService(client);
 
-            List<Repository> repositories = repositoryService.getRepositories(username);
             PageIterator<Repository> pageIterator = repositoryService.pageRepositories(username, 1, 10);
 
             for (Repository repository: pageIterator.iterator().next()) {
@@ -259,16 +258,6 @@ public class CustomGithubService {
         organization_count = organizations.size();
 
         return organization_count;
-    }
-
-    /*
-    Testing Sandbox
-     */
-
-    public void test(String username) {
-//
-
-
     }
 
 }

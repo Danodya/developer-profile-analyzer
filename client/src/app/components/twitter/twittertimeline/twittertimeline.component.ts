@@ -1,24 +1,22 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Ng4TwitterTimelineService} from "ng4-twitter-timeline/lib";
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-twittertimeline',
   templateUrl: './twittertimeline.component.html',
   styleUrls: ['./twittertimeline.component.css']
 })
-export class TwittertimelineComponent implements OnInit {
+export class TwittertimelineComponent implements OnInit, OnChanges{
 
   @Input() handle: string;
   data: any = {sourceType: 'profile',screenName: ''};
 
-  constructor(protected ng4TwitterTimelineService: Ng4TwitterTimelineService) {
+  constructor() {
     this.data.screenName = 'katyperry';
   }
 
   ngOnInit() {
   }
 
-  // Whenever handle changes, this function will be executed.
   ngOnChanges() {
     this.update();
   }

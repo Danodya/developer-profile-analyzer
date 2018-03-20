@@ -1,4 +1,4 @@
-package com.springgithub.springgithub.model.StackOverflow;
+package com.springgithub.springgithub.model.twitter;
 
 import twitter4j.User;
 

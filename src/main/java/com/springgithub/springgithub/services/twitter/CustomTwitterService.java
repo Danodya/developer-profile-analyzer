@@ -39,20 +39,6 @@ public class CustomTwitterService {
         return twitter.getUserTimeline(handle, paging);
     }
 
-    public List<Status> getTwitterUserStatuses(String handle) throws TwitterException {
-        Twitter twitter = tf.getInstance();
-        Paging paging = new Paging();
-        paging.setCount(5);
-        return twitter.getUserTimeline(handle, paging);
-    }
-
-    public PagableResponseList<User> getTwitterFollowers(String handle) throws TwitterException {
-        Twitter twitter = tf.getInstance();
-        Paging paging = new Paging();
-        paging.setCount(5);
-        return twitter.getFriendsList(handle, -1, 5);
-    }
-
     /*
     Resource - https://developer.twitter.com/en/docs/basics/authentication/overview/application-only
      */
@@ -82,11 +68,6 @@ public class CustomTwitterService {
         ResponseEntity<Object> friends = restTemplate.exchange(URL, HttpMethod.GET, entity1, Object.class);
 
         return friends.getBody();
-    }
-
-    public Object test() throws TwitterException{
-        Twitter twitter = tf.getInstance();
-        return twitter.trends();
     }
 
     public Object getTwitterFollowersRe(String handle) {
