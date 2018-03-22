@@ -22,7 +22,7 @@ export class TempComponent implements OnInit, AfterViewInit
   readonly TWITTER_SCRIPT_ID = 'twitter-wjs';
   readonly TWITTER_WIDGET_URL = 'https://platform.twitter.com/widgets.js';
 
-  constructor(private element: ElementRef,) {}
+  constructor(private element: ElementRef) {}
 
   ngOnInit() {}
 
@@ -98,7 +98,7 @@ export class TempComponent implements OnInit, AfterViewInit
       fjs = d.getElementsByTagName(s)[0],
       t = window['twttr'] || {};
 
-      if (d.getElementById(id)) return t;
+      if (d.getElementById(id)) {return t;}
 
       js = d.createElement(s);
       js.id = id;

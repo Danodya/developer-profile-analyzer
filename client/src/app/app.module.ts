@@ -46,6 +46,7 @@ import { TwittertimelineComponent } from './components/twitter/twittertimeline/t
 import { TwitterfollowersComponent } from './components/twitter/twitterfollowers/twitterfollowers.component';
 import { TwitterrealfollowersComponent } from './components/twitter/twitterrealfollowers/twitterrealfollowers.component';
 import { TempComponent } from './components/twitter/temp/temp.component';
+import {AsyncLocalStorageModule} from "angular-async-local-storage";
 
 const appRoutes = [
   {
@@ -61,10 +62,7 @@ const appRoutes = [
   {
     path: 'twitter',
     component: TwitterComponent,
-    children: [
-      {path:'', component: TempComponent}
-    ],
-    data: {shouldDetach: true}
+    data: {shouldDetach: false}
   },
   {
     path: 'about',
@@ -113,6 +111,7 @@ const appRoutes = [
     ChartsModule,
     AutofocusModule,
     MaterializeModule,
+    AsyncLocalStorageModule,
     Ng4LoadingSpinnerModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     AgWordCloudModule.forRoot(),

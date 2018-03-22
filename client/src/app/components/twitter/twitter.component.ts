@@ -4,6 +4,7 @@ import {TwitterUser} from "../models/twitter-user";
 import {TwittertimelineComponent} from "./twittertimeline/twittertimeline.component";
 import {TwitterfollowersComponent} from "./twitterfollowers/twitterfollowers.component";
 import {TwitterrealfollowersComponent} from "./twitterrealfollowers/twitterrealfollowers.component";
+import {AsyncLocalStorage} from "angular-async-local-storage";
 
 @Component({
   selector: 'app-twitter',
@@ -22,22 +23,36 @@ export class TwitterComponent implements OnInit {
   @ViewChild(TwitterfollowersComponent) followers: TwitterfollowersComponent;
   @ViewChild(TwitterrealfollowersComponent) realFollowers: TwitterrealfollowersComponent;
 
-  constructor(protected twitterService: TwitterService) {
-    this.handle = "katyperry";
+  constructor(
+    protected twitterService: TwitterService,
+    protected storage: AsyncLocalStorage
+  )
+  {
+    this.storage.getItem('handle').subscribe((handle) => {
+      console.log(handle);
+      // if(this.handle != null){this.handle = handle;}
+      // else{this.handle = "katyperry";}
+      this.handle = handle;
+    });
     this.isDataLoaded = false;
   }
 
   ngOnInit() {
-    this.twitterService._get("katyperry").subscribe((res) => {
-      this.user = res;
-      this.isDataLoaded = true;
-    })
+    setTimeout(() => {
+      this.twitterService._get(this.handle).subscribe((res) => {
+        this.user = res;
+        this.isDataLoaded = true;
+      })
+    }, 2000);
   }
 
   public _get() {
     this.isDataLoaded = false;
     this.twitterService._get(this.handle).subscribe((res )=> {
       this.user = res;
+      setTimeout(() => {
+        this.storage.setItem('handle', this.user.screenName).subscribe(() => {});
+      }, 800);
       this.isDataLoaded = true;
     })
   }
