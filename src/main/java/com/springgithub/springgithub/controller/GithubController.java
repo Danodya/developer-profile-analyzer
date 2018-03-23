@@ -28,11 +28,11 @@ public class GithubController {
     public User getUser(@PathVariable String username) {
         // This condition will ADD a user if the user is not in the DB.
         // But this would not solve the issue of having a 404 error in the server.
-//        if(githubDBUtility.getUserDB(username.toLowerCase()).getUser().getLogin() == null) {
-//            githubDBUtility.insertData(username.toLowerCase());
-//        }
-//        return githubDBUtility.getUserDB(username.toLowerCase()).getUser();
-        return gh.getUser(username);
+        if(githubDBUtility.getUserDB(username.toLowerCase()).getUser().getLogin() == null) {
+            githubDBUtility.insertData(username.toLowerCase());
+        }
+        return githubDBUtility.getUserDB(username.toLowerCase()).getUser();
+//        return gh.getUser(username);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getuserfortests/{username}")

@@ -59,7 +59,7 @@ public class GithubControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.validated",
                         org.hamcrest.Matchers.is(true)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.public_repos",
-                        org.hamcrest.Matchers.is("20")));
+                        org.hamcrest.Matchers.is("22")));
     }
     
     @Test
@@ -84,19 +84,6 @@ public class GithubControllerTest {
         )
                 .andExpect(MockMvcResultMatchers.jsonPath("$.*", org.hamcrest.Matchers.hasSize(9)));
     }
-    
-    @Test
-    // Negative case for the commits endpoint.
-    // This should result in a 4xx error. (Bad request)
-    public void testCommitsEndpointIncorrect() throws Exception {
-    	JsonObject jsonObject = new JsonObject();
-    	jsonObject.addProperty("NO DATA", 0);
-    	mockMvc.perform(
-    			MockMvcRequestBuilders.get("/getcommitsadapterRe/dilanthaa95")
-    					.accept(MediaType.APPLICATION_JSON)
-    	)
-    			.andExpect(MockMvcResultMatchers.content().string(jsonObject.toString()));
-    }
 
     @Test
     // Checks whether there are two arrays - one for languages and the other for counts.
@@ -111,16 +98,6 @@ public class GithubControllerTest {
     }
     
     @Test
-    // Negative case for the stars endpoint.
-    public void testStarsPerLangIncorrect() throws Exception {
-    	mockMvc.perform(
-    			MockMvcRequestBuilders.get("/getstarsperlang/dasunpubudumalaa")
-    	)
-    			.andExpect(MockMvcResultMatchers.status().isInternalServerError());
-    }
-    
-    
-    @Test
     // Checks whether the correct forks are being received.
     // A positive case.
     public void testGetForks() throws Exception{
@@ -129,7 +106,7 @@ public class GithubControllerTest {
 					.accept(MediaType.APPLICATION_JSON)
 		)
 				.andExpect(MockMvcResultMatchers.content()
-                    .string("[[\"Java\",\"JavaScript\"],[4,1]]"));
+                    .string("[[\"Java\",\"TypeScript\",\"JavaScript\"],[5,1,1]]"));
 
 	}
 
