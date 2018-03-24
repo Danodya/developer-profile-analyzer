@@ -57,12 +57,35 @@ public class Configuration {
 }
 
 ```
-
 You must get a personal access token from github.
 
-8. Run the backend Tomcat server from IntelliJ.
+8. Create a `CacheConfig` class and add this this bean configuration for server side caching.
 
-9. Open the served front end at port `4200` (Default Angular port).
+```java
+package com.springgithub.springgithub.config;
+
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class CacheConfig {
+
+    @Bean
+    public CacheManager cacheManager() {
+        return new ConcurrentMapCacheManager("" +
+                "commits", "user");
+    }
+
+}
+
+```
+
+
+9. Run the backend Tomcat server from IntelliJ.
+
+10. Open the served front end at port `4200` (Default Angular port).
 
 
 ## Acknowledgements
