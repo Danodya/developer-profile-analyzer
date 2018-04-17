@@ -14,26 +14,26 @@ public class TwitterController {
     @Autowired
     private CustomTwitterService tw;
 
-    @CrossOrigin("https://profile-analyzer.herokuapp.com")
+    @CrossOrigin("https://localhost:8080")
     @RequestMapping(method = RequestMethod.GET, value = "/gettwitteruser/{username}")
     public User getTwitterUser(@PathVariable String username) throws TwitterException {
         return tw.getTwitterUser(username);
     }
 
-    @CrossOrigin("https://profile-analyzer.herokuapp.com")
+    @CrossOrigin("https://localhost:8080")
     @RequestMapping(method = RequestMethod.GET, value = "/gettwitterstatuses/{handle}")
     public Object getTwitterUserStatuses(@PathVariable String handle) throws TwitterException {
         return tw.getTwitterUserTimelines(handle);
     }
 
-    @CrossOrigin("https://profile-analyzer.herokuapp.com")
+    @CrossOrigin("https://localhost:8080")
     @RequestMapping(method = RequestMethod.GET, value = "/gettwitterfriends/{handle}")
     public Object authCheck(@PathVariable String handle) throws TwitterException {
         return tw.getFriendsAPI(handle);
     }
 
     // The endpoint `/gettwitterfriends` should be executed before executing this endpoint.
-    @CrossOrigin("https://profile-analyzer.herokuapp.com")
+    @CrossOrigin("https://localhost:8080")
     @RequestMapping(method = RequestMethod.GET, value = "/gettwitterfollowers/{handle}")
     public Object getTwitterFollowersRe(@PathVariable String handle) throws TwitterException {
         return tw.getTwitterFollowersRe(handle);
