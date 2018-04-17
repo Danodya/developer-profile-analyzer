@@ -2,8 +2,8 @@ package com.springgithub.springgithub.config;
 
 public class Configuration {
     public static final String GITHUB_CLIENT_ID = "a63bb0776b70be956f87";
-    public static final String GITHUB_CLIENT_SECRET = "cdc52a22a2d4f2f8f05f961409bdcd43f29b1550";
-    public static final String GITHUB_TOKEN = "8820b371d630bae345f92ad8ba868bf5733e551c";
+    public static final String GITHUB_CLIENT_SECRET = "b03191ae6d9fc51d8bd870b3b37bb94762beb30f";
+    public static final String GITHUB_TOKEN = "0dfd368eb12e6a4cf636308fb7dd35f5c9b50f9c";
 
     //    Stack Overflow
     public static final String STACK_KEY = "WaTAupj4SVFVSUbkqe0jlQ((";
