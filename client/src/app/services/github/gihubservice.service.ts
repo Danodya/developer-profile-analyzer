@@ -10,12 +10,12 @@ export class GithubService {
   constructor(protected http: HttpClient) {}
 
   call(username: string) {
-    return this.http.get<User>('/api/getuser/'.concat(username),
+    return this.http.get<User>('http://localhost:8080/getuser/'.concat(username),
       {headers: {}}). map(res => res);
   }
 
   callRepo(username: string) {
-    return this.http.get<any[]>('/api/getrepo/'.concat(username))
+    return this.http.get<any[]>('http://localhost:8080/getrepo/'.concat(username))
       .map(res => res);
   }
 

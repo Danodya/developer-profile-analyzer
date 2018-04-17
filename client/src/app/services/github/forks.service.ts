@@ -7,7 +7,7 @@ export class ForksService {
   constructor(protected http: HttpClient) { }
 
   public _get(username: string) {
-    return this.http.get<any[]>("/api/getforks/".concat(username))
+    return this.http.get<any[]>("http://localhost:8080/getforks/".concat(username))
       .map(forks => forks);
   }
 

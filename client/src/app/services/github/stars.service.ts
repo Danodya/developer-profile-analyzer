@@ -7,7 +7,7 @@ export class StarsService {
   constructor(protected http: HttpClient) { }
 
   public _get(username: string) {
-    return this.http.get<any[]>("/api/getstarsperlang/".concat(username))
+    return this.http.get<any[]>("http://localhost:8080/getstarsperlang/".concat(username))
       .map(stars => stars);
   }
 
