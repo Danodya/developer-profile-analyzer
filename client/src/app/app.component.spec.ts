@@ -36,6 +36,12 @@ import {BrowserModule} from "@angular/platform-browser";
 import {HttpClientModule} from "@angular/common/http";
 import {GithubService} from "./services/github/gihubservice.service";
 import {ChartService} from "./services/github/chart.service";
+import {StackerrorComponent} from "./components/stackoverflow/stackerror/stackerror.component";
+import {TwitterrealfollowersComponent} from "./components/twitter/twitterrealfollowers/twitterrealfollowers.component";
+import {TwitterdashboardComponent} from "./components/twitter/twitterdashboard/twitterdashboard.component";
+import {TwitterfollowersComponent} from "./components/twitter/twitterfollowers/twitterfollowers.component";
+import {TwittertimelineComponent} from "./components/twitter/twittertimeline/twittertimeline.component";
+import {TempComponent} from "./components/twitter/temp/temp.component";
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -65,7 +71,13 @@ describe('AppComponent', () => {
         WordcloudComponent,
         ToptagsComponent,
         CapitalizeFirstPipe,
-        ReputationComponent
+        ReputationComponent,
+        StackerrorComponent,
+        TwitterrealfollowersComponent,
+        TwitterdashboardComponent,
+        TwitterfollowersComponent,
+        TwittertimelineComponent,
+        TempComponent
       ],
       imports: [
         BrowserModule,

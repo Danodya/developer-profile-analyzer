@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TwitterComponent } from './twitter.component';
+import {TwittertimelineComponent} from "./twittertimeline/twittertimeline.component";
+import {TwitterfollowersComponent} from "./twitterfollowers/twitterfollowers.component";
+import {TwitterdashboardComponent} from "./twitterdashboard/twitterdashboard.component";
+import {TwitterrealfollowersComponent} from "./twitterrealfollowers/twitterrealfollowers.component";
+import {TempComponent} from "./temp/temp.component";
 
 describe('TwitterComponent', () => {
   let component: TwitterComponent;
@@ -8,7 +13,7 @@ describe('TwitterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TwitterComponent ]
+      declarations: [ TwitterComponent, TwittertimelineComponent, TwitterfollowersComponent, TwitterdashboardComponent, TwitterrealfollowersComponent, TempComponent ]
     })
     .compileComponents();
   }));

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppComponent } from './app.component';
 import { GithubComponent } from './components/github/github.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -120,6 +120,9 @@ const appRoutes = [
     // Ng4TwitterTimelineModule
   ],
   providers: [GithubService, {provide: RouteReuseStrategy, useClass: Customreuse}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule { }
