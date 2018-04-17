@@ -25,8 +25,10 @@ _Application when ran through my Github profile_.
 ## Usage
 
 1. Clone the repository using `git clone` (Or any other method i.e. using an IDE) and open the project folder, import the maven dependencies.
-2. Enable Auto-import if you are in IntelliJ and if you are in Visual Studio Code, there is a handy plugin which I will state [here](https://marketplace.visualstudio.com/items?itemName=georgewfraser.vscode-javac). It will automatically build the application and import the maven dependencies. You can run the program (backend Tomcat server) using F5 (If you're in Visual Studio Code) or just simply pressing Run button (If you're in Webstorm).
+2. Enable Auto-import if you are in IntelliJ and if you are in Visual Studio Code, there is a handy plugin which I will state [here](https://marketplace.visualstudio.com/items?itemName=georgewfraser.vscode-javac). It will automatically build the application and import the maven dependencies.
+
 3. Install front end dependencies for Angular by running `npm install` in the `/client` folder.
+
 4. Register an application in Github, Stackexchange, and Twitter and obtain your credentials.
 
 5. Start the front end server by running `ng serve` . Make sure you're in `/client` folder.
@@ -83,7 +85,7 @@ public class CacheConfig {
 ```
 
 
-9. Run the backend Tomcat server from IntelliJ.
+9. Run the backend Tomcat server from IntelliJ (Press Run, or `mvn spring-boot:run` in the console; to do this you must have `maven` downloaded and configured in your `PATH`. Otherwise, run `SpringGithubApplication.java` which is the `main` method of the application.)
 
 10. Open the served front end at port `4200` (Default Angular port).
 
