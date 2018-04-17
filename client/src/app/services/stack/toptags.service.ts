@@ -8,7 +8,7 @@ export class ToptagsService {
 
   // End up with an array of badges.
   public _get(id: string) {
-    return this.http.get<any>("http://localhost:8080/getstackusertoptags/".concat(id)).map(topTags => topTags.items);
+    return this.http.get<any>("/getstackusertoptags/".concat(id)).map(topTags => topTags.items);
   }
 
 }
