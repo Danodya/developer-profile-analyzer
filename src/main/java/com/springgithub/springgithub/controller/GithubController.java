@@ -23,7 +23,7 @@ public class GithubController {
     @Autowired
     private GithubDBUtility githubDBUtility;
 
-    @CrossOrigin("http://localhost:4200")
+    @CrossOrigin("http://localhost:8080")
     @RequestMapping(method = RequestMethod.GET, value = "/getuser/{username}")
     public User getUser(@PathVariable String username) {
         // This condition will ADD a user if the user is not in the DB.
@@ -40,46 +40,46 @@ public class GithubController {
         return gh.getUser(username);
     }
 
-    @CrossOrigin("http://localhost:4200")
+    @CrossOrigin("http://localhost:8080")
     @RequestMapping(method = RequestMethod.GET, value = "/getrepo/{username}")
     public @ResponseBody Object getRepository(@PathVariable String username) {
         return gh.getRepo(username);
     }
 
     // New Commits adapter - Uses EGit
-    @CrossOrigin("http://localhost:4200")
+    @CrossOrigin("http://localhost:8080")
     @RequestMapping(method = RequestMethod.GET, value = "/getcommitsadapterRe/{username}")
     public @ResponseBody Map getCommitsAdaptorRe(@PathVariable String username){ return gh.getCommitsAdaptorRe(username);
     }
 
     // Uses RestTemplate to fetch from API
-    @CrossOrigin("http://localhost:4200")
+    @CrossOrigin("http://localhost:8080")
     @RequestMapping(method = RequestMethod.GET, value = "/getstarsperlang/{username}")
     public @ResponseBody ArrayList<Object> getStarsPerLang(@PathVariable String username) { return gh.getStarsPerLang(username); }
 
     // Uses Egit adapter
-    @CrossOrigin("http://localhost:4200")
+    @CrossOrigin("http://localhost:8080")
     @RequestMapping(method = RequestMethod.GET, value = "/getforks/{username}")
     public @ResponseBody ArrayList<Object> getForks(@PathVariable String username) {
         return gh.getForks(username);
     }
 
     // Uses Egit adapte
-    @CrossOrigin("http://localhost:4200")
+    @CrossOrigin("http://localhost:8080")
     @RequestMapping(method = RequestMethod.GET, value = "/getwatchers/{username}")
     public @ResponseBody Integer getWatchers(@PathVariable String username) {
         return gh.getWatchers(username);
     }
 
     // Uses Egit adapter
-    @CrossOrigin("http://localhost:4200")
+    @CrossOrigin("http://localhost:8080")
     @RequestMapping(method = RequestMethod.GET, value = "/getissues/{username}")
     public @ResponseBody Integer getIssues(@PathVariable String username) {
         return gh.getIssues(username);
     }
 
     // Uses Egit adapter
-    @CrossOrigin("http://localhost:4200")
+    @CrossOrigin("http://localhost:8080")
     @RequestMapping(method = RequestMethod.GET, value = "/getorganizations/{username}")
     public @ResponseBody Integer getCommitsLastYear(@PathVariable String username) { return gh.getOrganizations(username);
     }
