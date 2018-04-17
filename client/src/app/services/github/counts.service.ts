@@ -7,7 +7,7 @@ export class CountsService {
   constructor(protected http: HttpClient) { }
 
   public getCounts(username: string) {
-    return this.http.get("http://localhost:8080/getcounts/".concat(username), {headers: {}}).map(counts => counts);
+    return this.http.get("/api/getcounts/".concat(username), {headers: {}}).map(counts => counts);
   }
 
 }
