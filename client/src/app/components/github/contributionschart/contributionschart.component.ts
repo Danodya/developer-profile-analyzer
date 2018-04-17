@@ -11,14 +11,14 @@ export class ContributionschartComponent implements OnInit {
   URL: string;
 
   constructor() {
-    this.URL = "http://ghchart.rshah.org/" + this.username;
+    this.URL = "//ghchart.rshah.org/" + this.username;
   }
 
   ngOnInit() {
   }
 
   public _get() {
-    this.URL = "http://ghchart.rshah.org/" + this.username;
+    this.URL = "//ghchart.rshah.org/" + this.username;
   }
 
 }
