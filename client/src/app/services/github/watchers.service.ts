@@ -7,7 +7,7 @@ export class WatchersService {
   constructor(protected http: HttpClient) { }
 
   public _get(username: string) {
-    return this.http.get<number>("http://localhost:8080/getwatchers/".concat(username))
+    return this.http.get<number>("/getwatchers/".concat(username))
       .map(watchers => watchers);
   }
 

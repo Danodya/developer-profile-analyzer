@@ -8,7 +8,7 @@ export class CommitsService {
   constructor(protected http: HttpClient) {}
 
   public getCommitDetails(username: string) {
-    return this.http.get<any>("http://localhost:8080/getcommitsadapterRe/".concat(username))
+    return this.http.get<any>("/getcommitsadapterRe/".concat(username))
       .map(data => data);
   }
 

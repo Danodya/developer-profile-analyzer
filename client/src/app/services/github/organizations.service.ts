@@ -7,7 +7,7 @@ export class OrganizationsService {
   constructor(protected http: HttpClient) { }
 
   public _get(username: string) {
-    return this.http.get<number>("http://localhost:8080/getorganizations/".concat(username))
+    return this.http.get<number>("/getorganizations/".concat(username))
       .map(orgs => orgs);
   }
 
