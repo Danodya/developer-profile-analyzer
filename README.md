@@ -1,5 +1,7 @@
 # Github + Stack + Twitter Profile Analyzer with Angular + Spring
 
+#### Note: For a full blown documentation visit [here.](https://dasunpubudumal.github.io/profile-analyzer.github.io/)
+
 _Note: This repository is a mirror of the original repository I have made for the project. I cannot make the original repo public as it contains authenticated tokens._ 
 
 A simple profile analyzer for developers. **You can follow a thorough walkthrough through this application by visiting my series of blogposts starting from [this.](https://dasunpubudu.wordpress.com/2018/01/13/creating-a-github-profile-analyzer-with-spring-boot-angular-part-i-introduction/)**
