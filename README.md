@@ -1,9 +1,5 @@
 # Github + Stack + Twitter Profile Analyzer with Angular + Spring
 
-#### Note: For a full blown documentation visit [here.](https://dasunpubudumal.github.io/profile-analyzer.github.io/)
-
-_Note: This repository is a mirror of the original repository I have made for the project. I cannot make the original repo public as it contains authenticated tokens._ 
-
 A simple profile analyzer for developers. **You can follow a thorough walkthrough through this application by visiting my series of blogposts starting from [this.](https://dasunpubudu.wordpress.com/2018/01/13/creating-a-github-profile-analyzer-with-spring-boot-angular-part-i-introduction/)**
 
 *Note* - This *README* consists of only the implementation details for **GitHub** profile search. However, this project was chosen as my *Semester V Project* and hence, I've extended it to *StackOverflow* and *Twitter* profile searches to give a better scope. For implementation details and help on the extended components, **please refer to the [wiki](https://github.com/dasunpubudumal/spring-github-repo/wiki) page**.
@@ -88,11 +84,13 @@ public class CacheConfig {
 
 ```
 
+9. Change `spring.data.mongodb.uri` to a registered database URI in mLabs.
 
 9. Run the backend Tomcat server from IntelliJ (Press Run, or `mvn spring-boot:run` in the console; to do this you must have `maven` downloaded and configured in your `PATH`. Otherwise, run `SpringGithubApplication.java` which is the `main` method of the application.)
 
 10. Open the served front end at port `4200` (Default Angular port).
 
+**NOTE: An external MongoDB database is used for caching purposes in GitHub commits.**
 
 ## Acknowledgements
 
@@ -104,6 +102,3 @@ public class CacheConfig {
 * [In28Minutes](http://www.springboottutorial.com/unit-testing-for-spring-boot-rest-services) for their Unit Testing (Based on JUnit and Mockito) blogpost. 
 * [Oshervoe's book](https://www.goodreads.com/book/show/6487349-the-art-of-unit-testing) for a great deal of knowledge on Unit Testing.
 * [Lukasz Goslawski](https://github.com/lokers) for his [ng-4-twitter-timeline](https://www.npmjs.com/package/ng4-twitter-timeline) NPM module.
-
-
-
